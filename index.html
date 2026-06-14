@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Batch Cook & Meal Tracker</title>
+    <style>
+        :root {
+            --primary: #2C5F2D;
+            --secondary: #97BC62;
+            --bg: #F4F6F4;
+            --text: #333333;
+            --card-bg: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Intro Section */
+        .intro-box {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-left: 5px solid var(--primary);
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Day Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+            border-top: 4px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        /* Tracker Styles */
+        .tracker-item {
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .tracker-item input[type="checkbox"] {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .tracker-item label {
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .completed-text {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        /* Shopping List Styles */
+        .location-section {
+            margin-bottom: 2rem;
+        }
+        
+        .location-section h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 5px;
+        }
+
+        ul.shopping-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.shopping-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Family Batch Cook & Planner</h1>
+        <p>Strategic prep for weeknight dinners and packed lunches</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('overview')">Weekly Plan</button>
+            <button class="tab-btn" onclick="openTab('tracker')">Meal Tracker</button>
+            <button class="tab-btn" onclick="openTab('shopping')">Shopping List</button>
+        </div>
+
+        <!-- TAB 1: OVERVIEW & CARDS -->
+        <div id="overview" class="tab-content active">
+            <div class="intro-box">
+                <p><strong>A few things worth calling out for the week:</strong></p>
+                <ul>
+                    <li>Monday through Thursday front-loads the high EPA+DHA meals (salmon, sardines, mackerel) so you're getting direct anti-inflammatory omega-3 early in the week.</li>
+                    <li>Friday's chia oats round it out with ALA-rich plant sources, which is a lighter finish to the week.</li>
+                    <li>The Sunday batch cook is the real force multiplier — roasting the sweet potato and steaming the broccoli once means Thursday's bento literally takes 5 minutes to pack.</li>
+                    <li>The quinoa batch carries Monday and Wednesday, and the lemon-EVOO-turmeric dressing works across three meals, so you make it once.</li>
+                </ul>
+                <p><em>Total Sunday prep time is realistically 60–75 minutes including cleanup, and then each night-before task is 5–10 minutes.</em></p>
+            </div>
+
+            <h2>Daily Lunch Prep (Click for details)</h2>
+            <div class="grid">
+                <div class="card" onclick="openModal('sunday')">
+                    <h3>Sunday (Batch Prep)</h3>
+                    <p>The 60-Min Force Multiplier</p>
+                </div>
+                <div class="card" onclick="openModal('monday')">
+                    <h3>Monday</h3>
+                    <p>Salmon & Quinoa Bowl</p>
+                </div>
+                <div class="card" onclick="openModal('tuesday')">
+                    <h3>Tuesday</h3>
+                    <p>Sardine Salad</p>
+                </div>
+                <div class="card" onclick="openModal('wednesday')">
+                    <h3>Wednesday</h3>
+                    <p>Mackerel & Quinoa</p>
+                </div>
+                <div class="card" onclick="openModal('thursday')">
+                    <h3>Thursday</h3>
+                    <p>5-Minute Bento Box</p>
+                </div>
+                <div class="card" onclick="openModal('friday')">
+                    <h3>Friday</h3>
+                    <p>ALA Chia Oats</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: MEAL TRACKER -->
+        <div id="tracker" class="tab-content">
+            <h2>Family Meal Execution Tracker</h2>
+            <p>Check off the meals as you pack/prep them for the family.</p>
+            
+            <div class="tracker-item">
+                <input type="checkbox" id="track-sun" onchange="toggleStrike(this)">
+                <label for="track-sun"><strong>Sunday:</strong> Completed the 60-75 min batch cook (Broccoli, Sweet Potato, Quinoa, Dressing)</label>
+            </div>
+            <div class="tracker-item">
+                <input type="checkbox" id="track-mon" onchange="toggleStrike(this)">
+                <label for="track-mon"><strong>Monday:</strong> Packed Salmon & Quinoa Bowls</label>
+            </div>
+            <div class="tracker-item">
+                <input type="checkbox" id="track-tue" onchange="toggleStrike(this)">
+                <label for="track-tue"><strong>Tuesday:</strong> Packed Sardine Salads</label>
+            </div>
+            <div class="tracker-item">
+                <input type="checkbox" id="track-wed" onchange="toggleStrike(this)">
+                <label for="track-wed"><strong>Wednesday:</strong> Packed Mackerel & Quinoa</label>
+            </div>
+            <div class="tracker-item">
+                <input type="checkbox" id="track-thu" onchange="toggleStrike(this)">
+                <label for="track-thu"><strong>Thursday:</strong> Assembled 5-Min Sweet Potato/Broccoli Bento</label>
+            </div>
+            <div class="tracker-item">
+                <input type="checkbox" id="track-fri" onchange="toggleStrike(this)">
+                <label for="track-fri"><strong>Friday:</strong> Prepped Chia Oats</label>
+            </div>
+        </div>
+
+        <!-- TAB 3: SHOPPING LIST -->
+        <div id="shopping" class="tab-content">
+            <h2>Organized Shopping List</h2>
+            <p>Everything you need, sorted by where to grab it locally.</p>
+
+            <div class="location-section">
+                <h3>📍 Dartmouth (Mic Mac Mall & Surrounding Supermarkets)</h3>
+                <ul class="shopping-list">
+                    <li><strong>Pantry Staples:</strong> Quinoa, Chia seeds, Rolled oats</li>
+                    <li><strong>Produce:</strong> Sweet potatoes, 2 large heads of broccoli, Lemons</li>
+                    <li><strong>Oils & Spices:</strong> Extra Virgin Olive Oil (EVOO), Turmeric powder</li>
+                    <li><strong>Containers:</strong> Bento boxes / glass meal prep containers (if replacements are needed)</li>
+                </ul>
+            </div>
+
+            <div class="location-section">
+                <h3>📍 Halifax (Seaport Farmers' Market / Local Fish Monger)</h3>
+                <ul class="shopping-list">
+                    <li><strong>Fresh Catch:</strong> Fresh Atlantic Salmon fillets (for Monday)</li>
+                    <li><strong>Tinned Fish:</strong> High-quality sardines in olive oil (for Tuesday)</li>
+                    <li><strong>Tinned Fish:</strong> Mackerel fillets (for Wednesday)</li>
+                    <li><strong>Greens:</strong> Fresh mixed salad greens (for Tuesday/Wednesday bases)</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modals for Day Cards -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Title</h2>
+            <div id="modal-body">Content goes here...</div>
+        </div>
+    </div>
+
+    <script>
+        // Tab Switching Logic
+        function openTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            const btns = document.querySelectorAll('.tab-btn');
+            
+            contents.forEach(content => content.classList.remove('active'));
+            btns.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Tracker Strikethrough Logic
+        function toggleStrike(checkbox) {
+            const label = checkbox.nextElementSibling;
+            if(checkbox.checked) {
+                label.classList.add('completed-text');
+            } else {
+                label.classList.remove('completed-text');
+            }
+        }
+
+        // Modal Data & Logic
+        const mealData = {
+            sunday: {
+                title: "Sunday Batch Cook",
+                body: "<strong>Ingredients:</strong> Sweet potatoes, Broccoli, Quinoa, Lemon, EVOO, Turmeric.<br><br><strong>Steps:</strong><br>1. Preheat oven to 400°F (200°C). Dice sweet potatoes and roast for 25-30 mins.<br>2. Steam broccoli florets until tender-crisp (about 5-7 mins).<br>3. Cook 2 cups of dry quinoa according to package instructions.<br>4. Whisk 1/2 cup EVOO, juice of 2 lemons, 1 tsp turmeric, salt, and pepper in a mason jar. Shake well.<br>5. Let everything cool and store in airtight containers."
+            },
+            monday: {
+                title: "Monday: Salmon & Quinoa Bowl",
+                body: "<strong>Ingredients:</strong> Pre-cooked Quinoa, Fresh Salmon, Lemon-Turmeric Dressing.<br><br><strong>Steps:</strong><br>1. Pan-sear or bake salmon portions the night before (10-12 mins).<br>2. Base layer: 1 cup of batch-cooked quinoa.<br>3. Top with flaked salmon.<br>4. Drizzle with 2 tbsp of the Lemon-EVOO-Turmeric dressing.<br><em>Prep time: 10 mins</em>"
+            },
+            tuesday: {
+                title: "Tuesday: Sardine Salad",
+                body: "<strong>Ingredients:</strong> Tinned Sardines, Mixed Greens, Lemon-Turmeric Dressing.<br><br><strong>Steps:</strong><br>1. Fill container with a heavy handful of fresh greens.<br>2. Top with one tin of high-quality sardines (drained).<br>3. Keep the batch-cooked dressing in a separate small container until lunchtime.<br><em>Prep time: 5 mins</em>"
+            },
+            wednesday: {
+                title: "Wednesday: Mackerel & Quinoa",
+                body: "<strong>Ingredients:</strong> Tinned Mackerel, Pre-cooked Quinoa, Mixed Greens, Dressing.<br><br><strong>Steps:</strong><br>1. Mix 1/2 cup of leftover quinoa with a handful of greens.<br>2. Top with tinned mackerel.<br>3. Add the last portion of the Lemon-Turmeric dressing.<br><em>Prep time: 5 mins</em>"
+            },
+            thursday: {
+                title: "Thursday: 5-Min Bento Box",
+                body: "<strong>Ingredients:</strong> Roasted Sweet Potato, Steamed Broccoli (from Sunday).<br><br><strong>Steps:</strong><br>1. Pull your Sunday batch-cooked sweet potatoes and broccoli from the fridge.<br>2. Arrange neatly in your bento box.<br>3. Add a quick protein of choice (hardboiled eggs or leftover fish) if desired.<br><em>Prep time: < 5 mins</em>"
+            },
+            friday: {
+                title: "Friday: ALA Chia Oats",
+                body: "<strong>Ingredients:</strong> Rolled oats, Chia seeds, Milk of choice, Berries.<br><br><strong>Steps (Night Before):</strong><br>1. In a jar, mix 1/2 cup oats, 2 tbsp chia seeds, and 3/4 cup milk.<br>2. Stir well and let sit in the fridge overnight to thicken.<br>3. Top with fresh berries in the morning.<br><em>Prep time: 5 mins</em>"
+            }
+        };
+
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+
+        function openModal(day) {
+            modalTitle.innerText = mealData[day].title;
+            modalBody.innerHTML = mealData[day].body;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside of the box
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
