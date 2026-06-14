@@ -1,397 +1,1029 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Batch Cook & Meal Tracker</title>
-    <style>
-        :root {
-            --primary: #2C5F2D;
-            --secondary: #97BC62;
-            --bg: #F4F6F4;
-            --text: #333333;
-            --card-bg: #FFFFFF;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omega Meal Planner</title>
+  <!-- Chart.js for interactive charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* CSS Variables for colour scheme */
+    :root {
+      --navy: #0a192f;
+      --green: #00a76a;
+      --fall: #e07a5f;
+      --light-bg: #f5f5f5;
+      --white: #ffffff;
+      --border: #dcdcdc;
+      --text-dark: #0a192f;
+      --text-light: #687980;
+      --font-normal: 'Helvetica', 'Arial', sans-serif;
+    }
 
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-normal);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    header {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        /* Tab Navigation */
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 10px;
-        }
+    .top-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      overflow-x: auto;
+    }
 
-        .tab-btn {
-            padding: 10px 20px;
-            background: none;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--text);
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
+    .top-nav li {
+      flex: 1;
+      text-align: center;
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
 
-        .tab-btn.active, .tab-btn:hover {
-            background-color: var(--secondary);
-            color: white;
-        }
+    .top-nav li:hover {
+      background-color: var(--green);
+      cursor: pointer;
+    }
 
-        .tab-content {
-            display: none;
-        }
+    .container {
+      display: flex;
+      flex: 1;
+    }
 
-        .tab-content.active {
-            display: block;
-        }
+    aside.side-nav {
+      width: 220px;
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 1rem;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
 
-        /* Intro Section */
-        .intro-box {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-left: 5px solid var(--primary);
-            border-radius: 5px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
+    aside.side-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-        /* Day Cards Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
+    aside.side-nav li {
+      margin: 0.8rem 0;
+    }
 
-        .card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            text-align: center;
-            border-top: 4px solid var(--primary);
-        }
+    aside.side-nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.5rem 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
+    aside.side-nav a:hover {
+      background-color: var(--green);
+    }
 
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary);
-        }
+    main {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+    }
 
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
+    section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
 
-        .modal-content {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
+    section h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--navy);
+    }
 
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #aaa;
-        }
+    /* Sources section */
+    .sources-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-        .close-btn:hover {
-            color: #000;
-        }
+    .sources-container div {
+      flex: 1 1 200px;
+    }
 
-        /* Tracker Styles */
-        .tracker-item {
-            display: flex;
-            align-items: center;
-            background: var(--card-bg);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
+    .sources-container ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
 
-        .tracker-item input[type="checkbox"] {
-            margin-right: 15px;
-            width: 20px;
-            height: 20px;
-            accent-color: var(--primary);
-            cursor: pointer;
-        }
+    /* Recipes section */
+    .recipes-list table {
+      width: 100%;
+      border-collapse: collapse;
+    }
 
-        .tracker-item label {
-            font-size: 1.1rem;
-            cursor: pointer;
-            width: 100%;
-        }
+    .recipes-list th, .recipes-list td {
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem;
+      text-align: left;
+    }
 
-        .completed-text {
-            text-decoration: line-through;
-            color: #888;
-        }
+    .recipes-list th {
+      background-color: var(--light-bg);
+    }
 
-        /* Shopping List Styles */
-        .location-section {
-            margin-bottom: 2rem;
-        }
-        
-        .location-section h3 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 5px;
-        }
+    .recipes-list tr:nth-child(even) td {
+      background-color: var(--light-bg);
+    }
 
-        ul.shopping-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
+    .add-recipe-form {
+      margin-top: 1rem;
+      display: none;
+    }
 
-        ul.shopping-list li {
-            padding: 8px 0;
-            border-bottom: 1px dashed #ccc;
-        }
-    </style>
+    .add-recipe-form label {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .add-recipe-form input, .add-recipe-form select, .add-recipe-form textarea {
+      width: 100%;
+      padding: 0.4rem;
+      margin-bottom: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      background-color: var(--green);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--fall);
+    }
+
+    /* Calendar section */
+    .calendar-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .calendar-table th, .calendar-table td {
+      border: 1px solid var(--border);
+      padding: 0.5rem;
+      vertical-align: top;
+      font-size: 0.85rem;
+    }
+
+    .calendar-table th {
+      background-color: var(--light-bg);
+      text-align: center;
+    }
+
+    .calendar-table td {
+      position: relative;
+    }
+
+    .meal-name {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    .ratio-display {
+      font-size: 0.7rem;
+      color: var(--text-light);
+    }
+
+    /* Ratio section */
+    .ratio-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .ratio-wrapper label {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .ratio-wrapper input[type=range] {
+      flex: 3;
+      max-width: 300px;
+    }
+
+    .ratio-wrapper span {
+      flex: 1;
+      min-width: 120px;
+      font-weight: bold;
+    }
+
+    /* Log section */
+    .charts-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .chart-box {
+      flex: 1 1 350px;
+      min-width: 280px;
+    }
+
+    .top-lists {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .top-list {
+      flex: 1 1 300px;
+      min-width: 240px;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+
+    footer ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    footer li {
+      margin-bottom: 0.3rem;
+    }
+
+    footer a {
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      aside.side-nav {
+        display: none;
+      }
+      .container {
+        flex-direction: column;
+      }
+      .top-nav ul {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <header>
-        <h1>Family Batch Cook & Planner</h1>
-        <p>Strategic prep for weeknight dinners and packed lunches</p>
-    </header>
-
-    <div class="container">
-        
-        <!-- Tab Navigation -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab('overview')">Weekly Plan</button>
-            <button class="tab-btn" onclick="openTab('tracker')">Meal Tracker</button>
-            <button class="tab-btn" onclick="openTab('shopping')">Shopping List</button>
+  <header>
+    <nav class="top-nav">
+      <ul id="days-nav">
+        <li>Sunday</li>
+        <li>Monday</li>
+        <li>Tuesday</li>
+        <li>Wednesday</li>
+        <li>Thursday</li>
+        <li>Friday</li>
+        <li>Saturday</li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    <aside class="side-nav">
+      <ul>
+        <li><a href="#sources">Ingredients & Sources</a></li>
+        <li><a href="#grocers">Grocers</a></li>
+        <li><a href="#infographic">Infographic</a></li>
+        <li><a href="#recipes">Recipe Library</a></li>
+        <li><a href="#calendar">Weekly Calendar</a></li>
+        <li><a href="#ratio">O'Mega Ratio</a></li>
+        <li><a href="#log">Log & Trends</a></li>
+      </ul>
+    </aside>
+    <main id="main-content">
+      <section id="sources">
+        <h2>Sources & Omega Buckets</h2>
+        <p>A healthy balance of omega-6 and omega-3 fatty acids supports heart health and reduces inflammation. Nutrition experts recommend keeping the ratio of omega-6 to omega-3 between 1:1 and 4:1 [oai_citation:0‡davita.com](https://davita.com/diet-nutrition/kidney-diet-tips/omega-3-and-omega-6-fatty-acids/#:~:text=It%E2%80%99s%20important%20to%20balance%20your,ratio%20can%20be%20improved%20by). Modern diets often exceed this range due to high consumption of processed foods and seed oils. Below are examples of foods that fall into each category [oai_citation:1‡health.harvard.edu](https://www.health.harvard.edu/newsletter_article/no-need-to-avoid-healthy-omega-6-fats#:~:text=Omega):</p>
+        <div class="sources-container">
+          <div>
+            <h3>Omega‑3 Sources</h3>
+            <ul id="omega3-list">
+              <li>Purslane [oai_citation:2‡ask.ifas.ufl.edu](https://ask.ifas.ufl.edu/publication/HS1484#:~:text=lettuce%20%28Tables%201%20and%202%29,vegetable%20possesses%20only%204%20milligrams)</li>
+              <li>Mussels & Oysters [oai_citation:3‡nhs.uk](https://www.nhs.uk/live-well/eat-well/food-types/fish-and-shellfish-nutrition/#:~:text=Some%20types%20of%20shellfish%2C%20such,as%20much%20as%20oily%20fish)</li>
+              <li>Salmon</li>
+              <li>Sardines</li>
+              <li>Mackerel & Herring</li>
+              <li>Flaxseeds & Chia Seeds</li>
+              <li>Walnuts</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Omega‑6 Sources</h3>
+            <ul id="omega6-list">
+              <li>Safflower, Sunflower, Corn & Soybean Oils [oai_citation:4‡health.harvard.edu](https://www.health.harvard.edu/newsletter_article/no-need-to-avoid-healthy-omega-6-fats#:~:text=Omega)</li>
+              <li>Sunflower & Pumpkin Seeds</li>
+              <li>Walnuts</li>
+              <li>Processed Condiments (hummus, pesto) [oai_citation:5‡parade.com](https://parade.com/health/best-hummus-at-the-grocery-store#:~:text=olive%20oil%20for%20additional%20phytonutrients,GMO%20and%20organic.%E2%80%9D)</li>
+            </ul>
+          </div>
         </div>
+      </section>
 
-        <!-- TAB 1: OVERVIEW & CARDS -->
-        <div id="overview" class="tab-content active">
-            <div class="intro-box">
-                <p><strong>A few things worth calling out for the week:</strong></p>
-                <ul>
-                    <li>Monday through Thursday front-loads the high EPA+DHA meals (salmon, sardines, mackerel) so you're getting direct anti-inflammatory omega-3 early in the week.</li>
-                    <li>Friday's chia oats round it out with ALA-rich plant sources, which is a lighter finish to the week.</li>
-                    <li>The Sunday batch cook is the real force multiplier — roasting the sweet potato and steaming the broccoli once means Thursday's bento literally takes 5 minutes to pack.</li>
-                    <li>The quinoa batch carries Monday and Wednesday, and the lemon-EVOO-turmeric dressing works across three meals, so you make it once.</li>
-                </ul>
-                <p><em>Total Sunday prep time is realistically 60–75 minutes including cleanup, and then each night-before task is 5–10 minutes.</em></p>
-            </div>
+      <section id="grocers">
+        <h2>Grocers & Markets</h2>
+        <p>To source fresh and sustainable ingredients for your omega‑balanced meals, support these local grocers in Dartmouth and nearby Halifax:</p>
+        <ul>
+          <li><strong>O&#39;Bees Food Market</strong> – Offers fresh fruits, vegetables, local cheese and meats, and is open daily with extended hours [oai_citation:6‡nogginsfarm.ca](https://nogginsfarm.ca/farm-markets/obees-food-market/#:~:text=Noggins%20Corner%20Farm%20at%20the,are%20always%20willing%20to%20help).</li>
+          <li><strong>Fisherman’s Market</strong> – Located at 607 Bedford Hwy in Halifax, this market supplies Atlantic seafood such as mussels and oysters. It is open Monday–Saturday 9 AM–6 PM and Sunday 11 AM–6 PM [oai_citation:7‡fishermansmarket.ca](https://www.fishermansmarket.ca/?srsltid=AfmBOopqKEm3qQ6pAZUIv0qbdzn6rbouAZT-2Oprd5Pnhn_Ec39lyzJP#:~:text=).</li>
+        </ul>
+        <p>You can also explore seasonal farmers’ markets and community‑supported agriculture programs to diversify your omega sources and support local producers.</p>
+      </section>
 
-            <h2>Daily Lunch Prep (Click for details)</h2>
-            <div class="grid">
-                <div class="card" onclick="openModal('sunday')">
-                    <h3>Sunday (Batch Prep)</h3>
-                    <p>The 60-Min Force Multiplier</p>
-                </div>
-                <div class="card" onclick="openModal('monday')">
-                    <h3>Monday</h3>
-                    <p>Salmon & Quinoa Bowl</p>
-                </div>
-                <div class="card" onclick="openModal('tuesday')">
-                    <h3>Tuesday</h3>
-                    <p>Sardine Salad</p>
-                </div>
-                <div class="card" onclick="openModal('wednesday')">
-                    <h3>Wednesday</h3>
-                    <p>Mackerel & Quinoa</p>
-                </div>
-                <div class="card" onclick="openModal('thursday')">
-                    <h3>Thursday</h3>
-                    <p>5-Minute Bento Box</p>
-                </div>
-                <div class="card" onclick="openModal('friday')">
-                    <h3>Friday</h3>
-                    <p>ALA Chia Oats</p>
-                </div>
-            </div>
+      <section id="infographic">
+        <h2>Infographic: Omega Sources</h2>
+        <p>This chart visualizes the distribution of omega‑3 versus omega‑6 ingredients in your recipe library. As you add new recipes, the chart updates automatically.</p>
+        <canvas id="infographicChart" width="400" height="300"></canvas>
+      </section>
+      <section id="recipes">
+        <h2>Recipe Library</h2>
+        <p>Select from our library of omega‑friendly recipes or add your own. Each recipe lists its primary omega bucket to help you plan balanced meals.</p>
+        <div class="recipes-list">
+          <table id="recipes-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Meal Type</th>
+                <th>Servings</th>
+                <th>Omega Ratio*</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Recipes populated by JS -->
+            </tbody>
+          </table>
+          <p style="font-size:0.75rem; color: var(--text-light);">*Ratio indicates omega‑6 to omega‑3 balance (&lt;1 favors omega‑3).</p>
         </div>
-
-        <!-- TAB 2: MEAL TRACKER -->
-        <div id="tracker" class="tab-content">
-            <h2>Family Meal Execution Tracker</h2>
-            <p>Check off the meals as you pack/prep them for the family.</p>
-            
-            <div class="tracker-item">
-                <input type="checkbox" id="track-sun" onchange="toggleStrike(this)">
-                <label for="track-sun"><strong>Sunday:</strong> Completed the 60-75 min batch cook (Broccoli, Sweet Potato, Quinoa, Dressing)</label>
-            </div>
-            <div class="tracker-item">
-                <input type="checkbox" id="track-mon" onchange="toggleStrike(this)">
-                <label for="track-mon"><strong>Monday:</strong> Packed Salmon & Quinoa Bowls</label>
-            </div>
-            <div class="tracker-item">
-                <input type="checkbox" id="track-tue" onchange="toggleStrike(this)">
-                <label for="track-tue"><strong>Tuesday:</strong> Packed Sardine Salads</label>
-            </div>
-            <div class="tracker-item">
-                <input type="checkbox" id="track-wed" onchange="toggleStrike(this)">
-                <label for="track-wed"><strong>Wednesday:</strong> Packed Mackerel & Quinoa</label>
-            </div>
-            <div class="tracker-item">
-                <input type="checkbox" id="track-thu" onchange="toggleStrike(this)">
-                <label for="track-thu"><strong>Thursday:</strong> Assembled 5-Min Sweet Potato/Broccoli Bento</label>
-            </div>
-            <div class="tracker-item">
-                <input type="checkbox" id="track-fri" onchange="toggleStrike(this)">
-                <label for="track-fri"><strong>Friday:</strong> Prepped Chia Oats</label>
-            </div>
+        <button class="btn" id="add-recipe-btn">Add a Recipe</button>
+        <div class="add-recipe-form" id="add-recipe-form">
+          <h3>Add a New Recipe</h3>
+          <label for="recipe-name">Name</label>
+          <input type="text" id="recipe-name" placeholder="Recipe name" required />
+          <label for="meal-type">Meal Type</label>
+          <select id="meal-type">
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+          </select>
+          <label for="recipe-servings">Servings</label>
+          <input type="number" id="recipe-servings" min="1" value="4" />
+          <label for="recipe-ingredients">Ingredients (comma‑separated)</label>
+          <textarea id="recipe-ingredients" rows="3" placeholder="e.g., salmon, quinoa, broccoli"></textarea>
+          <label for="recipe-instructions">Instructions</label>
+          <textarea id="recipe-instructions" rows="4" placeholder="Describe how to prepare the dish"></textarea>
+          <button class="btn" id="save-recipe-btn">Save Recipe</button>
         </div>
-
-        <!-- TAB 3: SHOPPING LIST -->
-        <div id="shopping" class="tab-content">
-            <h2>Organized Shopping List</h2>
-            <p>Everything you need, sorted by where to grab it locally.</p>
-
-            <div class="location-section">
-                <h3>📍 Dartmouth (Mic Mac Mall & Surrounding Supermarkets)</h3>
-                <ul class="shopping-list">
-                    <li><strong>Pantry Staples:</strong> Quinoa, Chia seeds, Rolled oats</li>
-                    <li><strong>Produce:</strong> Sweet potatoes, 2 large heads of broccoli, Lemons</li>
-                    <li><strong>Oils & Spices:</strong> Extra Virgin Olive Oil (EVOO), Turmeric powder</li>
-                    <li><strong>Containers:</strong> Bento boxes / glass meal prep containers (if replacements are needed)</li>
-                </ul>
-            </div>
-
-            <div class="location-section">
-                <h3>📍 Halifax (Seaport Farmers' Market / Local Fish Monger)</h3>
-                <ul class="shopping-list">
-                    <li><strong>Fresh Catch:</strong> Fresh Atlantic Salmon fillets (for Monday)</li>
-                    <li><strong>Tinned Fish:</strong> High-quality sardines in olive oil (for Tuesday)</li>
-                    <li><strong>Tinned Fish:</strong> Mackerel fillets (for Wednesday)</li>
-                    <li><strong>Greens:</strong> Fresh mixed salad greens (for Tuesday/Wednesday bases)</li>
-                </ul>
-            </div>
+      </section>
+      <section id="calendar">
+        <h2>Weekly Meal Calendar</h2>
+        <p>Plan your week with balanced omega meals. Use the checkboxes to track completed meals and adjust the plan with the “I’m Feeling Lucky” button.</p>
+        <button class="btn" id="lucky-btn">I'm Feeling Lucky</button>
+        <table class="calendar-table" id="calendar-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Lunch</th>
+              <th>Dinner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Calendar populated by JS -->
+          </tbody>
+        </table>
+      </section>
+      <section id="ratio">
+        <h2>O'Mega Ratio</h2>
+        <p>The ratio slider below controls your target omega‑6:omega‑3 intake for the week (lower is more omega‑3). The current weekly ratio updates automatically based on your meal plan.</p>
+        <div class="ratio-wrapper">
+          <label for="ratio-slider">Target Ratio (omega‑6 : omega‑3)</label>
+          <input type="range" id="ratio-slider" min="1" max="4" step="0.1" value="2" />
+          <span id="ratio-target-display">2:1</span>
         </div>
-
-    </div>
-
-    <!-- Modals for Day Cards -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title">Title</h2>
-            <div id="modal-body">Content goes here...</div>
+        <p>Your current plan's average ratio: <strong id="current-ratio-display">—</strong></p>
+      </section>
+      <section id="log">
+        <h2>Log & Trends</h2>
+        <p>Track how often you complete meals and monitor your omega balance. Charts update as you interact with your plan.</p>
+        <div class="charts-container">
+          <div class="chart-box">
+            <h3>Weekly Completion Rate</h3>
+            <canvas id="completionChart" width="400" height="200"></canvas>
+          </div>
+          <div class="chart-box">
+            <h3>Weekly Omega Ratio</h3>
+            <canvas id="ratioChart" width="400" height="200"></canvas>
+          </div>
         </div>
-    </div>
+        <div class="top-lists">
+          <div class="top-list">
+            <h3>Top Completed Recipes</h3>
+            <ul id="top-completed-list"></ul>
+          </div>
+          <div class="top-list">
+            <h3>Top Declined Recipes</h3>
+            <ul id="top-declined-list"></ul>
+          </div>
+          <div class="top-list">
+            <h3>Top Completed Ingredients</h3>
+            <ul id="top-completed-ingredients"></ul>
+          </div>
+          <div class="top-list">
+            <h3>Top Declined Ingredients</h3>
+            <ul id="top-declined-ingredients"></ul>
+          </div>
+        </div>
+      </section>
+      <footer id="citations">
+        <ul>
+          <li id="fn1"><a href=" [oai_citation:8‡davita.com](https://davita.com/diet-nutrition/kidney-diet-tips/omega-3-and-omega-6-fatty-acids/#:~:text=It%E2%80%99s%20important%20to%20balance%20your,ratio%20can%20be%20improved%20by)" target="_blank">[1]</a> Healthy omega‑6 to omega‑3 ratio guideline [oai_citation:9‡davita.com](https://davita.com/diet-nutrition/kidney-diet-tips/omega-3-and-omega-6-fatty-acids/#:~:text=It%E2%80%99s%20important%20to%20balance%20your,ratio%20can%20be%20improved%20by).</li>
+          <li id="fn2"><a href=" [oai_citation:10‡health.harvard.edu](https://www.health.harvard.edu/newsletter_article/no-need-to-avoid-healthy-omega-6-fats#:~:text=Omega)" target="_blank">[2]</a> Sources of omega‑6 and omega‑3 fats [oai_citation:11‡health.harvard.edu](https://www.health.harvard.edu/newsletter_article/no-need-to-avoid-healthy-omega-6-fats#:~:text=Omega).</li>
+          <li id="fn3"><a href=" [oai_citation:12‡ask.ifas.ufl.edu](https://ask.ifas.ufl.edu/publication/HS1484#:~:text=lettuce%20%28Tables%201%20and%202%29,vegetable%20possesses%20only%204%20milligrams)" target="_blank">[3]</a> Purslane contains plant omega‑3 fatty acids [oai_citation:13‡ask.ifas.ufl.edu](https://ask.ifas.ufl.edu/publication/HS1484#:~:text=lettuce%20%28Tables%201%20and%202%29,vegetable%20possesses%20only%204%20milligrams).</li>
+          <li id="fn4"><a href=" [oai_citation:14‡nhs.uk](https://www.nhs.uk/live-well/eat-well/food-types/fish-and-shellfish-nutrition/#:~:text=Some%20types%20of%20shellfish%2C%20such,as%20much%20as%20oily%20fish)" target="_blank">[4]</a> Shellfish like mussels and oysters contain long‑chain omega‑3s [oai_citation:15‡nhs.uk](https://www.nhs.uk/live-well/eat-well/food-types/fish-and-shellfish-nutrition/#:~:text=Some%20types%20of%20shellfish%2C%20such,as%20much%20as%20oily%20fish).</li>
+          <li id="fn5"><a href=" [oai_citation:16‡nogginsfarm.ca](https://nogginsfarm.ca/farm-markets/obees-food-market/#:~:text=Noggins%20Corner%20Farm%20at%20the,are%20always%20willing%20to%20help)" target="_blank">[5]</a> O'Bees Food Market information [oai_citation:17‡nogginsfarm.ca](https://nogginsfarm.ca/farm-markets/obees-food-market/#:~:text=Noggins%20Corner%20Farm%20at%20the,are%20always%20willing%20to%20help).</li>
+          <li id="fn6"><a href=" [oai_citation:18‡fishermansmarket.ca](https://www.fishermansmarket.ca/?srsltid=AfmBOopqKEm3qQ6pAZUIv0qbdzn6rbouAZT-2Oprd5Pnhn_Ec39lyzJP#:~:text=)" target="_blank">[6]</a> Fisherman’s Market information [oai_citation:19‡fishermansmarket.ca](https://www.fishermansmarket.ca/?srsltid=AfmBOopqKEm3qQ6pAZUIv0qbdzn6rbouAZT-2Oprd5Pnhn_Ec39lyzJP#:~:text=).</li>
+        </ul>
+      </footer>
+    </main>
+  </div>
+  <script>
+    // Dataset of recipes with categories and omega ratios (omega6:omega3)
+    const recipes = [
+      {
+        id: 'purslane-salad',
+        name: 'Purslane Salad',
+        mealType: 'lunch',
+        servings: 4,
+        ingredients: [
+          { name: 'purslane', category: 'omega3' },
+          { name: 'walnuts', category: 'omega3' },
+          { name: 'Greek yogurt', category: 'neutral' },
+          { name: 'olive oil', category: 'neutral' },
+          { name: 'garlic', category: 'neutral' },
+        ],
+        instructions: 'Mix yogurt with crushed garlic. Toss purslane and walnuts. Drizzle with olive oil and serve.',
+        ratio: 0.25,
+      },
+      {
+        id: 'seafood-chowder',
+        name: 'Nova Scotia Seafood Chowder',
+        mealType: 'dinner',
+        servings: 4,
+        ingredients: [
+          { name: 'lobster', category: 'omega3' },
+          { name: 'scallops', category: 'omega3' },
+          { name: 'salmon', category: 'omega3' },
+          { name: 'halibut', category: 'omega3' },
+          { name: 'mussels', category: 'omega3' },
+          { name: 'clams', category: 'omega3' },
+          { name: 'cream', category: 'neutral' },
+          { name: 'vegetables', category: 'neutral' },
+        ],
+        instructions: 'Sauté onions, carrots & celery. Add potatoes and cream; simmer. Cook seafood separately, then combine & season.',
+        ratio: 0.3,
+      },
+      {
+        id: 'walnut-pesto-pasta',
+        name: 'Walnut Pesto Pasta',
+        mealType: 'dinner',
+        servings: 4,
+        ingredients: [
+          { name: 'whole wheat pasta', category: 'neutral' },
+          { name: 'walnuts', category: 'omega3' },
+          { name: 'basil', category: 'neutral' },
+          { name: 'olive oil', category: 'neutral' },
+          { name: 'Parmesan', category: 'neutral' },
+        ],
+        instructions: 'Cook pasta. Blend walnuts, basil, olive oil, and Parmesan into pesto. Toss pasta with pesto.',
+        ratio: 0.6,
+      },
+      {
+        id: 'salmon-quinoa-bowl',
+        name: 'Salmon & Quinoa Bowl',
+        mealType: 'dinner',
+        servings: 4,
+        ingredients: [
+          { name: 'salmon fillet', category: 'omega3' },
+          { name: 'quinoa', category: 'neutral' },
+          { name: 'spinach', category: 'neutral' },
+          { name: 'walnuts', category: 'omega3' },
+        ],
+        instructions: 'Bake salmon. Cook quinoa. Assemble bowls with spinach, quinoa, and salmon; sprinkle with walnuts.',
+        ratio: 0.4,
+      },
+      {
+        id: 'chia-pudding',
+        name: 'Chia Seed Pudding',
+        mealType: 'lunch',
+        servings: 4,
+        ingredients: [
+          { name: 'chia seeds', category: 'omega3' },
+          { name: 'almond milk', category: 'neutral' },
+          { name: 'honey', category: 'neutral' },
+          { name: 'berries', category: 'neutral' },
+        ],
+        instructions: 'Combine chia seeds with almond milk and honey; refrigerate overnight. Serve with berries.',
+        ratio: 0.2,
+      },
+      {
+        id: 'tuna-avocado-salad',
+        name: 'Tuna & Avocado Salad',
+        mealType: 'lunch',
+        servings: 4,
+        ingredients: [
+          { name: 'tuna', category: 'omega3' },
+          { name: 'avocado', category: 'neutral' },
+          { name: 'arugula', category: 'neutral' },
+          { name: 'lemon juice', category: 'neutral' },
+        ],
+        instructions: 'Flake tuna; toss with diced avocado, arugula and lemon juice.',
+        ratio: 0.35,
+      },
+    ];
 
-    <script>
-        // Tab Switching Logic
-        function openTab(tabName) {
-            const contents = document.querySelectorAll('.tab-content');
-            const btns = document.querySelectorAll('.tab-btn');
-            
-            contents.forEach(content => content.classList.remove('active'));
-            btns.forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabName).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
+    // Weekly plan: an object where each day maps to an object { lunch: recipeId, dinner: recipeId }
+    let weeklyPlan = {};
 
-        // Tracker Strikethrough Logic
-        function toggleStrike(checkbox) {
-            const label = checkbox.nextElementSibling;
-            if(checkbox.checked) {
-                label.classList.add('completed-text');
-            } else {
-                label.classList.remove('completed-text');
-            }
-        }
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-        // Modal Data & Logic
-        const mealData = {
-            sunday: {
-                title: "Sunday Batch Cook",
-                body: "<strong>Ingredients:</strong> Sweet potatoes, Broccoli, Quinoa, Lemon, EVOO, Turmeric.<br><br><strong>Steps:</strong><br>1. Preheat oven to 400°F (200°C). Dice sweet potatoes and roast for 25-30 mins.<br>2. Steam broccoli florets until tender-crisp (about 5-7 mins).<br>3. Cook 2 cups of dry quinoa according to package instructions.<br>4. Whisk 1/2 cup EVOO, juice of 2 lemons, 1 tsp turmeric, salt, and pepper in a mason jar. Shake well.<br>5. Let everything cool and store in airtight containers."
-            },
-            monday: {
-                title: "Monday: Salmon & Quinoa Bowl",
-                body: "<strong>Ingredients:</strong> Pre-cooked Quinoa, Fresh Salmon, Lemon-Turmeric Dressing.<br><br><strong>Steps:</strong><br>1. Pan-sear or bake salmon portions the night before (10-12 mins).<br>2. Base layer: 1 cup of batch-cooked quinoa.<br>3. Top with flaked salmon.<br>4. Drizzle with 2 tbsp of the Lemon-EVOO-Turmeric dressing.<br><em>Prep time: 10 mins</em>"
-            },
-            tuesday: {
-                title: "Tuesday: Sardine Salad",
-                body: "<strong>Ingredients:</strong> Tinned Sardines, Mixed Greens, Lemon-Turmeric Dressing.<br><br><strong>Steps:</strong><br>1. Fill container with a heavy handful of fresh greens.<br>2. Top with one tin of high-quality sardines (drained).<br>3. Keep the batch-cooked dressing in a separate small container until lunchtime.<br><em>Prep time: 5 mins</em>"
-            },
-            wednesday: {
-                title: "Wednesday: Mackerel & Quinoa",
-                body: "<strong>Ingredients:</strong> Tinned Mackerel, Pre-cooked Quinoa, Mixed Greens, Dressing.<br><br><strong>Steps:</strong><br>1. Mix 1/2 cup of leftover quinoa with a handful of greens.<br>2. Top with tinned mackerel.<br>3. Add the last portion of the Lemon-Turmeric dressing.<br><em>Prep time: 5 mins</em>"
-            },
-            thursday: {
-                title: "Thursday: 5-Min Bento Box",
-                body: "<strong>Ingredients:</strong> Roasted Sweet Potato, Steamed Broccoli (from Sunday).<br><br><strong>Steps:</strong><br>1. Pull your Sunday batch-cooked sweet potatoes and broccoli from the fridge.<br>2. Arrange neatly in your bento box.<br>3. Add a quick protein of choice (hardboiled eggs or leftover fish) if desired.<br><em>Prep time: < 5 mins</em>"
-            },
-            friday: {
-                title: "Friday: ALA Chia Oats",
-                body: "<strong>Ingredients:</strong> Rolled oats, Chia seeds, Milk of choice, Berries.<br><br><strong>Steps (Night Before):</strong><br>1. In a jar, mix 1/2 cup oats, 2 tbsp chia seeds, and 3/4 cup milk.<br>2. Stir well and let sit in the fridge overnight to thicken.<br>3. Top with fresh berries in the morning.<br><em>Prep time: 5 mins</em>"
-            }
+    function initPlan() {
+      // Assign default recipes to each day (alternating meals). We'll cycle through recipes.
+      weeklyPlan = {};
+      let lunchOptions = recipes.filter(r => r.mealType === 'lunch');
+      let dinnerOptions = recipes.filter(r => r.mealType === 'dinner');
+      daysOfWeek.forEach((day, index) => {
+        weeklyPlan[day] = {
+          lunch: lunchOptions[index % lunchOptions.length].id,
+          dinner: dinnerOptions[index % dinnerOptions.length].id,
         };
+      });
+    }
 
-        const modal = document.getElementById('modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalBody = document.getElementById('modal-body');
+    function shufflePlan() {
+      const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+      let lunchOptions = recipes.filter(r => r.mealType === 'lunch');
+      let dinnerOptions = recipes.filter(r => r.mealType === 'dinner');
+      daysOfWeek.forEach(day => {
+        weeklyPlan[day] = {
+          lunch: rand(lunchOptions).id,
+          dinner: rand(dinnerOptions).id,
+        };
+      });
+      renderCalendar();
+      updateRatio();
+      updateLogs();
+    }
 
-        function openModal(day) {
-            modalTitle.innerText = mealData[day].title;
-            modalBody.innerHTML = mealData[day].body;
-            modal.style.display = 'flex';
-        }
+    function renderRecipeTable() {
+      const tbody = document.querySelector('#recipes-table tbody');
+      tbody.innerHTML = '';
+      recipes.forEach(rec => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${rec.name}</td>
+          <td>${rec.mealType.charAt(0).toUpperCase() + rec.mealType.slice(1)}</td>
+          <td>${rec.servings}</td>
+          <td>${rec.ratio.toFixed(2)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
 
-        function closeModal() {
-            modal.style.display = 'none';
-        }
+    function renderCalendar() {
+      const tbody = document.querySelector('#calendar-table tbody');
+      tbody.innerHTML = '';
+      daysOfWeek.forEach(day => {
+        const plan = weeklyPlan[day];
+        const lunchRec = recipes.find(r => r.id === plan.lunch);
+        const dinnerRec = recipes.find(r => r.id === plan.dinner);
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${day}</td>
+          <td>
+            <label class="meal-name">${lunchRec.name}</label>
+            <label><input type="checkbox" data-day="${day}" data-meal="lunch"> Completed</label><br>
+            <span class="ratio-display">Ratio: ${lunchRec.ratio.toFixed(2)}</span>
+          </td>
+          <td>
+            <label class="meal-name">${dinnerRec.name}</label>
+            <label><input type="checkbox" data-day="${day}" data-meal="dinner"> Completed</label><br>
+            <span class="ratio-display">Ratio: ${dinnerRec.ratio.toFixed(2)}</span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      // Attach event listeners to checkboxes
+      document.querySelectorAll('#calendar-table input[type=checkbox]').forEach(box => {
+        box.removeEventListener('change', handleCheckboxChange);
+        box.addEventListener('change', handleCheckboxChange);
+      });
+    }
 
-        // Close modal when clicking outside of the box
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
+    function computeWeeklyRatio() {
+      let totalRatio = 0;
+      let count = 0;
+      daysOfWeek.forEach(day => {
+        const plan = weeklyPlan[day];
+        ['lunch', 'dinner'].forEach(meal => {
+          const rec = recipes.find(r => r.id === plan[meal]);
+          if (rec) {
+            totalRatio += rec.ratio;
+            count++;
+          }
+        });
+      });
+      if (count === 0) return 0;
+      return totalRatio / count;
+    }
+
+    function ratioToString(r) {
+      // Convert ratio value (omega6/omega3) to a human readable x:1 format. If r < 1, invert.
+      if (r === 0) return '—';
+      if (r < 1) {
+        const inv = (1 / r).toFixed(1);
+        return `1:${inv}`;
+      }
+      return `${r.toFixed(1)}:1`;
+    }
+
+    function updateRatio() {
+      const ratioVal = computeWeeklyRatio();
+      document.getElementById('current-ratio-display').textContent = ratioToString(ratioVal);
+    }
+
+    // Log and analytics structures
+    const completionLog = [];
+
+    // Infographic chart instance
+    let infographicChart;
+
+    function updateInfographic() {
+      // Aggregate counts of ingredient categories across all recipes
+      const counts = { omega3: 0, omega6: 0, neutral: 0 };
+      recipes.forEach(rec => {
+        rec.ingredients.forEach(ing => {
+          if (!counts[ing.category]) counts[ing.category] = 0;
+          counts[ing.category]++;
+        });
+      });
+      const ctx = document.getElementById('infographicChart').getContext('2d');
+      // Destroy previous chart if exists
+      if (infographicChart) infographicChart.destroy();
+      infographicChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Omega‑3 Ingredients', 'Omega‑6 Ingredients', 'Neutral Ingredients'],
+          datasets: [{
+            data: [counts.omega3 || 0, counts.omega6 || 0, counts.neutral || 0],
+            backgroundColor: [ '#00a76a', '#e07a5f', '#687980' ],
+            hoverOffset: 4,
+          }],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#0a192f',
+                font: { family: 'Helvetica', size: 12 },
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const label = context.label || '';
+                  const value = context.formattedValue;
+                  return `${label}: ${value}`;
+                }
+              }
             }
+          }
         }
-    </script>
+      });
+    }
+
+    function handleCheckboxChange(e) {
+      const day = e.target.dataset.day;
+      const meal = e.target.dataset.meal;
+      const recId = weeklyPlan[day][meal];
+      // Record completion event with timestamp and status
+      completionLog.push({ day, meal, recId, completed: e.target.checked, timestamp: new Date() });
+      updateLogs();
+    }
+
+    // Chart instances
+    let completionChart;
+    let ratioChart;
+
+    function updateLogs() {
+      // Compute completion per day
+      const dailyCompletion = {};
+      daysOfWeek.forEach(day => {
+        dailyCompletion[day] = 0;
+      });
+      // Completed and declined counts for recipes and ingredients
+      const completedRecipesCount = {};
+      const declinedRecipesCount = {};
+      const completedIngredientsCount = {};
+      const declinedIngredientsCount = {};
+      // Initialize with zero
+      recipes.forEach(rec => {
+        completedRecipesCount[rec.id] = 0;
+        declinedRecipesCount[rec.id] = 0;
+        rec.ingredients.forEach(ing => {
+          completedIngredientsCount[ing.name] = 0;
+          declinedIngredientsCount[ing.name] = 0;
+        });
+      });
+      // Determine current check status for each meal
+      const checkboxMap = {};
+      document.querySelectorAll('#calendar-table input[type=checkbox]').forEach(box => {
+        const key = box.dataset.day + '-' + box.dataset.meal;
+        checkboxMap[key] = box.checked;
+      });
+      // Compute completion and declined counts
+      daysOfWeek.forEach(day => {
+        ['lunch', 'dinner'].forEach(meal => {
+          const recId = weeklyPlan[day][meal];
+          const rec = recipes.find(r => r.id === recId);
+          const checked = checkboxMap[day + '-' + meal] || false;
+          if (checked) {
+            dailyCompletion[day]++;
+            completedRecipesCount[recId]++;
+            rec.ingredients.forEach(ing => {
+              completedIngredientsCount[ing.name]++;
+            });
+          } else {
+            declinedRecipesCount[recId]++;
+            rec.ingredients.forEach(ing => {
+              declinedIngredientsCount[ing.name]++;
+            });
+          }
+        });
+      });
+      // Update charts
+      const compData = daysOfWeek.map(day => dailyCompletion[day]);
+      const ratioData = daysOfWeek.map(day => {
+        const plan = weeklyPlan[day];
+        let dayTotal = 0;
+        let dayCount = 0;
+        ['lunch', 'dinner'].forEach(meal => {
+          const rec = recipes.find(r => r.id === plan[meal]);
+          if (rec) {
+            dayTotal += rec.ratio;
+            dayCount++;
+          }
+        });
+        return dayCount > 0 ? dayTotal / dayCount : 0;
+      });
+      // Destroy existing charts before re-creating to avoid duplicates
+      if (completionChart) completionChart.destroy();
+      if (ratioChart) ratioChart.destroy();
+      const ctx1 = document.getElementById('completionChart').getContext('2d');
+      const ctx2 = document.getElementById('ratioChart').getContext('2d');
+      completionChart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: daysOfWeek,
+          datasets: [{
+            label: 'Completed Meals',
+            data: compData,
+            borderColor: '#00a76a',
+            backgroundColor: 'rgba(0,167,106,0.2)',
+            tension: 0.3,
+          }],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMax: 2,
+              ticks: { stepSize: 1 }
+            }
+          }
+        }
+      });
+      ratioChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+          labels: daysOfWeek,
+          datasets: [{
+            label: 'Omega‑6 : Omega‑3 Ratio',
+            data: ratioData,
+            borderColor: '#e07a5f',
+            backgroundColor: 'rgba(224,122,95,0.2)',
+            tension: 0.3,
+          }],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMax: 2,
+            }
+          }
+        }
+      });
+      // Top completed/declined recipes and ingredients over multiple timeframes (7, 14, 30 days)
+      const now = new Date();
+      const timeFrames = [7, 14, 30];
+      // Initialize stats structures
+      const recStats = {};
+      const ingStats = {};
+      recipes.forEach(rec => {
+        recStats[rec.id] = {
+          completed7: 0, completed14: 0, completed30: 0,
+          declined7: 0, declined14: 0, declined30: 0,
+        };
+        rec.ingredients.forEach(ing => {
+          if (!ingStats[ing.name]) {
+            ingStats[ing.name] = {
+              completed7: 0, completed14: 0, completed30: 0,
+              declined7: 0, declined14: 0, declined30: 0,
+            };
+          }
+        });
+      });
+      // Process completion log
+      completionLog.forEach(ev => {
+        const recId = ev.recId;
+        const rec = recipes.find(r => r.id === recId);
+        if (!rec) return;
+        const daysDiff = (now - new Date(ev.timestamp)) / (1000 * 60 * 60 * 24);
+        timeFrames.forEach(tf => {
+          if (daysDiff <= tf) {
+            if (ev.completed) {
+              recStats[recId][`completed${tf}`]++;
+              rec.ingredients.forEach(ing => {
+                ingStats[ing.name][`completed${tf}`]++;
+              });
+            } else {
+              recStats[recId][`declined${tf}`]++;
+              rec.ingredients.forEach(ing => {
+                ingStats[ing.name][`declined${tf}`]++;
+              });
+            }
+          }
+        });
+      });
+      // Helper to sort and pick top 5 based on 7 day completions/declines
+      function getTopEntries(stats, completed = true) {
+        const keyPrefix = completed ? 'completed' : 'declined';
+        return Object.entries(stats)
+          .sort((a, b) => b[1][`${keyPrefix}7`] - a[1][`${keyPrefix}7`])
+          .slice(0, 5);
+      }
+      const topCompleted = getTopEntries(recStats, true);
+      const topDeclined = getTopEntries(recStats, false);
+      const topCompletedIng = getTopEntries(ingStats, true);
+      const topDeclinedIng = getTopEntries(ingStats, false);
+      const completedList = document.getElementById('top-completed-list');
+      const declinedList = document.getElementById('top-declined-list');
+      const completedIngList = document.getElementById('top-completed-ingredients');
+      const declinedIngList = document.getElementById('top-declined-ingredients');
+      completedList.innerHTML = '';
+      declinedList.innerHTML = '';
+      completedIngList.innerHTML = '';
+      declinedIngList.innerHTML = '';
+      topCompleted.forEach(([id, stats]) => {
+        const rec = recipes.find(r => r.id === id);
+        const li = document.createElement('li');
+        li.textContent = `${rec.name} (7d: ${stats.completed7}, 14d: ${stats.completed14}, 30d: ${stats.completed30})`;
+        completedList.appendChild(li);
+      });
+      topDeclined.forEach(([id, stats]) => {
+        const rec = recipes.find(r => r.id === id);
+        const li = document.createElement('li');
+        li.textContent = `${rec.name} (7d: ${stats.declined7}, 14d: ${stats.declined14}, 30d: ${stats.declined30})`;
+        declinedList.appendChild(li);
+      });
+      topCompletedIng.forEach(([name, stats]) => {
+        const li = document.createElement('li');
+        li.textContent = `${name} (7d: ${stats.completed7}, 14d: ${stats.completed14}, 30d: ${stats.completed30})`;
+        completedIngList.appendChild(li);
+      });
+      topDeclinedIng.forEach(([name, stats]) => {
+        const li = document.createElement('li');
+        li.textContent = `${name} (7d: ${stats.declined7}, 14d: ${stats.declined14}, 30d: ${stats.declined30})`;
+        declinedIngList.appendChild(li);
+      });
+    }
+
+    // Add recipe form toggles and saving
+    document.getElementById('add-recipe-btn').addEventListener('click', () => {
+      const form = document.getElementById('add-recipe-form');
+      form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+    });
+
+    document.getElementById('save-recipe-btn').addEventListener('click', () => {
+      const name = document.getElementById('recipe-name').value.trim();
+      const mealType = document.getElementById('meal-type').value;
+      const servings = parseInt(document.getElementById('recipe-servings').value, 10) || 1;
+      const ingredientsStr = document.getElementById('recipe-ingredients').value.trim();
+      const instructions = document.getElementById('recipe-instructions').value.trim();
+      if (!name || !ingredientsStr || !instructions) {
+        alert('Please fill in all fields for the recipe.');
+        return;
+      }
+      const ingredientNames = ingredientsStr.split(',').map(s => s.trim()).filter(Boolean);
+      // Simple classification of ingredients
+      function classifyIngredient(name) {
+        const lower = name.toLowerCase();
+        const omega3Keywords = ['salmon', 'mackerel', 'sardine', 'herring', 'fish', 'tuna', 'flax', 'chia', 'purslane', 'walnut', 'mussel', 'oyster', 'clam'];
+        const omega6Keywords = ['corn oil', 'soybean oil', 'sunflower oil', 'safflower oil', 'cottonseed oil', 'oil'];
+        for (const kw of omega3Keywords) {
+          if (lower.includes(kw)) return 'omega3';
+        }
+        for (const kw of omega6Keywords) {
+          if (lower.includes(kw)) return 'omega6';
+        }
+        return 'neutral';
+      }
+      const ingredients = ingredientNames.map(n => ({ name: n, category: classifyIngredient(n) }));
+      // Compute ratio: omega6/omega3 as (count omega6 / count omega3). Avoid divide by zero.
+      let countOmega3 = 0, countOmega6 = 0;
+      ingredients.forEach(ing => {
+        if (ing.category === 'omega3') countOmega3++;
+        if (ing.category === 'omega6') countOmega6++;
+      });
+      const ratio = countOmega3 > 0 ? (countOmega6 / countOmega3) : 1;
+      const id = name.toLowerCase().replace(/\s+/g, '-');
+      recipes.push({ id, name, mealType, servings, ingredients, instructions, ratio });
+      renderRecipeTable();
+      initPlan();
+      renderCalendar();
+      updateRatio();
+      updateLogs();
+      updateInfographic();
+      // Reset form and hide
+      document.getElementById('recipe-name').value = '';
+      document.getElementById('recipe-servings').value = '4';
+      document.getElementById('recipe-ingredients').value = '';
+      document.getElementById('recipe-instructions').value = '';
+      document.getElementById('add-recipe-form').style.display = 'none';
+    });
+
+    document.getElementById('lucky-btn').addEventListener('click', () => {
+      shufflePlan();
+      updateInfographic();
+    });
+
+    document.getElementById('ratio-slider').addEventListener('input', (e) => {
+      const value = parseFloat(e.target.value);
+      document.getElementById('ratio-target-display').textContent = `${value.toFixed(1)}:1`;
+    });
+
+    // Initialize page
+    initPlan();
+    renderRecipeTable();
+    renderCalendar();
+    updateRatio();
+    updateLogs();
+    updateInfographic();
+  </script>
 </body>
 </html>
