@@ -6,6 +6,8 @@
   <title>Omega Meal Planner</title>
   <!-- Chart.js for interactive charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Optionally import recipe-scrapers library for scraping recipes -->
+  <script type="module" defer src="https://cdn.jsdelivr.net/npm/recipe-scrapers-js@1.0.0/dist/index.mjs"></script>
   <style>
     /* CSS Variables for colour scheme */
     :root {
@@ -30,38 +32,6 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-    }
-
-    header {
-      background-color: var(--navy);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .top-nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      overflow-x: auto;
-    }
-
-    .top-nav li {
-      flex: 1;
-      text-align: center;
-      padding: 0.4rem 0;
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-
-    .top-nav li:hover {
-      background-color: var(--green);
-      cursor: pointer;
     }
 
     .container {
@@ -302,33 +272,16 @@
       .container {
         flex-direction: column;
       }
-      .top-nav ul {
-        flex-wrap: wrap;
-      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav class="top-nav">
-      <ul id="days-nav">
-        <li>Sunday</li>
-        <li>Monday</li>
-        <li>Tuesday</li>
-        <li>Wednesday</li>
-        <li>Thursday</li>
-        <li>Friday</li>
-        <li>Saturday</li>
-      </ul>
-    </nav>
-  </header>
   <div class="container">
     <aside class="side-nav">
       <ul>
         <li><a href="#sources">Ingredients & Sources</a></li>
-        <li><a href="#grocers">Grocers</a></li>
-        <li><a href="#infographic">Infographic</a></li>
         <li><a href="#recipes">Recipe Library</a></li>
+        <li><a href="#nutrition">Nutrition Reference</a></li>
         <li><a href="#calendar">Weekly Calendar</a></li>
         <li><a href="#ratio">O'Mega Ratio</a></li>
         <li><a href="#log">Log & Trends</a></li>
@@ -337,50 +290,35 @@
     <main id="main-content">
       <section id="sources">
         <h2>Sources & Omega Buckets</h2>
-        <p>A healthy balance of omega-6 and omega-3 fatty acids supports heart health and reduces inflammation. Nutrition experts recommend keeping the ratio of omega-6 to omega-3 between 1:1 and 4:1 [oai_citation:0‡davita.com](https://davita.com/diet-nutrition/kidney-diet-tips/omega-3-and-omega-6-fatty-acids/#:~:text=It%E2%80%99s%20important%20to%20balance%20your,ratio%20can%20be%20improved%20by). Modern diets often exceed this range due to high consumption of processed foods and seed oils. Below are examples of foods that fall into each category [oai_citation:1‡health.harvard.edu](https://www.health.harvard.edu/newsletter_article/no-need-to-avoid-healthy-omega-6-fats#:~:text=Omega):</p>
+        <p>A healthy balance of omega‑6 and omega‑3 fatty acids supports heart health and reduces inflammation. Nutrition experts recommend keeping the ratio of omega‑6 to omega‑3 between 1:1 and 4:1【557145189711555†L220-L224】. Modern diets often exceed this range due to high consumption of processed foods and seed oils. Below are examples of foods that fall into each category【775034953345055†L144-L151】:</p>
         <div class="sources-container">
           <div>
             <h3>Omega‑3 Sources</h3>
             <ul id="omega3-list">
-              <li>Purslane [oai_citation:2‡ask.ifas.ufl.edu](https://ask.ifas.ufl.edu/publication/HS1484#:~:text=lettuce%20%28Tables%201%20and%202%29,vegetable%20possesses%20only%204%20milligrams)</li>
-              <li>Mussels & Oysters [oai_citation:3‡nhs.uk](https://www.nhs.uk/live-well/eat-well/food-types/fish-and-shellfish-nutrition/#:~:text=Some%20types%20of%20shellfish%2C%20such,as%20much%20as%20oily%20fish)</li>
+              <li>Purslane【788540841835043†L208-L211】</li>
+              <li>Mussels &amp; Oysters【548870733932692†L97-L115】</li>
               <li>Salmon</li>
               <li>Sardines</li>
-              <li>Mackerel & Herring</li>
-              <li>Flaxseeds & Chia Seeds</li>
+              <li>Mackerel &amp; Herring</li>
+              <li>Flaxseeds &amp; Chia Seeds</li>
               <li>Walnuts</li>
             </ul>
           </div>
           <div>
             <h3>Omega‑6 Sources</h3>
             <ul id="omega6-list">
-              <li>Safflower, Sunflower, Corn & Soybean Oils [oai_citation:4‡health.harvard.edu](https://www.health.harvard.edu/newsletter_article/no-need-to-avoid-healthy-omega-6-fats#:~:text=Omega)</li>
-              <li>Sunflower & Pumpkin Seeds</li>
+              <li>Safflower, Sunflower, Corn &amp; Soybean Oils【775034953345055†L144-L147】</li>
+              <li>Sunflower &amp; Pumpkin Seeds</li>
               <li>Walnuts</li>
-              <li>Processed Condiments (hummus, pesto) [oai_citation:5‡parade.com](https://parade.com/health/best-hummus-at-the-grocery-store#:~:text=olive%20oil%20for%20additional%20phytonutrients,GMO%20and%20organic.%E2%80%9D)</li>
+              <li>Processed Condiments (hummus, pesto)【480202975198168†L360-L364】</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section id="grocers">
-        <h2>Grocers & Markets</h2>
-        <p>To source fresh and sustainable ingredients for your omega‑balanced meals, support these local grocers in Dartmouth and nearby Halifax:</p>
-        <ul>
-          <li><strong>O&#39;Bees Food Market</strong> – Offers fresh fruits, vegetables, local cheese and meats, and is open daily with extended hours [oai_citation:6‡nogginsfarm.ca](https://nogginsfarm.ca/farm-markets/obees-food-market/#:~:text=Noggins%20Corner%20Farm%20at%20the,are%20always%20willing%20to%20help).</li>
-          <li><strong>Fisherman’s Market</strong> – Located at 607 Bedford Hwy in Halifax, this market supplies Atlantic seafood such as mussels and oysters. It is open Monday–Saturday 9 AM–6 PM and Sunday 11 AM–6 PM [oai_citation:7‡fishermansmarket.ca](https://www.fishermansmarket.ca/?srsltid=AfmBOopqKEm3qQ6pAZUIv0qbdzn6rbouAZT-2Oprd5Pnhn_Ec39lyzJP#:~:text=).</li>
-        </ul>
-        <p>You can also explore seasonal farmers’ markets and community‑supported agriculture programs to diversify your omega sources and support local producers.</p>
-      </section>
-
-      <section id="infographic">
-        <h2>Infographic: Omega Sources</h2>
-        <p>This chart visualizes the distribution of omega‑3 versus omega‑6 ingredients in your recipe library. As you add new recipes, the chart updates automatically.</p>
-        <canvas id="infographicChart" width="400" height="300"></canvas>
-      </section>
       <section id="recipes">
         <h2>Recipe Library</h2>
-        <p>Select from our library of omega‑friendly recipes or add your own. Each recipe lists its primary omega bucket to help you plan balanced meals.</p>
+        <p>Select from our library of omega‑friendly recipes or add your own. Each recipe lists its primary omega bucket to help you plan balanced meals. You can also import a recipe from a URL using the recipe‑scrapers library.</p>
         <div class="recipes-list">
           <table id="recipes-table">
             <thead>
@@ -398,6 +336,7 @@
           <p style="font-size:0.75rem; color: var(--text-light);">*Ratio indicates omega‑6 to omega‑3 balance (&lt;1 favors omega‑3).</p>
         </div>
         <button class="btn" id="add-recipe-btn">Add a Recipe</button>
+        <button class="btn" id="import-url-btn" style="margin-left:0.5rem;">Import from URL</button>
         <div class="add-recipe-form" id="add-recipe-form">
           <h3>Add a New Recipe</h3>
           <label for="recipe-name">Name</label>
@@ -415,7 +354,24 @@
           <textarea id="recipe-instructions" rows="4" placeholder="Describe how to prepare the dish"></textarea>
           <button class="btn" id="save-recipe-btn">Save Recipe</button>
         </div>
+        <div class="add-recipe-form" id="import-recipe-form" style="display:none;">
+          <h3>Import Recipe from URL</h3>
+          <label for="recipe-url">Recipe URL</label>
+          <input type="text" id="recipe-url" placeholder="https://example.com/recipe" />
+          <button class="btn" id="import-btn">Import Recipe</button>
+        </div>
       </section>
+
+      <section id="nutrition">
+        <h2>Nutrition Reference</h2>
+        <p>Search for nutritional information on ingredients using the USDA FoodData Central API. Each request requires an API key and returns data on nutrients such as energy, protein, fat and carbohydrates【130688713518456†L104-L114】【130688713518456†L195-L203】.</p>
+        <div style="margin-bottom:1rem;">
+          <input type="text" id="nutrition-query" placeholder="Enter an ingredient..." style="padding:0.4rem; width:60%; max-width:300px; border:1px solid var(--border); border-radius:4px;" />
+          <button class="btn" id="nutrition-search-btn" style="margin-left:0.5rem;">Search</button>
+        </div>
+        <div id="nutrition-results" style="font-size:0.9rem; color: var(--text-dark);"></div>
+      </section>
+
       <section id="calendar">
         <h2>Weekly Meal Calendar</h2>
         <p>Plan your week with balanced omega meals. Use the checkboxes to track completed meals and adjust the plan with the “I’m Feeling Lucky” button.</p>
@@ -433,6 +389,7 @@
           </tbody>
         </table>
       </section>
+
       <section id="ratio">
         <h2>O'Mega Ratio</h2>
         <p>The ratio slider below controls your target omega‑6:omega‑3 intake for the week (lower is more omega‑3). The current weekly ratio updates automatically based on your meal plan.</p>
@@ -443,8 +400,9 @@
         </div>
         <p>Your current plan's average ratio: <strong id="current-ratio-display">—</strong></p>
       </section>
+
       <section id="log">
-        <h2>Log & Trends</h2>
+        <h2>Log &amp; Trends</h2>
         <p>Track how often you complete meals and monitor your omega balance. Charts update as you interact with your plan.</p>
         <div class="charts-container">
           <div class="chart-box">
@@ -475,19 +433,23 @@
           </div>
         </div>
       </section>
+
       <footer id="citations">
         <ul>
-          <li id="fn1"><a href=" [oai_citation:8‡davita.com](https://davita.com/diet-nutrition/kidney-diet-tips/omega-3-and-omega-6-fatty-acids/#:~:text=It%E2%80%99s%20important%20to%20balance%20your,ratio%20can%20be%20improved%20by)" target="_blank">[1]</a> Healthy omega‑6 to omega‑3 ratio guideline [oai_citation:9‡davita.com](https://davita.com/diet-nutrition/kidney-diet-tips/omega-3-and-omega-6-fatty-acids/#:~:text=It%E2%80%99s%20important%20to%20balance%20your,ratio%20can%20be%20improved%20by).</li>
-          <li id="fn2"><a href=" [oai_citation:10‡health.harvard.edu](https://www.health.harvard.edu/newsletter_article/no-need-to-avoid-healthy-omega-6-fats#:~:text=Omega)" target="_blank">[2]</a> Sources of omega‑6 and omega‑3 fats [oai_citation:11‡health.harvard.edu](https://www.health.harvard.edu/newsletter_article/no-need-to-avoid-healthy-omega-6-fats#:~:text=Omega).</li>
-          <li id="fn3"><a href=" [oai_citation:12‡ask.ifas.ufl.edu](https://ask.ifas.ufl.edu/publication/HS1484#:~:text=lettuce%20%28Tables%201%20and%202%29,vegetable%20possesses%20only%204%20milligrams)" target="_blank">[3]</a> Purslane contains plant omega‑3 fatty acids [oai_citation:13‡ask.ifas.ufl.edu](https://ask.ifas.ufl.edu/publication/HS1484#:~:text=lettuce%20%28Tables%201%20and%202%29,vegetable%20possesses%20only%204%20milligrams).</li>
-          <li id="fn4"><a href=" [oai_citation:14‡nhs.uk](https://www.nhs.uk/live-well/eat-well/food-types/fish-and-shellfish-nutrition/#:~:text=Some%20types%20of%20shellfish%2C%20such,as%20much%20as%20oily%20fish)" target="_blank">[4]</a> Shellfish like mussels and oysters contain long‑chain omega‑3s [oai_citation:15‡nhs.uk](https://www.nhs.uk/live-well/eat-well/food-types/fish-and-shellfish-nutrition/#:~:text=Some%20types%20of%20shellfish%2C%20such,as%20much%20as%20oily%20fish).</li>
-          <li id="fn5"><a href=" [oai_citation:16‡nogginsfarm.ca](https://nogginsfarm.ca/farm-markets/obees-food-market/#:~:text=Noggins%20Corner%20Farm%20at%20the,are%20always%20willing%20to%20help)" target="_blank">[5]</a> O'Bees Food Market information [oai_citation:17‡nogginsfarm.ca](https://nogginsfarm.ca/farm-markets/obees-food-market/#:~:text=Noggins%20Corner%20Farm%20at%20the,are%20always%20willing%20to%20help).</li>
-          <li id="fn6"><a href=" [oai_citation:18‡fishermansmarket.ca](https://www.fishermansmarket.ca/?srsltid=AfmBOopqKEm3qQ6pAZUIv0qbdzn6rbouAZT-2Oprd5Pnhn_Ec39lyzJP#:~:text=)" target="_blank">[6]</a> Fisherman’s Market information [oai_citation:19‡fishermansmarket.ca](https://www.fishermansmarket.ca/?srsltid=AfmBOopqKEm3qQ6pAZUIv0qbdzn6rbouAZT-2Oprd5Pnhn_Ec39lyzJP#:~:text=).</li>
+          <li id="fn1"><a href="【557145189711555†L220-L224】" target="_blank">[1]</a> Healthy omega‑6 to omega‑3 ratio guideline【557145189711555†L220-L224】.</li>
+          <li id="fn2"><a href="【775034953345055†L144-L151】" target="_blank">[2]</a> Sources of omega‑6 and omega‑3 fats【775034953345055†L144-L151】.</li>
+          <li id="fn3"><a href="【788540841835043†L208-L211】" target="_blank">[3]</a> Purslane contains plant omega‑3 fatty acids【788540841835043†L208-L211】.</li>
+          <li id="fn4"><a href="【548870733932692†L97-L115】" target="_blank">[4]</a> Shellfish like mussels and oysters contain long‑chain omega‑3s【548870733932692†L97-L115】.</li>
+          <li id="fn5"><a href="【130688713518456†L104-L114】" target="_blank">[5]</a> FoodData Central API provides search and details endpoints and requires an API key【130688713518456†L104-L114】.</li>
+          <li id="fn6"><a href="【130688713518456†L195-L203】" target="_blank">[6]</a> Sample API calls for the FoodData Central API showing how to query food details and search endpoints【130688713518456†L195-L203】.</li>
         </ul>
       </footer>
     </main>
   </div>
   <script>
+    // API key for USDA FoodData Central
+    const USDA_API_KEY = '6keAxhN4R8b5EA6nIGcKyZE7leHMdqCHBaKXwPVc';
+
     // Dataset of recipes with categories and omega ratios (omega6:omega3)
     const recipes = [
       {
@@ -521,7 +483,7 @@
           { name: 'vegetables', category: 'neutral' },
         ],
         instructions: 'Sauté onions, carrots & celery. Add potatoes and cream; simmer. Cook seafood separately, then combine & season.',
-        ratio: 0.3,
+        ratio: 0.30,
       },
       {
         id: 'walnut-pesto-pasta',
@@ -536,7 +498,7 @@
           { name: 'Parmesan', category: 'neutral' },
         ],
         instructions: 'Cook pasta. Blend walnuts, basil, olive oil, and Parmesan into pesto. Toss pasta with pesto.',
-        ratio: 0.6,
+        ratio: 0.60,
       },
       {
         id: 'salmon-quinoa-bowl',
@@ -550,7 +512,7 @@
           { name: 'walnuts', category: 'omega3' },
         ],
         instructions: 'Bake salmon. Cook quinoa. Assemble bowls with spinach, quinoa, and salmon; sprinkle with walnuts.',
-        ratio: 0.4,
+        ratio: 0.40,
       },
       {
         id: 'chia-pudding',
@@ -564,7 +526,7 @@
           { name: 'berries', category: 'neutral' },
         ],
         instructions: 'Combine chia seeds with almond milk and honey; refrigerate overnight. Serve with berries.',
-        ratio: 0.2,
+        ratio: 0.20,
       },
       {
         id: 'tuna-avocado-salad',
@@ -590,8 +552,8 @@
     function initPlan() {
       // Assign default recipes to each day (alternating meals). We'll cycle through recipes.
       weeklyPlan = {};
-      let lunchOptions = recipes.filter(r => r.mealType === 'lunch');
-      let dinnerOptions = recipes.filter(r => r.mealType === 'dinner');
+      const lunchOptions = recipes.filter(r => r.mealType === 'lunch');
+      const dinnerOptions = recipes.filter(r => r.mealType === 'dinner');
       daysOfWeek.forEach((day, index) => {
         weeklyPlan[day] = {
           lunch: lunchOptions[index % lunchOptions.length].id,
@@ -602,8 +564,8 @@
 
     function shufflePlan() {
       const rand = arr => arr[Math.floor(Math.random() * arr.length)];
-      let lunchOptions = recipes.filter(r => r.mealType === 'lunch');
-      let dinnerOptions = recipes.filter(r => r.mealType === 'dinner');
+      const lunchOptions = recipes.filter(r => r.mealType === 'lunch');
+      const dinnerOptions = recipes.filter(r => r.mealType === 'dinner');
       daysOfWeek.forEach(day => {
         weeklyPlan[day] = {
           lunch: rand(lunchOptions).id,
@@ -694,64 +656,6 @@
 
     // Log and analytics structures
     const completionLog = [];
-
-    // Infographic chart instance
-    let infographicChart;
-
-    function updateInfographic() {
-      // Aggregate counts of ingredient categories across all recipes
-      const counts = { omega3: 0, omega6: 0, neutral: 0 };
-      recipes.forEach(rec => {
-        rec.ingredients.forEach(ing => {
-          if (!counts[ing.category]) counts[ing.category] = 0;
-          counts[ing.category]++;
-        });
-      });
-      const ctx = document.getElementById('infographicChart').getContext('2d');
-      // Destroy previous chart if exists
-      if (infographicChart) infographicChart.destroy();
-      infographicChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: ['Omega‑3 Ingredients', 'Omega‑6 Ingredients', 'Neutral Ingredients'],
-          datasets: [{
-            data: [counts.omega3 || 0, counts.omega6 || 0, counts.neutral || 0],
-            backgroundColor: [ '#00a76a', '#e07a5f', '#687980' ],
-            hoverOffset: 4,
-          }],
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'bottom',
-              labels: {
-                color: '#0a192f',
-                font: { family: 'Helvetica', size: 12 },
-              }
-            },
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  const label = context.label || '';
-                  const value = context.formattedValue;
-                  return `${label}: ${value}`;
-                }
-              }
-            }
-          }
-        }
-      });
-    }
-
-    function handleCheckboxChange(e) {
-      const day = e.target.dataset.day;
-      const meal = e.target.dataset.meal;
-      const recId = weeklyPlan[day][meal];
-      // Record completion event with timestamp and status
-      completionLog.push({ day, meal, recId, completed: e.target.checked, timestamp: new Date() });
-      updateLogs();
-    }
 
     // Chart instances
     let completionChart;
@@ -953,10 +857,28 @@
       });
     }
 
+    function handleCheckboxChange(e) {
+      const day = e.target.dataset.day;
+      const meal = e.target.dataset.meal;
+      const recId = weeklyPlan[day][meal];
+      // Record completion event with timestamp and status
+      completionLog.push({ day, meal, recId, completed: e.target.checked, timestamp: new Date() });
+      updateLogs();
+    }
+
     // Add recipe form toggles and saving
     document.getElementById('add-recipe-btn').addEventListener('click', () => {
       const form = document.getElementById('add-recipe-form');
+      const importForm = document.getElementById('import-recipe-form');
+      importForm.style.display = 'none';
       form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+    });
+
+    document.getElementById('import-url-btn').addEventListener('click', () => {
+      const form = document.getElementById('add-recipe-form');
+      const importForm = document.getElementById('import-recipe-form');
+      form.style.display = 'none';
+      importForm.style.display = importForm.style.display === 'none' || importForm.style.display === '' ? 'block' : 'none';
     });
 
     document.getElementById('save-recipe-btn').addEventListener('click', () => {
@@ -998,7 +920,6 @@
       renderCalendar();
       updateRatio();
       updateLogs();
-      updateInfographic();
       // Reset form and hide
       document.getElementById('recipe-name').value = '';
       document.getElementById('recipe-servings').value = '4';
@@ -1007,9 +928,72 @@
       document.getElementById('add-recipe-form').style.display = 'none';
     });
 
+    // Import recipe from URL using recipe-scrapers-js
+    document.getElementById('import-btn').addEventListener('click', async () => {
+      const url = document.getElementById('recipe-url').value.trim();
+      if (!url) {
+        alert('Please enter a recipe URL.');
+        return;
+      }
+      try {
+        // Dynamically import the module; note: this requires recipe-scrapers-js to support ES modules
+        const mod = await import('https://cdn.jsdelivr.net/npm/recipe-scrapers-js@1.0.0/dist/index.mjs');
+        // Attempt to scrape recipe from URL; fallback if unsupported
+        let scraped;
+        if (typeof mod.scrape === 'function') {
+          scraped = await mod.scrape(url);
+        } else if (typeof mod.default === 'function') {
+          scraped = await mod.default(url);
+        } else {
+          alert('Recipe scraper library not loaded or unsupported.');
+          return;
+        }
+        if (!scraped) {
+          alert('Scraper returned no data.');
+          return;
+        }
+        // scraped object should contain title, ingredients, instructions, and yields/servings
+        const name = scraped.title || scraped.name || 'Imported Recipe';
+        const servings = scraped.yields ? parseInt(scraped.yields) || 4 : 4;
+        const ingList = scraped.ingredients || [];
+        const instructions = Array.isArray(scraped.instructions) ? scraped.instructions.join('\n') : (scraped.instructions || '');
+        // classify ingredients
+        function classifyIngredient(name) {
+          const lower = name.toLowerCase();
+          const omega3Keywords = ['salmon', 'mackerel', 'sardine', 'herring', 'fish', 'tuna', 'flax', 'chia', 'purslane', 'walnut', 'mussel', 'oyster', 'clam'];
+          const omega6Keywords = ['corn oil', 'soybean oil', 'sunflower oil', 'safflower oil', 'cottonseed oil', 'oil'];
+          for (const kw of omega3Keywords) {
+            if (lower.includes(kw)) return 'omega3';
+          }
+          for (const kw of omega6Keywords) {
+            if (lower.includes(kw)) return 'omega6';
+          }
+          return 'neutral';
+        }
+        const ingredients = ingList.map(n => ({ name: n, category: classifyIngredient(n) }));
+        let countOmega3 = 0, countOmega6 = 0;
+        ingredients.forEach(ing => {
+          if (ing.category === 'omega3') countOmega3++;
+          if (ing.category === 'omega6') countOmega6++;
+        });
+        const ratio = countOmega3 > 0 ? (countOmega6 / countOmega3) : 1;
+        const id = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+        recipes.push({ id, name, mealType: 'dinner', servings, ingredients, instructions, ratio });
+        renderRecipeTable();
+        initPlan();
+        renderCalendar();
+        updateRatio();
+        updateLogs();
+        document.getElementById('recipe-url').value = '';
+        document.getElementById('import-recipe-form').style.display = 'none';
+      } catch (err) {
+        console.error(err);
+        alert('Failed to import recipe: ' + err);
+      }
+    });
+
     document.getElementById('lucky-btn').addEventListener('click', () => {
       shufflePlan();
-      updateInfographic();
     });
 
     document.getElementById('ratio-slider').addEventListener('input', (e) => {
@@ -1017,13 +1001,69 @@
       document.getElementById('ratio-target-display').textContent = `${value.toFixed(1)}:1`;
     });
 
+    // Nutrition search using USDA API
+    async function searchNutrition() {
+      const query = document.getElementById('nutrition-query').value.trim();
+      const resultDiv = document.getElementById('nutrition-results');
+      resultDiv.innerHTML = '';
+      if (!query) {
+        alert('Please enter an ingredient to search.');
+        return;
+      }
+      try {
+        // Search for the ingredient to get FDC ID
+        const searchResp = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(query)}&pageSize=1&api_key=${USDA_API_KEY}`);
+        if (!searchResp.ok) {
+          throw new Error('Search request failed');
+        }
+        const searchData = await searchResp.json();
+        if (!searchData.foods || searchData.foods.length === 0) {
+          resultDiv.innerHTML = '<p>No results found. Try another search term.</p>';
+          return;
+        }
+        const food = searchData.foods[0];
+        const fdcId = food.fdcId;
+        const description = food.description;
+        // Fetch details for the first result
+        const detailResp = await fetch(`https://api.nal.usda.gov/fdc/v1/food/${fdcId}?api_key=${USDA_API_KEY}`);
+        if (!detailResp.ok) {
+          throw new Error('Detail request failed');
+        }
+        const detailData = await detailResp.json();
+        const nutrients = detailData.foodNutrients || [];
+        // Map nutrient numbers to names (IDs from FDC spec: 1008 calories, 1003 protein, 1004 fat, 1005 carbs)
+        const nutrientMap = {
+          1008: 'Energy (kcal)',
+          1003: 'Protein (g)',
+          1004: 'Total Fat (g)',
+          1005: 'Carbohydrate (g)',
+        };
+        const nutrientValues = {};
+        nutrients.forEach(n => {
+          if (nutrientMap[n.nutrientId]) {
+            nutrientValues[nutrientMap[n.nutrientId]] = n.value;
+          }
+        });
+        let html = `<h4>${description}</h4><ul>`;
+        Object.entries(nutrientValues).forEach(([name, val]) => {
+          html += `<li>${name}: ${val}</li>`;
+        });
+        html += '</ul>';
+        resultDiv.innerHTML = html;
+      } catch (err) {
+        console.error(err);
+        resultDiv.innerHTML = '<p>Error fetching nutrition data. Please try again later.</p>';
+      }
+    }
+
+    document.getElementById('nutrition-search-btn').addEventListener('click', searchNutrition);
+
     // Initialize page
     initPlan();
     renderRecipeTable();
     renderCalendar();
     updateRatio();
     updateLogs();
-    updateInfographic();
   </script>
 </body>
 </html>
