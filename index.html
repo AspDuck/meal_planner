@@ -4,394 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Omega Meal Planner</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/recipe-scrapers-js@1.0.0/dist/index.mjs"></script>
-  <style>
-    :root {
-      --navy: #0a192f;
-      --green: #00a76a;
-      --fall: #e07a5f;
-      --gold: #f2cc8f;
-      --cream: #fff8ef;
-      --light-bg: #f6f7f2;
-      --white: #ffffff;
-      --border: #dcdcdc;
-      --text-dark: #0a192f;
-      --text-light: #65717a;
-      --shadow: 0 8px 24px rgba(10, 25, 47, 0.08);
-      --font-normal: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-normal);
-      background: var(--light-bg);
-      color: var(--text-dark);
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-    }
-
-    .app-shell {
-      display: grid;
-      grid-template-columns: 240px minmax(0, 1fr);
-      min-height: 100vh;
-    }
-
-    aside {
-      background: var(--navy);
-      color: var(--white);
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-    }
-
-    .brand {
-      font-weight: 700;
-      font-size: 1.15rem;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .brand span {
-      display: block;
-      color: var(--green);
-      font-weight: 300;
-      font-size: 0.9rem;
-      margin-top: 0.25rem;
-    }
-
-    .tab-btn {
-      width: 100%;
-      display: block;
-      text-align: left;
-      border: 0;
-      background: transparent;
-      color: var(--white);
-      padding: 0.75rem;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-      transition: 0.18s ease;
-    }
-
-    .tab-btn:hover,
-    .tab-btn.active {
-      background: var(--green);
-      color: var(--white);
-    }
-
-    main {
-      padding: 1rem;
-      max-width: 1200px;
-      width: 100%;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, var(--navy), #123456);
-      color: var(--white);
-      padding: 1.25rem;
-      border-radius: 18px;
-      margin-bottom: 1rem;
-      box-shadow: var(--shadow);
-    }
-
-    .hero h1 {
-      margin: 0 0 0.35rem;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      letter-spacing: -0.03em;
-    }
-
-    .hero p {
-      margin: 0;
-      color: #d8e4ef;
-      max-width: 720px;
-    }
-
-    .tab-section {
-      display: none;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1rem;
-      box-shadow: var(--shadow);
-      margin-bottom: 1rem;
-    }
-
-    .tab-section.active { display: block; }
-
-    h2 {
-      margin-top: 0;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-    }
-
-    h3 { margin-bottom: 0.5rem; }
-
-    p {
-      line-height: 1.55;
-      color: var(--text-dark);
-    }
-
-    .muted {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-
-    .btn-row {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      align-items: center;
-      margin: 0.8rem 0;
-    }
-
-    button,
-    .btn {
-      background: var(--green);
-      color: var(--white);
-      padding: 0.65rem 0.85rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.92rem;
-      transition: 0.18s ease;
-    }
-
-    button:hover,
-    .btn:hover { background: var(--fall); }
-
-    button.secondary {
-      background: var(--navy);
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 0.65rem;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-family: var(--font-normal);
-      font-size: 0.95rem;
-      background: var(--white);
-    }
-
-    textarea { min-height: 90px; resize: vertical; }
-
-    label {
-      display: block;
-      font-weight: 600;
-      margin: 0.65rem 0 0.25rem;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-    }
-
-    .full { grid-column: 1 / -1; }
-
-    .quadrant-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-      margin-top: 1rem;
-    }
-
-    .quadrant {
-      border-radius: 16px;
-      padding: 1rem;
-      border: 1px solid var(--border);
-      min-height: 220px;
-    }
-
-    .q-omega3-easy { background: #e9fff5; border-color: #a7eed1; }
-    .q-omega3-hard { background: #eef7ff; border-color: #b9dfff; }
-    .q-omega6-easy { background: #fff4e7; border-color: #ffd6a8; }
-    .q-omega6-hard { background: #fff0ed; border-color: #ffbbae; }
-
-    .ingredient-chip {
-      display: inline-block;
-      margin: 0.25rem 0.25rem 0.25rem 0;
-      padding: 0.35rem 0.55rem;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(10,25,47,0.12);
-      border-radius: 999px;
-      font-size: 0.86rem;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .recipe-card {
-      background: var(--cream);
-      border: 1px solid #ecd8bd;
-      border-radius: 18px;
-      padding: 1rem;
-      box-shadow: var(--shadow);
-    }
-
-    .recipe-card h3 {
-      margin-top: 0;
-      margin-bottom: 0.25rem;
-    }
-
-    .recipe-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      background: var(--navy);
-      color: var(--white);
-      padding: 0.25rem 0.55rem;
-      font-size: 0.75rem;
-    }
-
-    .badge.green { background: var(--green); }
-    .badge.fall { background: var(--fall); }
-    .badge.gold { background: #b87d16; }
-
-    .recipe-card ul,
-    .recipe-card ol {
-      padding-left: 1.25rem;
-      margin-bottom: 0;
-    }
-
-    .calendar-table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-      margin-top: 1rem;
-    }
-
-    .calendar-table th,
-    .calendar-table td {
-      border: 1px solid var(--border);
-      padding: 0.65rem;
-      vertical-align: top;
-      font-size: 0.9rem;
-    }
-
-    .calendar-table th {
-      background: var(--navy);
-      color: var(--white);
-      text-align: left;
-    }
-
-    .meal-name {
-      font-weight: 700;
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-
-    .ratio-display,
-    .source-note {
-      font-size: 0.78rem;
-      color: var(--text-light);
-    }
-
-    .charts-container {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .chart-box,
-    .stat-box {
-      background: var(--cream);
-      border: 1px solid #ecd8bd;
-      border-radius: 16px;
-      padding: 1rem;
-    }
-
-    .top-lists {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .notice {
-      background: #fff6db;
-      border: 1px solid #f0d27d;
-      padding: 0.8rem;
-      border-radius: 12px;
-      margin: 0.8rem 0;
-      color: #5b4212;
-    }
-
-    .error {
-      background: #ffeded;
-      border-color: #ffb3b3;
-      color: #7d1c1c;
-    }
-
-    .result-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.75rem;
-      margin: 0.5rem 0;
-    }
-
-    footer {
-      margin-top: 1rem;
-      padding: 1rem;
-      color: var(--text-light);
-      font-size: 0.78rem;
-    }
-
-    footer a {
-      color: var(--navy);
-    }
-
-    @media (max-width: 900px) {
-      .app-shell {
-        grid-template-columns: 1fr;
-      }
-
-      aside {
-        position: static;
-        height: auto;
-      }
-
-      .tab-nav {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.35rem;
-      }
-
-      .quadrant-grid,
-      .card-grid,
-      .charts-container,
-      .top-lists,
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .calendar-table {
-        display: block;
-        overflow-x: auto;
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="app-shell">
@@ -400,6 +14,7 @@
       <nav class="tab-nav" aria-label="Main sections">
         <button class="tab-btn active" data-tab="ingredients">Ingredients</button>
         <button class="tab-btn" data-tab="recipes">Recipe Library</button>
+        <button class="tab-btn" data-tab="api">API Recipe Search</button>
         <button class="tab-btn" data-tab="nutrition">Nutrition Reference</button>
         <button class="tab-btn" data-tab="calendar">Weekly Calendar</button>
         <button class="tab-btn" data-tab="ratio">O'Mega Ratio</button>
@@ -410,74 +25,43 @@
     <main>
       <section class="hero">
         <h1>Omega‑3 Forward Meal Planner</h1>
-        <p>Plan family meals, keep the weekly omega‑6:omega‑3 ratio in a healthy range, and refresh recipes through nutrition and recipe APIs.</p>
+        <p>Plan family meals, keep the weekly omega‑6:omega‑3 ratio in range, and import new recipes from ingredients, recipe APIs, or URL scraping.</p>
       </section>
 
       <section id="ingredients" class="tab-section active">
         <h2>Ingredients</h2>
-        <p class="muted">A practical access grid for omega‑3 and omega‑6 foods. “Hard to access” means usually seasonal, specialty, expensive, or less common in a standard grocery run.</p>
-
-        <div class="btn-row">
-          <input id="ingredient-api-query" type="text" placeholder="Search Spoonacular ingredients, e.g., salmon, purslane, walnut" style="max-width:420px;" />
-          <button id="ingredient-api-btn">Search Ingredients API</button>
-        </div>
-        <div id="ingredient-api-results"></div>
+        <p class="muted">A practical access grid for omega‑3 and omega‑6 foods. “Harder to access” means usually seasonal, specialty, expensive, or less common in a standard grocery run.</p>
 
         <div class="quadrant-grid">
           <div class="quadrant q-omega3-easy">
             <h3>Omega‑3 + easy to access</h3>
-            <span class="ingredient-chip">salmon</span>
-            <span class="ingredient-chip">canned sardines</span>
-            <span class="ingredient-chip">canned tuna</span>
-            <span class="ingredient-chip">mackerel</span>
-            <span class="ingredient-chip">chia seeds</span>
-            <span class="ingredient-chip">flaxseed</span>
-            <span class="ingredient-chip">walnuts</span>
-            <span class="ingredient-chip">omega‑3 eggs</span>
+            <span class="ingredient-chip">salmon</span><span class="ingredient-chip">canned sardines</span><span class="ingredient-chip">canned tuna</span><span class="ingredient-chip">mackerel</span><span class="ingredient-chip">chia seeds</span><span class="ingredient-chip">flaxseed</span><span class="ingredient-chip">walnuts</span><span class="ingredient-chip">omega‑3 eggs</span>
           </div>
 
           <div class="quadrant q-omega6-easy">
             <h3>Omega‑6 + easy to access</h3>
-            <span class="ingredient-chip">sunflower oil</span>
-            <span class="ingredient-chip">soybean oil</span>
-            <span class="ingredient-chip">corn oil</span>
-            <span class="ingredient-chip">safflower oil</span>
-            <span class="ingredient-chip">sunflower seeds</span>
-            <span class="ingredient-chip">pumpkin seeds</span>
-            <span class="ingredient-chip">store‑bought hummus</span>
-            <span class="ingredient-chip">bottled dressings</span>
+            <span class="ingredient-chip">sunflower oil</span><span class="ingredient-chip">soybean oil</span><span class="ingredient-chip">corn oil</span><span class="ingredient-chip">safflower oil</span><span class="ingredient-chip">sunflower seeds</span><span class="ingredient-chip">pumpkin seeds</span><span class="ingredient-chip">store‑bought hummus</span><span class="ingredient-chip">bottled dressings</span>
           </div>
 
           <div class="quadrant q-omega3-hard">
             <h3>Omega‑3 + harder to access</h3>
-            <span class="ingredient-chip">purslane</span>
-            <span class="ingredient-chip">fresh oysters</span>
-            <span class="ingredient-chip">fresh mussels</span>
-            <span class="ingredient-chip">herring</span>
-            <span class="ingredient-chip">anchovies</span>
-            <span class="ingredient-chip">seaweed</span>
-            <span class="ingredient-chip">pasture‑raised meat</span>
+            <span class="ingredient-chip">purslane</span><span class="ingredient-chip">fresh oysters</span><span class="ingredient-chip">fresh mussels</span><span class="ingredient-chip">herring</span><span class="ingredient-chip">anchovies</span><span class="ingredient-chip">seaweed</span><span class="ingredient-chip">pasture‑raised meat</span>
           </div>
 
           <div class="quadrant q-omega6-hard">
             <h3>Omega‑6 + harder to access</h3>
-            <span class="ingredient-chip">cottonseed oil</span>
-            <span class="ingredient-chip">grapeseed oil</span>
-            <span class="ingredient-chip">black cumin seed oil</span>
-            <span class="ingredient-chip">specialty seed blends</span>
-            <span class="ingredient-chip">some imported snack oils</span>
+            <span class="ingredient-chip">cottonseed oil</span><span class="ingredient-chip">grapeseed oil</span><span class="ingredient-chip">black cumin seed oil</span><span class="ingredient-chip">specialty seed blends</span><span class="ingredient-chip">some imported snack oils</span>
           </div>
         </div>
       </section>
 
       <section id="recipes" class="tab-section">
         <h2>Recipe Library</h2>
-        <p>Recipe cards include ingredients and steps. The default recipes are manually authored starter examples, not imported from a live recipe API.</p>
+        <p>The starter library contains 50 local recipes stored in <code>data/recipes.json</code>. Click a card to flip it. Front = quick view. Back = ingredients and steps.</p>
 
         <div class="btn-row">
           <button id="add-recipe-btn">Add a Recipe</button>
-          <button id="recommend-api-btn" class="secondary">Recommend with Spoonacular</button>
-          <button id="import-url-btn" class="secondary">Import URL with recipe‑scrapers</button>
+          <button id="reset-library-btn" class="ghost">Reset Local Library</button>
         </div>
 
         <div id="add-recipe-form" class="notice" style="display:none;">
@@ -502,6 +86,14 @@
               <label for="recipe-ratio">Omega‑6:Omega‑3 Ratio</label>
               <input type="number" id="recipe-ratio" min="0" step="0.1" value="0.5" />
             </div>
+            <div>
+              <label for="recipe-image">Image URL</label>
+              <input type="url" id="recipe-image" placeholder="Optional image URL" />
+            </div>
+            <div>
+              <label for="recipe-tags">Tags</label>
+              <input type="text" id="recipe-tags" placeholder="omega3, batch-cooking, family" />
+            </div>
             <div class="full">
               <label for="recipe-ingredients">Ingredients, one per line</label>
               <textarea id="recipe-ingredients" placeholder="salmon&#10;quinoa&#10;spinach"></textarea>
@@ -516,22 +108,51 @@
           </div>
         </div>
 
-        <div id="import-recipe-form" class="notice" style="display:none;">
-          <h3>Import Recipe from URL</h3>
-          <p class="muted">This tries the browser version of recipe‑scrapers. Many recipe sites block direct browser scraping through CORS. For production, use a small backend/proxy.</p>
-          <input id="recipe-url" type="url" placeholder="https://example.com/recipe" />
-          <div class="btn-row">
-            <button id="import-btn">Import Recipe</button>
-          </div>
+        <div class="card-toolbar">
+          <input id="recipe-search" type="search" placeholder="Filter recipes by name, ingredient, tag..." />
+          <select id="recipe-type-filter">
+            <option value="all">All recipes</option>
+            <option value="lunch">Packed lunch</option>
+            <option value="dinner">Weeknight meal</option>
+          </select>
+          <select id="recipe-sort">
+            <option value="name">Sort by name</option>
+            <option value="ratio">Sort by omega ratio</option>
+            <option value="omegaScore">Sort by omega score</option>
+          </select>
         </div>
 
-        <div id="api-status" class="muted"></div>
         <div id="recipe-card-grid" class="card-grid"></div>
+      </section>
+
+      <section id="api" class="tab-section">
+        <h2>API Recipe Search</h2>
+        <p>Search an ingredient, find related recipes, preview results, and import selected recipes into the local Recipe Library.</p>
+
+        <div class="notice">
+          Static GitHub Pages exposes browser API keys. This is convenient for testing but not ideal for production. Use a serverless proxy later.
+        </div>
+
+        <h3>Ingredient → related recipes → import</h3>
+        <div class="btn-row">
+          <input id="ingredient-api-query" type="text" placeholder="Search ingredients, e.g., salmon, walnut, purslane" style="max-width:420px;" />
+          <button id="ingredient-api-btn">Search Ingredients</button>
+        </div>
+        <div id="ingredient-api-results"></div>
+        <div id="related-recipe-results" class="api-result-grid"></div>
+
+        <h3>Direct URL import with recipe‑scrapers</h3>
+        <p class="muted">This works only when the recipe site allows browser access. Many recipe sites block direct scraping via CORS; production should use a small backend.</p>
+        <div class="btn-row">
+          <input id="recipe-url" type="url" placeholder="https://example.com/recipe" style="max-width:520px;" />
+          <button id="import-btn">Import URL</button>
+        </div>
+        <div id="api-status"></div>
       </section>
 
       <section id="nutrition" class="tab-section">
         <h2>Nutrition Reference</h2>
-        <p>Search an ingredient against USDA FoodData Central. USDA provides Food Search and Food Details endpoints for nutrient data, and each request needs an API key.</p>
+        <p>Search an ingredient against USDA FoodData Central. This is for nutrient reference and is separate from recipe discovery.</p>
         <div class="btn-row">
           <input type="text" id="nutrition-query" placeholder="Enter an ingredient, e.g., salmon" style="max-width:420px;" />
           <button id="nutrition-search-btn">Search USDA</button>
@@ -541,10 +162,10 @@
 
       <section id="calendar" class="tab-section">
         <h2>Weekly Meal Calendar</h2>
-        <p>Use “I’m Feeling Lucky” to reshuffle the plan. Check completed meals to feed the weekly completion chart and top recipe lists.</p>
+        <p>The meal plan rebuilds around the current ratio target. Check meals off to update logs and completion trends.</p>
         <div class="btn-row">
           <button id="lucky-btn">I'm Feeling Lucky</button>
-          <button id="api-week-btn" class="secondary">Build week with Spoonacular</button>
+          <button id="use-leftovers-btn" class="secondary">Use Dinner Leftovers for Tomorrow</button>
         </div>
         <table class="calendar-table" id="calendar-table">
           <thead>
@@ -560,7 +181,7 @@
 
       <section id="ratio" class="tab-section">
         <h2>O'Mega Ratio</h2>
-        <p>The default target is 2:1 omega‑6:omega‑3, which sits within the commonly cited 1:1 to 4:1 range. Lower ratios are more omega‑3 forward.</p>
+        <p>The slider rebuilds the weekly plan. Lower ratio = more omega‑3 forward. The planner slightly prioritizes omega‑3 beyond the selected target.</p>
         <div class="ratio-wrapper">
           <label for="ratio-slider">Target Ratio</label>
           <input type="range" id="ratio-slider" min="1" max="4" step="0.1" value="2" />
@@ -603,545 +224,11 @@
       </section>
 
       <footer>
-        <p><strong>Notes:</strong> Keep API keys out of public repos for production. This static GitHub Pages version places keys in browser code, which is convenient for testing but visible to anyone viewing the page source.</p>
+        <p><strong>Files:</strong> <code>index.html</code>, <code>assets/css/styles.css</code>, <code>assets/js/app.js</code>, <code>data/recipes.json</code>. Keep API keys off public repos for production.</p>
       </footer>
     </main>
   </div>
 
-  <script>
-    const USDA_API_KEY = "6keAxhN4R8b5EA6nIGcKyZE7leHMdqCHBaKXwPVc";
-    const SPOONACULAR_API_KEY = "71002a06138446b69ad0a2228b0159d4";
-
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let completionChart;
-    let ratioChart;
-    let completionLog = [];
-    let weeklyPlan = {};
-
-    const recipes = [
-      {
-        id: "purslane-salad",
-        name: "Purslane Walnut Yogurt Salad",
-        mealType: "lunch",
-        servings: 4,
-        source: "Starter recipe",
-        ratio: 0.25,
-        ingredients: [
-          { name: "purslane", category: "omega3" },
-          { name: "Greek yogurt", category: "neutral" },
-          { name: "walnuts", category: "omega3" },
-          { name: "olive oil", category: "neutral" },
-          { name: "garlic", category: "neutral" }
-        ],
-        steps: [
-          "Wash and dry purslane; trim tough stems.",
-          "Mix Greek yogurt with crushed garlic.",
-          "Toss purslane and walnuts with the yogurt.",
-          "Drizzle with olive oil and pack into four containers."
-        ]
-      },
-      {
-        id: "chia-pudding",
-        name: "Chia Berry Pudding",
-        mealType: "lunch",
-        servings: 4,
-        source: "Starter recipe",
-        ratio: 0.20,
-        ingredients: [
-          { name: "chia seeds", category: "omega3" },
-          { name: "milk or almond milk", category: "neutral" },
-          { name: "berries", category: "neutral" },
-          { name: "honey", category: "neutral" }
-        ],
-        steps: [
-          "Mix chia seeds, milk, and honey.",
-          "Refrigerate overnight.",
-          "Top with berries.",
-          "Pack in four jars for next-day lunches."
-        ]
-      },
-      {
-        id: "tuna-avocado-salad",
-        name: "Tuna Avocado Lunch Salad",
-        mealType: "lunch",
-        servings: 4,
-        source: "Starter recipe",
-        ratio: 0.35,
-        ingredients: [
-          { name: "tuna", category: "omega3" },
-          { name: "avocado", category: "neutral" },
-          { name: "arugula", category: "neutral" },
-          { name: "lemon juice", category: "neutral" }
-        ],
-        steps: [
-          "Flake tuna into a bowl.",
-          "Dice avocado and toss with lemon juice.",
-          "Combine tuna, avocado, and arugula.",
-          "Pack dressing separately if eating later."
-        ]
-      },
-      {
-        id: "seafood-chowder",
-        name: "Nova Scotia Seafood Chowder",
-        mealType: "dinner",
-        servings: 4,
-        source: "Starter recipe",
-        ratio: 0.30,
-        ingredients: [
-          { name: "salmon", category: "omega3" },
-          { name: "mussels", category: "omega3" },
-          { name: "clams", category: "omega3" },
-          { name: "potatoes", category: "neutral" },
-          { name: "carrots", category: "neutral" },
-          { name: "celery", category: "neutral" },
-          { name: "cream", category: "neutral" }
-        ],
-        steps: [
-          "Sauté onions, carrots, and celery.",
-          "Add potatoes, milk or cream, and herbs.",
-          "Cook seafood separately until just done.",
-          "Combine seafood with the chowder base and portion for batch meals."
-        ]
-      },
-      {
-        id: "salmon-quinoa-bowl",
-        name: "Salmon Quinoa Bowls",
-        mealType: "dinner",
-        servings: 4,
-        source: "Starter recipe",
-        ratio: 0.40,
-        ingredients: [
-          { name: "salmon", category: "omega3" },
-          { name: "quinoa", category: "neutral" },
-          { name: "spinach", category: "neutral" },
-          { name: "walnuts", category: "omega3" }
-        ],
-        steps: [
-          "Bake salmon until flaky.",
-          "Cook quinoa.",
-          "Build bowls with spinach, quinoa, and salmon.",
-          "Sprinkle with walnuts and store leftovers."
-        ]
-      },
-      {
-        id: "walnut-pesto-pasta",
-        name: "Walnut Pesto Pasta",
-        mealType: "dinner",
-        servings: 4,
-        source: "Starter recipe",
-        ratio: 0.60,
-        ingredients: [
-          { name: "whole wheat pasta", category: "neutral" },
-          { name: "walnuts", category: "omega3" },
-          { name: "basil", category: "neutral" },
-          { name: "olive oil", category: "neutral" },
-          { name: "parmesan", category: "neutral" }
-        ],
-        steps: [
-          "Cook pasta.",
-          "Blend basil, walnuts, olive oil, and parmesan.",
-          "Toss pasta with pesto.",
-          "Pack leftovers for one or two quick meals."
-        ]
-      }
-    ];
-
-    function classifyIngredient(name) {
-      const lower = String(name).toLowerCase();
-      const omega3Keywords = ["salmon", "mackerel", "sardine", "herring", "anchovy", "fish", "tuna", "flax", "chia", "purslane", "walnut", "mussel", "oyster", "clam"];
-      const omega6Keywords = ["corn oil", "soybean oil", "sunflower oil", "safflower oil", "cottonseed oil", "grapeseed oil", "seed oil"];
-      if (omega3Keywords.some(k => lower.includes(k))) return "omega3";
-      if (omega6Keywords.some(k => lower.includes(k))) return "omega6";
-      return "neutral";
-    }
-
-    function normalizeRecipe(rawRecipe, fallbackMealType = "dinner", source = "Spoonacular") {
-      const name = rawRecipe.title || rawRecipe.name || "Imported Recipe";
-      const id = (name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "") || "recipe") + "-" + Date.now();
-      const ingredientNames = (rawRecipe.extendedIngredients || rawRecipe.ingredients || [])
-        .map(item => typeof item === "string" ? item : (item.original || item.name || "ingredient"))
-        .filter(Boolean);
-
-      const steps = [];
-      if (Array.isArray(rawRecipe.analyzedInstructions) && rawRecipe.analyzedInstructions.length) {
-        rawRecipe.analyzedInstructions.forEach(group => {
-          (group.steps || []).forEach(step => steps.push(step.step));
-        });
-      }
-      if (!steps.length && typeof rawRecipe.instructions === "string") {
-        steps.push(...rawRecipe.instructions.replace(/<[^>]+>/g, "").split(/\.\s+/).filter(Boolean).map(s => s.trim() + "."));
-      }
-      if (!steps.length) steps.push("Open the source recipe for full instructions.");
-
-      const ingredients = ingredientNames.map(name => ({ name, category: classifyIngredient(name) }));
-      const omega3 = ingredients.filter(i => i.category === "omega3").length;
-      const omega6 = ingredients.filter(i => i.category === "omega6").length;
-      const ratio = omega3 ? omega6 / omega3 : 1;
-
-      return {
-        id,
-        name,
-        mealType: fallbackMealType,
-        servings: rawRecipe.servings || 4,
-        source,
-        ratio,
-        ingredients,
-        steps: steps.slice(0, 8),
-        url: rawRecipe.sourceUrl || rawRecipe.url || ""
-      };
-    }
-
-    function setActiveTab(tabId) {
-      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.toggle("active", btn.dataset.tab === tabId));
-      document.querySelectorAll(".tab-section").forEach(section => section.classList.toggle("active", section.id === tabId));
-    }
-
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-      btn.addEventListener("click", () => setActiveTab(btn.dataset.tab));
-    });
-
-    function renderRecipeCards() {
-      const grid = document.getElementById("recipe-card-grid");
-      grid.innerHTML = "";
-      recipes.forEach(recipe => {
-        const card = document.createElement("article");
-        card.className = "recipe-card";
-        card.innerHTML = `
-          <h3>${recipe.name}</h3>
-          <div class="recipe-meta">
-            <span class="badge ${recipe.mealType === "lunch" ? "green" : "fall"}">${recipe.mealType === "lunch" ? "Packed lunch" : "Weeknight meal"}</span>
-            <span class="badge gold">${recipe.servings} servings</span>
-            <span class="badge">ratio ${ratioToString(recipe.ratio)}</span>
-          </div>
-          <p class="source-note">Source: ${recipe.source}${recipe.url ? ` · <a href="${recipe.url}" target="_blank" rel="noopener">open recipe</a>` : ""}</p>
-          <h4>Ingredients</h4>
-          <ul>${recipe.ingredients.map(i => `<li>${i.name} <span class="source-note">(${i.category})</span></li>`).join("")}</ul>
-          <h4>Steps</h4>
-          <ol>${recipe.steps.map(s => `<li>${s}</li>`).join("")}</ol>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function initPlan() {
-      weeklyPlan = {};
-      const lunchOptions = recipes.filter(r => r.mealType === "lunch");
-      const dinnerOptions = recipes.filter(r => r.mealType === "dinner");
-      daysOfWeek.forEach((day, index) => {
-        weeklyPlan[day] = {
-          lunch: lunchOptions[index % lunchOptions.length]?.id || recipes[0].id,
-          dinner: dinnerOptions[index % dinnerOptions.length]?.id || recipes[0].id
-        };
-      });
-    }
-
-    function shufflePlan() {
-      const rand = arr => arr[Math.floor(Math.random() * arr.length)];
-      const lunchOptions = recipes.filter(r => r.mealType === "lunch");
-      const dinnerOptions = recipes.filter(r => r.mealType === "dinner");
-      daysOfWeek.forEach(day => {
-        weeklyPlan[day] = {
-          lunch: (rand(lunchOptions) || recipes[0]).id,
-          dinner: (rand(dinnerOptions) || recipes[0]).id
-        };
-      });
-      renderCalendar();
-      updateRatio();
-      updateLogs();
-    }
-
-    function renderCalendar() {
-      const tbody = document.querySelector("#calendar-table tbody");
-      tbody.innerHTML = "";
-      daysOfWeek.forEach(day => {
-        const plan = weeklyPlan[day];
-        const lunchRec = recipes.find(r => r.id === plan.lunch) || recipes[0];
-        const dinnerRec = recipes.find(r => r.id === plan.dinner) || recipes[0];
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${day}</td>
-          <td>
-            <span class="meal-name">${lunchRec.name}</span>
-            <label><input type="checkbox" data-day="${day}" data-meal="lunch"> Completed</label><br>
-            <span class="ratio-display">Ratio: ${ratioToString(lunchRec.ratio)}</span>
-          </td>
-          <td>
-            <span class="meal-name">${dinnerRec.name}</span>
-            <label><input type="checkbox" data-day="${day}" data-meal="dinner"> Completed</label><br>
-            <span class="ratio-display">Ratio: ${ratioToString(dinnerRec.ratio)}</span>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-      document.querySelectorAll("#calendar-table input[type=checkbox]").forEach(box => box.addEventListener("change", handleCheckboxChange));
-    }
-
-    function computeWeeklyRatio() {
-      let total = 0;
-      let count = 0;
-      daysOfWeek.forEach(day => {
-        ["lunch", "dinner"].forEach(meal => {
-          const rec = recipes.find(r => r.id === weeklyPlan[day]?.[meal]);
-          if (rec) {
-            total += rec.ratio;
-            count += 1;
-          }
-        });
-      });
-      return count ? total / count : 0;
-    }
-
-    function ratioToString(r) {
-      if (!r) return "1:∞";
-      if (r < 1) return `1:${(1 / r).toFixed(1)}`;
-      return `${r.toFixed(1)}:1`;
-    }
-
-    function updateRatio() {
-      document.getElementById("current-ratio-display").textContent = ratioToString(computeWeeklyRatio());
-    }
-
-    function handleCheckboxChange(e) {
-      const day = e.target.dataset.day;
-      const meal = e.target.dataset.meal;
-      const recId = weeklyPlan[day][meal];
-      completionLog.push({ day, meal, recId, completed: e.target.checked, timestamp: new Date() });
-      updateLogs();
-    }
-
-    function updateLogs() {
-      const dailyCompletion = {};
-      daysOfWeek.forEach(day => dailyCompletion[day] = 0);
-
-      const checkboxMap = {};
-      document.querySelectorAll("#calendar-table input[type=checkbox]").forEach(box => {
-        checkboxMap[box.dataset.day + "-" + box.dataset.meal] = box.checked;
-      });
-
-      const completedRecipeCounts = {};
-      const declinedRecipeCounts = {};
-      const completedIngredientCounts = {};
-      const declinedIngredientCounts = {};
-
-      daysOfWeek.forEach(day => {
-        ["lunch", "dinner"].forEach(meal => {
-          const rec = recipes.find(r => r.id === weeklyPlan[day]?.[meal]);
-          if (!rec) return;
-          const checked = checkboxMap[day + "-" + meal] || false;
-          const recipeCounter = checked ? completedRecipeCounts : declinedRecipeCounts;
-          const ingredientCounter = checked ? completedIngredientCounts : declinedIngredientCounts;
-          recipeCounter[rec.name] = (recipeCounter[rec.name] || 0) + 1;
-          rec.ingredients.forEach(i => ingredientCounter[i.name] = (ingredientCounter[i.name] || 0) + 1);
-          if (checked) dailyCompletion[day] += 1;
-        });
-      });
-
-      const ratioData = daysOfWeek.map(day => {
-        const l = recipes.find(r => r.id === weeklyPlan[day]?.lunch);
-        const d = recipes.find(r => r.id === weeklyPlan[day]?.dinner);
-        return ((l?.ratio || 0) + (d?.ratio || 0)) / 2;
-      });
-
-      if (completionChart) completionChart.destroy();
-      if (ratioChart) ratioChart.destroy();
-
-      completionChart = new Chart(document.getElementById("completionChart"), {
-        type: "line",
-        data: {
-          labels: daysOfWeek,
-          datasets: [{ label: "Completed meals", data: daysOfWeek.map(d => dailyCompletion[d]), borderColor: "#00a76a", backgroundColor: "rgba(0,167,106,0.18)", tension: 0.3 }]
-        },
-        options: { responsive: true, scales: { y: { beginAtZero: true, suggestedMax: 2, ticks: { stepSize: 1 } } } }
-      });
-
-      ratioChart = new Chart(document.getElementById("ratioChart"), {
-        type: "line",
-        data: {
-          labels: daysOfWeek,
-          datasets: [{ label: "Omega‑6:Omega‑3 ratio", data: ratioData, borderColor: "#e07a5f", backgroundColor: "rgba(224,122,95,0.18)", tension: 0.3 }]
-        },
-        options: { responsive: true, scales: { y: { beginAtZero: true, suggestedMax: 2 } } }
-      });
-
-      function topList(obj) {
-        return Object.entries(obj).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([k, v]) => `<li>${k} (${v})</li>`).join("") || "<li>No data yet</li>";
-      }
-
-      document.getElementById("top-completed-list").innerHTML = topList(completedRecipeCounts);
-      document.getElementById("top-declined-list").innerHTML = topList(declinedRecipeCounts);
-      document.getElementById("top-completed-ingredients").innerHTML = topList(completedIngredientCounts);
-      document.getElementById("top-declined-ingredients").innerHTML = topList(declinedIngredientCounts);
-    }
-
-    async function searchSpoonacularIngredients() {
-      const q = document.getElementById("ingredient-api-query").value.trim();
-      const output = document.getElementById("ingredient-api-results");
-      output.innerHTML = "";
-      if (!q) return;
-      try {
-        const url = `https://api.spoonacular.com/food/ingredients/search?query=${encodeURIComponent(q)}&number=8&apiKey=${SPOONACULAR_API_KEY}`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Spoonacular ingredient search failed.");
-        const data = await res.json();
-        output.innerHTML = (data.results || []).map(item => `<div class="result-card"><strong>${item.name}</strong><br><span class="muted">Spoonacular ingredient ID: ${item.id}</span></div>`).join("") || "<p>No ingredient results found.</p>";
-      } catch (err) {
-        output.innerHTML = `<div class="notice error">${err.message}</div>`;
-      }
-    }
-
-    async function recommendWithSpoonacular() {
-      const status = document.getElementById("api-status");
-      status.textContent = "Calling Spoonacular for recipe recommendations...";
-      try {
-        const url = `https://api.spoonacular.com/recipes/random?number=6&tags=fish,healthy&apiKey=${SPOONACULAR_API_KEY}`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Spoonacular recipe request failed.");
-        const data = await res.json();
-        const imported = (data.recipes || []).map((r, index) => normalizeRecipe(r, index % 2 === 0 ? "dinner" : "lunch", "Spoonacular API"));
-        imported.forEach(r => recipes.push(r));
-        renderRecipeCards();
-        initPlan();
-        renderCalendar();
-        updateRatio();
-        updateLogs();
-        status.textContent = `Added ${imported.length} Spoonacular recipe recommendations.`;
-      } catch (err) {
-        status.innerHTML = `<span class="notice error">${err.message}</span>`;
-      }
-    }
-
-    async function buildWeekWithSpoonacular() {
-      await recommendWithSpoonacular();
-      shufflePlan();
-      setActiveTab("calendar");
-    }
-
-    async function searchNutrition() {
-      const query = document.getElementById("nutrition-query").value.trim();
-      const output = document.getElementById("nutrition-results");
-      output.innerHTML = "";
-      if (!query) return;
-      try {
-        const searchUrl = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(query)}&pageSize=1&api_key=${USDA_API_KEY}`;
-        const searchRes = await fetch(searchUrl);
-        if (!searchRes.ok) throw new Error("USDA search request failed.");
-        const searchData = await searchRes.json();
-        const food = searchData.foods?.[0];
-        if (!food) {
-          output.innerHTML = "<p>No USDA result found.</p>";
-          return;
-        }
-
-        const detailUrl = `https://api.nal.usda.gov/fdc/v1/food/${food.fdcId}?api_key=${USDA_API_KEY}`;
-        const detailRes = await fetch(detailUrl);
-        if (!detailRes.ok) throw new Error("USDA detail request failed.");
-        const detail = await detailRes.json();
-        const targets = { 1008: "Energy (kcal)", 1003: "Protein (g)", 1004: "Total fat (g)", 1005: "Carbohydrate (g)" };
-        const found = {};
-        (detail.foodNutrients || []).forEach(n => {
-          if (targets[n.nutrient?.number] || targets[n.nutrientId]) {
-            found[targets[n.nutrient?.number] || targets[n.nutrientId]] = n.amount ?? n.value;
-          }
-        });
-
-        output.innerHTML = `
-          <div class="result-card">
-            <h3>${food.description}</h3>
-            <p class="muted">FDC ID: ${food.fdcId}</p>
-            <ul>${Object.entries(found).map(([name, value]) => `<li>${name}: ${value ?? "n/a"}</li>`).join("")}</ul>
-          </div>
-        `;
-      } catch (err) {
-        output.innerHTML = `<div class="notice error">${err.message}</div>`;
-      }
-    }
-
-    async function importRecipeFromUrl() {
-      const url = document.getElementById("recipe-url").value.trim();
-      const status = document.getElementById("api-status");
-      if (!url) return;
-      try {
-        status.textContent = "Trying recipe‑scrapers import...";
-        const mod = await import("https://cdn.jsdelivr.net/npm/recipe-scrapers-js@1.0.0/dist/index.mjs");
-        let scraped;
-        if (typeof mod.scrape === "function") scraped = await mod.scrape(url);
-        else if (typeof mod.default === "function") scraped = await mod.default(url);
-        else throw new Error("recipe‑scrapers-js loaded, but no browser scrape function was found.");
-
-        const recipe = normalizeRecipe(scraped, "dinner", "recipe‑scrapers import");
-        recipe.url = url;
-        recipes.push(recipe);
-        renderRecipeCards();
-        initPlan();
-        renderCalendar();
-        updateRatio();
-        updateLogs();
-        status.textContent = `Imported: ${recipe.name}`;
-      } catch (err) {
-        status.innerHTML = `<span class="notice error">Import failed. Most recipe sites block browser scraping. Use a backend proxy for production. ${err.message}</span>`;
-      }
-    }
-
-    document.getElementById("ingredient-api-btn").addEventListener("click", searchSpoonacularIngredients);
-    document.getElementById("recommend-api-btn").addEventListener("click", recommendWithSpoonacular);
-    document.getElementById("api-week-btn").addEventListener("click", buildWeekWithSpoonacular);
-    document.getElementById("nutrition-search-btn").addEventListener("click", searchNutrition);
-    document.getElementById("import-btn").addEventListener("click", importRecipeFromUrl);
-
-    document.getElementById("add-recipe-btn").addEventListener("click", () => {
-      document.getElementById("import-recipe-form").style.display = "none";
-      const form = document.getElementById("add-recipe-form");
-      form.style.display = form.style.display === "none" ? "block" : "none";
-    });
-
-    document.getElementById("import-url-btn").addEventListener("click", () => {
-      document.getElementById("add-recipe-form").style.display = "none";
-      const form = document.getElementById("import-recipe-form");
-      form.style.display = form.style.display === "none" ? "block" : "none";
-    });
-
-    document.getElementById("save-recipe-btn").addEventListener("click", () => {
-      const name = document.getElementById("recipe-name").value.trim();
-      const mealType = document.getElementById("meal-type").value;
-      const servings = parseInt(document.getElementById("recipe-servings").value, 10) || 4;
-      const ratio = parseFloat(document.getElementById("recipe-ratio").value) || 1;
-      const ingredientLines = document.getElementById("recipe-ingredients").value.split("\n").map(s => s.trim()).filter(Boolean);
-      const stepLines = document.getElementById("recipe-instructions").value.split("\n").map(s => s.trim()).filter(Boolean);
-
-      if (!name || !ingredientLines.length || !stepLines.length) {
-        alert("Please add a recipe name, ingredients, and steps.");
-        return;
-      }
-
-      recipes.push({
-        id: name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "") + "-" + Date.now(),
-        name,
-        mealType,
-        servings,
-        source: "Manual entry",
-        ratio,
-        ingredients: ingredientLines.map(name => ({ name, category: classifyIngredient(name) })),
-        steps: stepLines
-      });
-
-      renderRecipeCards();
-      initPlan();
-      renderCalendar();
-      updateRatio();
-      updateLogs();
-      document.getElementById("add-recipe-form").style.display = "none";
-    });
-
-    document.getElementById("lucky-btn").addEventListener("click", shufflePlan);
-    document.getElementById("ratio-slider").addEventListener("input", e => {
-      document.getElementById("ratio-target-display").textContent = `${parseFloat(e.target.value).toFixed(1)}:1`;
-    });
-
-    initPlan();
-    renderRecipeCards();
-    renderCalendar();
-    updateRatio();
-    updateLogs();
-  </script>
+  <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
