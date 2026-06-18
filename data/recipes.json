@@ -40,7 +40,8 @@
       "Mix Greek yogurt with crushed garlic.",
       "Toss purslane and walnuts with the yogurt.",
       "Drizzle with olive oil and pack into four lunch containers."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "chia-berry-pudding",
@@ -79,7 +80,8 @@
       "Refrigerate overnight.",
       "Top with berries.",
       "Pack in four jars for next-day lunches."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "tuna-avocado-salad",
@@ -122,7 +124,8 @@
       "Dice avocado and toss with lemon juice.",
       "Combine tuna, avocado, arugula, and olive oil.",
       "Pack dressing separately if eating later."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "salmon-leftover-rice-bowl",
@@ -165,7 +168,8 @@
       "Add brown rice, cucumber, and spinach to containers.",
       "Top with salmon and a small sprinkle of sesame.",
       "Keep dressing separate until lunch."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "sardine-white-bean-toast-box",
@@ -208,7 +212,8 @@
       "Add sardines on top or on the side.",
       "Pack with whole grain bread.",
       "Add greens or cucumber for crunch."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "mackerel-potato-salad",
@@ -251,7 +256,8 @@
       "Mix yogurt with dill.",
       "Fold in potatoes, celery, and mackerel.",
       "Chill before packing."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "walnut-apple-chicken-salad",
@@ -293,7 +299,8 @@
       "Mix with Greek yogurt.",
       "Fold in walnuts.",
       "Pack with lettuce or whole grain bread."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "egg-flax-salad-wraps",
@@ -335,7 +342,8 @@
       "Mix with yogurt and ground flaxseed.",
       "Add lettuce to wraps.",
       "Fill wraps and pack tightly."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "smoked-salmon-cucumber-box",
@@ -378,7 +386,8 @@
       "Pack smoked salmon and rye crackers.",
       "Add cream cheese and dill in a small container.",
       "Assemble at lunch."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "lentil-walnut-salad",
@@ -420,7 +429,8 @@
       "Mix with grated carrots and parsley.",
       "Add walnuts.",
       "Dress with olive oil and lemon."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "quinoa-chia-fruit-bowl",
@@ -462,7 +472,8 @@
       "Mix with yogurt and chia seeds.",
       "Top with berries.",
       "Add a small sprinkle of pumpkin seeds."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "herring-beet-lunch-salad",
@@ -504,7 +515,8 @@
       "Slice herring.",
       "Mix yogurt with dill.",
       "Layer ingredients in lunch containers."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "avocado-walnut-chickpea-salad",
@@ -546,7 +558,8 @@
       "Dice avocado and toss with lemon.",
       "Mix chickpeas, spinach, avocado, and walnuts.",
       "Pack in four containers."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "sardine-pasta-salad",
@@ -588,7 +601,8 @@
       "Flake sardines.",
       "Mix pasta, tomatoes, parsley, and sardines.",
       "Dress lightly with olive oil."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "tofu-flax-slaw-box",
@@ -630,7 +644,8 @@
       "Shred cabbage and carrots.",
       "Mix vinegar with ground flaxseed.",
       "Pack tofu with slaw."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "salmon-nori-rice-cups",
@@ -672,7 +687,8 @@
       "Flake salmon.",
       "Layer rice, cucumber, avocado, and salmon.",
       "Add nori just before eating."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "mussel-barley-salad",
@@ -714,7 +730,8 @@
       "Steam mussels and remove from shells.",
       "Mix barley, celery, parsley, and mussels.",
       "Pack chilled."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "walnut-hummus-veggie-box",
@@ -756,7 +773,8 @@
       "Add walnuts, carrots, cucumber, and pita.",
       "Choose olive-oil hummus when possible.",
       "Pack cold."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "anchovy-caesar-chickpea-box",
@@ -798,7 +816,8 @@
       "Chop romaine.",
       "Mash anchovies into olive oil and lemon.",
       "Pack salad components separately."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "trout-potato-lunch-plate",
@@ -840,7 +859,8 @@
       "Steam green beans.",
       "Portion into containers.",
       "Add dill and olive oil."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "flax-oat-yogurt-jars",
@@ -882,7 +902,8 @@
       "Refrigerate overnight.",
       "Top with berries.",
       "Pack four jars."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "shrimp-walnut-noodle-salad",
@@ -923,7 +944,8 @@
       "Cook shrimp.",
       "Toss noodles with cabbage and lime.",
       "Top with shrimp and walnuts."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "salmon-bean-mason-jars",
@@ -965,7 +987,8 @@
       "Layer beans, cucumber, spinach, and salmon.",
       "Seal and refrigerate.",
       "Shake before eating."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "chia-tuna-lettuce-cups",
@@ -1007,7 +1030,8 @@
       "Stir in chia seeds.",
       "Pack lettuce leaves separately.",
       "Spoon filling into leaves at lunch."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "walnut-farro-roasted-veg",
@@ -1049,7 +1073,8 @@
       "Roast vegetables.",
       "Mix with spinach and walnuts.",
       "Pack with olive oil dressing."
-    ]
+    ],
+    "prepTimeMinutes": 18
   },
   {
     "id": "nova-scotia-seafood-chowder",
@@ -1100,7 +1125,8 @@
       "Add potatoes, milk or cream, and herbs.",
       "Cook seafood separately until just done.",
       "Combine seafood with the chowder base and portion for batch meals."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "salmon-quinoa-bowls",
@@ -1138,7 +1164,8 @@
       "Cook quinoa.",
       "Build bowls with spinach, quinoa, and salmon.",
       "Sprinkle with walnuts and store leftovers."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "walnut-pesto-pasta",
@@ -1180,7 +1207,8 @@
       "Blend basil, walnuts, olive oil, and parmesan.",
       "Toss pasta with pesto.",
       "Pack leftovers for quick meals."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "mackerel-tomato-pasta",
@@ -1222,7 +1250,8 @@
       "Warm tomatoes with garlic.",
       "Fold in mackerel.",
       "Toss with pasta and portion leftovers."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "sardine-lemon-spaghetti",
@@ -1264,7 +1293,8 @@
       "Warm sardines with lemon and olive oil.",
       "Toss with pasta and parsley.",
       "Serve with greens."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "trout-sheet-pan-dinner",
@@ -1306,7 +1336,8 @@
       "Add trout and green beans.",
       "Bake until fish flakes.",
       "Portion leftovers for lunch."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "herring-potato-bake",
@@ -1348,7 +1379,8 @@
       "Layer with herring.",
       "Bake until potatoes are tender.",
       "Serve with yogurt dill sauce."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "mussel-garlic-tomato-stew",
@@ -1390,7 +1422,8 @@
       "Add tomatoes and beans.",
       "Steam mussels in the sauce.",
       "Serve with bread or rice."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "salmon-lentil-skillet",
@@ -1432,7 +1465,8 @@
       "Sear or bake salmon.",
       "Wilt spinach into lentils.",
       "Serve salmon over lentils."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "tuna-white-bean-casserole",
@@ -1474,7 +1508,8 @@
       "Top with breadcrumbs.",
       "Bake until bubbling.",
       "Portion leftovers."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "anchovy-broccoli-pasta",
@@ -1516,7 +1551,8 @@
       "Warm anchovies and garlic in olive oil.",
       "Toss with pasta.",
       "Serve with lemon."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "shrimp-barley-risotto",
@@ -1558,7 +1594,8 @@
       "Stir in peas.",
       "Add shrimp near the end.",
       "Finish with parmesan."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "tofu-walnut-stir-fry",
@@ -1600,7 +1637,8 @@
       "Stir-fry tofu and broccoli.",
       "Add ginger and walnuts.",
       "Serve over rice."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "chicken-flax-meatballs",
@@ -1642,7 +1680,8 @@
       "Bake meatballs.",
       "Simmer in tomato sauce.",
       "Serve with pasta and spinach."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "walnut-lentil-tacos",
@@ -1684,7 +1723,8 @@
       "Pulse walnuts and mix with lentils.",
       "Season as taco filling.",
       "Serve with tortillas and lettuce."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "salmon-sweet-potato-traybake",
@@ -1726,7 +1766,8 @@
       "Add salmon and broccoli.",
       "Bake until done.",
       "Pack leftovers for lunch."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "clam-corn-potato-soup",
@@ -1768,7 +1809,8 @@
       "Add potatoes and corn.",
       "Simmer with milk.",
       "Add clams at the end."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "sardine-mediterranean-rice",
@@ -1810,7 +1852,8 @@
       "Warm tomatoes and spinach.",
       "Fold in sardines and olives.",
       "Serve as rice bowls."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "mackerel-coconut-curry",
@@ -1852,7 +1895,8 @@
       "Simmer curry paste with coconut milk.",
       "Add spinach and mackerel.",
       "Serve over rice."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "oyster-mushroom-rice-bake",
@@ -1894,7 +1938,8 @@
       "Mix with mushrooms and parsley.",
       "Top with oysters.",
       "Bake until hot."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "trout-chickpea-tomato-pan",
@@ -1936,7 +1981,8 @@
       "Add spinach.",
       "Bake trout separately or on top.",
       "Serve together."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "salmon-broccoli-noodle-bake",
@@ -1978,7 +2024,8 @@
       "Mix yogurt sauce.",
       "Fold in salmon.",
       "Bake until golden."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "mussel-farro-paella",
@@ -2020,7 +2067,8 @@
       "Add peas.",
       "Steam mussels on top.",
       "Serve family-style."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "chia-crusted-chicken",
@@ -2062,7 +2110,8 @@
       "Roast with sweet potatoes.",
       "Steam green beans.",
       "Save leftovers for lunch."
-    ]
+    ],
+    "prepTimeMinutes": 38
   },
   {
     "id": "walnut-herb-baked-cod",
@@ -2104,6 +2153,7 @@
       "Roast potatoes.",
       "Bake cod until flaky.",
       "Serve with greens."
-    ]
+    ],
+    "prepTimeMinutes": 38
   }
 ]

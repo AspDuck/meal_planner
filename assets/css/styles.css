@@ -438,3 +438,99 @@ footer a { color: var(--navy); }
     overflow-x: auto;
   }
 }
+/* Update 2026-06-17: weekly calendar flip cards + tighter day column */
+.calendar-table {
+  table-layout: fixed;
+}
+
+.calendar-table th:first-child,
+.calendar-table td:first-child {
+  width: 92px;
+  min-width: 92px;
+  max-width: 92px;
+}
+
+.day-cell {
+  background: #fff8ef;
+  font-weight: 800;
+  color: var(--navy);
+  vertical-align: middle !important;
+}
+
+.calendar-table th:nth-child(2),
+.calendar-table th:nth-child(3) {
+  width: calc((100% - 92px) / 2);
+}
+
+.calendar-card {
+  min-height: 240px;
+  width: 100%;
+}
+
+.calendar-card .flip-inner {
+  min-height: 240px;
+}
+
+.calendar-card .flip-front,
+.calendar-card .flip-back {
+  border-color: #dfcdae;
+}
+
+.calendar-card-content,
+.calendar-card .flip-back {
+  padding: 0.85rem;
+}
+
+.calendar-card h3 {
+  margin: 0.55rem 0 0.35rem;
+  line-height: 1.15;
+  font-size: 1rem;
+}
+
+.calendar-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.calendar-check input {
+  width: auto;
+  margin: 0;
+}
+
+.recipe-meta.compact {
+  margin: 0.45rem 0;
+}
+
+.calendar-back ul,
+.calendar-back ol {
+  padding-left: 1.1rem;
+  margin: 0.3rem 0 0.55rem;
+  font-size: 0.82rem;
+}
+
+.calendar-back h4 {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 0.88rem;
+}
+
+#ratio-status {
+  min-height: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .calendar-table th:first-child,
+  .calendar-table td:first-child {
+    width: 76px;
+    min-width: 76px;
+    max-width: 76px;
+  }
+
+  .calendar-card,
+  .calendar-card .flip-inner {
+    min-height: 255px;
+  }
+}

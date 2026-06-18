@@ -17,14 +17,14 @@
         <button class="tab-btn" data-tab="api">API Recipe Search</button>
         <button class="tab-btn" data-tab="nutrition">Nutrition Reference</button>
         <button class="tab-btn" data-tab="calendar">Weekly Calendar</button>
-        <button class="tab-btn" data-tab="ratio">O'Mega Ratio</button>
+        <button class="tab-btn" data-tab="ratio">Omega Ratio</button>
         <button class="tab-btn" data-tab="log">Log & Trends</button>
       </nav>
     </aside>
 
     <main>
       <section class="hero">
-        <h1>Omega‑3 Forward Meal Planner</h1>
+        <h1>omega‑3 Forward Meal Planner</h1>
         <p>Plan family meals, keep the weekly omega‑6:omega‑3 ratio in range, and import new recipes from ingredients, recipe APIs, or URL scraping.</p>
       </section>
 
@@ -83,7 +83,7 @@
               <input type="number" id="recipe-servings" min="1" value="4" />
             </div>
             <div>
-              <label for="recipe-ratio">Omega‑6:Omega‑3 Ratio</label>
+              <label for="recipe-ratio">omega‑6:omega‑3 Ratio</label>
               <input type="number" id="recipe-ratio" min="0" step="0.1" value="0.5" />
             </div>
             <div>
@@ -180,7 +180,7 @@
       </section>
 
       <section id="ratio" class="tab-section">
-        <h2>O'Mega Ratio</h2>
+        <h2>Omega Ratio</h2>
         <p>The slider rebuilds the weekly plan. Lower ratio = more omega‑3 forward. The planner slightly prioritizes omega‑3 beyond the selected target.</p>
         <div class="ratio-wrapper">
           <label for="ratio-slider">Target Ratio</label>
@@ -188,6 +188,7 @@
           <span id="ratio-target-display">2:1</span>
         </div>
         <p>Your current plan's average ratio: <strong id="current-ratio-display">—</strong></p>
+        <p id="ratio-status" class="muted"></p>
       </section>
 
       <section id="log" class="tab-section">
