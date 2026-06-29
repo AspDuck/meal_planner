@@ -1,0 +1,889 @@
+[
+  {
+    "id": "chia-seeds",
+    "name": "Chia seeds",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.32,
+    "omega3g": 5.0,
+    "omega6g": 1.6,
+    "accessibility": 0.98,
+    "likelyGrocers": [
+      "Bulk Barn",
+      "Costco",
+      "Atlantic Superstore",
+      "Walmart"
+    ],
+    "score": 99.6,
+    "notes": "Very accessible plant ALA source."
+  },
+  {
+    "id": "ground-flaxseed",
+    "name": "Ground flaxseed",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.28,
+    "omega3g": 3.2,
+    "omega6g": 0.9,
+    "accessibility": 0.98,
+    "likelyGrocers": [
+      "Bulk Barn",
+      "Atlantic Superstore",
+      "Walmart",
+      "No Frills"
+    ],
+    "score": 91.6,
+    "notes": "Cheap, shelf-stable ALA source."
+  },
+  {
+    "id": "camelina-oil",
+    "name": "Camelina oil",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 0.5,
+    "omega3g": 4.0,
+    "omega6g": 2.0,
+    "accessibility": 0.35,
+    "likelyGrocers": [
+      "Specialty grocer",
+      "Local produce vendor"
+    ],
+    "score": 80.0,
+    "notes": "Oil with better omega profile; specialty item."
+  },
+  {
+    "id": "mackerel",
+    "name": "Mackerel",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.12,
+    "omega3g": 2.2,
+    "omega6g": 0.26,
+    "accessibility": 0.85,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "Walmart",
+      "Fishmonger"
+    ],
+    "score": 79.0,
+    "notes": "High omega-3 fatty fish."
+  },
+  {
+    "id": "salmon",
+    "name": "Salmon",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.15,
+    "omega3g": 1.8,
+    "omega6g": 0.27,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Sobeys",
+      "Walmart"
+    ],
+    "score": 77.0,
+    "notes": "Fatty fish, strong EPA/DHA source."
+  },
+  {
+    "id": "hemp-hearts",
+    "name": "Hemp hearts",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 3.0,
+    "omega3g": 2.6,
+    "omega6g": 7.8,
+    "accessibility": 0.9,
+    "likelyGrocers": [
+      "Costco",
+      "Bulk Barn",
+      "Atlantic Superstore",
+      "Walmart"
+    ],
+    "score": 77.0,
+    "notes": "Good plant fat, but omega-6 is also high."
+  },
+  {
+    "id": "canned-sardines",
+    "name": "Canned sardines",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.18,
+    "omega3g": 1.5,
+    "omega6g": 0.27,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Walmart",
+      "No Frills"
+    ],
+    "score": 74.0,
+    "notes": "Shelf-stable, budget-friendly fatty fish."
+  },
+  {
+    "id": "walnuts",
+    "name": "Walnuts",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 4.2,
+    "omega3g": 2.5,
+    "omega6g": 10.5,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Bulk Barn",
+      "Costco",
+      "Atlantic Superstore",
+      "Walmart"
+    ],
+    "score": 69.0,
+    "notes": "Has omega-3, but also omega-6; useful in moderation."
+  },
+  {
+    "id": "trout",
+    "name": "Trout",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.35,
+    "omega3g": 0.9,
+    "omega6g": 0.32,
+    "accessibility": 0.85,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Sobeys",
+      "Fishmonger"
+    ],
+    "score": 66.0,
+    "notes": "Mild fish, family-friendly."
+  },
+  {
+    "id": "canned-tuna",
+    "name": "Canned tuna",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.45,
+    "omega3g": 0.35,
+    "omega6g": 0.16,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Walmart",
+      "No Frills"
+    ],
+    "score": 62.5,
+    "notes": "Accessible pantry protein."
+  },
+  {
+    "id": "shrimp",
+    "name": "Shrimp",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.55,
+    "omega3g": 0.3,
+    "omega6g": 0.17,
+    "accessibility": 0.9,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Sobeys",
+      "Walmart"
+    ],
+    "score": 61.0,
+    "notes": "Accessible seafood, moderate omega-3."
+  },
+  {
+    "id": "spinach",
+    "name": "Spinach",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.25,
+    "omega3g": 0.14,
+    "omega6g": 0.04,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "No Frills",
+      "Walmart"
+    ],
+    "score": 60.4,
+    "notes": "Low amount but easy leafy green."
+  },
+  {
+    "id": "broccoli",
+    "name": "Broccoli",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.45,
+    "omega3g": 0.12,
+    "omega6g": 0.05,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "Walmart",
+      "No Frills"
+    ],
+    "score": 60.2,
+    "notes": "Small contribution, very accessible."
+  },
+  {
+    "id": "cod",
+    "name": "Cod",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.75,
+    "omega3g": 0.2,
+    "omega6g": 0.15,
+    "accessibility": 0.85,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Sobeys",
+      "Fishmonger"
+    ],
+    "score": 59.0,
+    "notes": "Lean fish, lower omega-3 amount but accessible."
+  },
+  {
+    "id": "herring",
+    "name": "Herring",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 0.12,
+    "omega3g": 1.7,
+    "omega6g": 0.2,
+    "accessibility": 0.45,
+    "likelyGrocers": [
+      "Fishmonger",
+      "Atlantic Superstore",
+      "Sobeys"
+    ],
+    "score": 59.0,
+    "notes": "Strong omega-3 but less commonly bought."
+  },
+  {
+    "id": "mussels",
+    "name": "Mussels",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.18,
+    "omega3g": 0.7,
+    "omega6g": 0.13,
+    "accessibility": 0.72,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "Fishmonger",
+      "Costco"
+    ],
+    "score": 58.4,
+    "notes": "Shellfish; availability varies."
+  },
+  {
+    "id": "brussels-sprouts",
+    "name": "Brussels sprouts",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.35,
+    "omega3g": 0.13,
+    "omega6g": 0.05,
+    "accessibility": 0.85,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "No Frills",
+      "Walmart"
+    ],
+    "score": 58.3,
+    "notes": "Vegetable with small omega-3 amount."
+  },
+  {
+    "id": "kale",
+    "name": "Kale",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.18,
+    "omega3g": 0.12,
+    "omega6g": 0.02,
+    "accessibility": 0.85,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "No Frills",
+      "Local produce vendor"
+    ],
+    "score": 58.2,
+    "notes": "Leafy green; low amount but good ratio."
+  },
+  {
+    "id": "anchovies",
+    "name": "Anchovies",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 0.18,
+    "omega3g": 1.0,
+    "omega6g": 0.18,
+    "accessibility": 0.65,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "Walmart",
+      "Specialty grocer"
+    ],
+    "score": 56.0,
+    "notes": "Powerful small-fish ingredient."
+  },
+  {
+    "id": "fresh-sardines",
+    "name": "Fresh sardines",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 0.1,
+    "omega3g": 1.5,
+    "omega6g": 0.15,
+    "accessibility": 0.35,
+    "likelyGrocers": [
+      "Fishmonger",
+      "Specialty grocer"
+    ],
+    "score": 55.0,
+    "notes": "Great if available; not common."
+  },
+  {
+    "id": "arctic-char",
+    "name": "Arctic char",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 0.22,
+    "omega3g": 1.2,
+    "omega6g": 0.26,
+    "accessibility": 0.5,
+    "likelyGrocers": [
+      "Fishmonger",
+      "Sobeys",
+      "Atlantic Superstore"
+    ],
+    "score": 55.0,
+    "notes": "Good fish, variable availability."
+  },
+  {
+    "id": "butter",
+    "name": "Butter",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 3.0,
+    "omega3g": 0.3,
+    "omega6g": 0.9,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "No Frills",
+      "Walmart"
+    ],
+    "score": 55.0,
+    "notes": "Not a major omega-3 source."
+  },
+  {
+    "id": "clams",
+    "name": "Clams",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.35,
+    "omega3g": 0.3,
+    "omega6g": 0.11,
+    "accessibility": 0.72,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "Fishmonger",
+      "Walmart"
+    ],
+    "score": 54.4,
+    "notes": "Shellfish option, often canned or fresh."
+  },
+  {
+    "id": "smoked-trout",
+    "name": "Smoked trout",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 0.35,
+    "omega3g": 0.8,
+    "omega6g": 0.28,
+    "accessibility": 0.6,
+    "likelyGrocers": [
+      "Fishmonger",
+      "Sobeys",
+      "Atlantic Superstore"
+    ],
+    "score": 53.0,
+    "notes": "Convenient but specialty/costly."
+  },
+  {
+    "id": "soybean-oil",
+    "name": "Soybean oil",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 7.0,
+    "omega3g": 0.9,
+    "omega6g": 6.3,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Walmart",
+      "Atlantic Superstore",
+      "No Frills",
+      "Giant Tiger"
+    ],
+    "score": 53.0,
+    "notes": "Common in processed foods."
+  },
+  {
+    "id": "omega-3-eggs",
+    "name": "Omega-3 eggs",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 1.8,
+    "omega3g": 0.25,
+    "omega6g": 0.45,
+    "accessibility": 0.85,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Sobeys",
+      "Walmart"
+    ],
+    "score": 52.5,
+    "notes": "Convenient fortified food."
+  },
+  {
+    "id": "seaweed",
+    "name": "Seaweed",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 0.4,
+    "omega3g": 0.1,
+    "omega6g": 0.04,
+    "accessibility": 0.65,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Walmart",
+      "Local produce vendor",
+      "Asian grocery"
+    ],
+    "score": 51.0,
+    "notes": "Low amount but useful add-on."
+  },
+  {
+    "id": "fresh-oysters",
+    "name": "Fresh oysters",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 0.25,
+    "omega3g": 0.6,
+    "omega6g": 0.15,
+    "accessibility": 0.5,
+    "likelyGrocers": [
+      "Fishmonger",
+      "Sobeys",
+      "Atlantic Superstore"
+    ],
+    "score": 49.0,
+    "notes": "Shellfish, seasonal and costly."
+  },
+  {
+    "id": "edamame",
+    "name": "Edamame",
+    "category": "omega-3",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 6.0,
+    "omega3g": 0.55,
+    "omega6g": 3.3,
+    "accessibility": 0.8,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Walmart",
+      "Sobeys"
+    ],
+    "score": 46.5,
+    "notes": "Plant protein with some omega-3."
+  },
+  {
+    "id": "cheddar-cheese",
+    "name": "Cheddar cheese",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 8.0,
+    "omega3g": 0.2,
+    "omega6g": 1.6,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Sobeys",
+      "Walmart"
+    ],
+    "score": 46.0,
+    "notes": "Useful food but not omega-3-forward."
+  },
+  {
+    "id": "pork-chops",
+    "name": "Pork chops",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 10.0,
+    "omega3g": 0.25,
+    "omega6g": 2.5,
+    "accessibility": 0.9,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Sobeys",
+      "Local butcher"
+    ],
+    "score": 45.5,
+    "notes": "Omega-6 leaning meat."
+  },
+  {
+    "id": "purslane",
+    "name": "Purslane",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 0.25,
+    "omega3g": 0.4,
+    "omega6g": 0.1,
+    "accessibility": 0.25,
+    "likelyGrocers": [
+      "Local produce vendor",
+      "Farmers market",
+      "Specialty grocer"
+    ],
+    "score": 42.0,
+    "notes": "Excellent plant source but hard to find."
+  },
+  {
+    "id": "mayonnaise",
+    "name": "Mayonnaise",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 35.0,
+    "omega3g": 0.3,
+    "omega6g": 10.5,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Walmart",
+      "Atlantic Superstore",
+      "No Frills",
+      "Giant Tiger"
+    ],
+    "score": 40.0,
+    "notes": "Often soybean/canola oil based."
+  },
+  {
+    "id": "fried-snack-foods",
+    "name": "Fried snack foods",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 40.0,
+    "omega3g": 0.2,
+    "omega6g": 8.0,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Giant Tiger",
+      "Walmart",
+      "No Frills",
+      "Atlantic Superstore"
+    ],
+    "score": 39.0,
+    "notes": "Often cooked in seed oils."
+  },
+  {
+    "id": "chicken-thighs",
+    "name": "Chicken thighs",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 12.0,
+    "omega3g": 0.2,
+    "omega6g": 2.4,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Sobeys",
+      "Walmart"
+    ],
+    "score": 39.0,
+    "notes": "Family-friendly but omega-6 leaning."
+  },
+  {
+    "id": "lamb",
+    "name": "Lamb",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 4.0,
+    "omega3g": 0.15,
+    "omega6g": 0.6,
+    "accessibility": 0.55,
+    "likelyGrocers": [
+      "Local butcher",
+      "Costco",
+      "Atlantic Superstore"
+    ],
+    "score": 38.5,
+    "notes": "Some omega-3 depending on feeding."
+  },
+  {
+    "id": "sesame-oil",
+    "name": "Sesame oil",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 50.0,
+    "omega3g": 0.25,
+    "omega6g": 12.5,
+    "accessibility": 0.9,
+    "likelyGrocers": [
+      "Walmart",
+      "Atlantic Superstore",
+      "Sobeys",
+      "Asian grocery"
+    ],
+    "score": 38.5,
+    "notes": "High omega-6, strong flavour."
+  },
+  {
+    "id": "store-bought-hummus",
+    "name": "Store-bought hummus",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 20.0,
+    "omega3g": 0.15,
+    "omega6g": 3.0,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Atlantic Superstore",
+      "Walmart",
+      "Sobeys"
+    ],
+    "score": 38.5,
+    "notes": "Often made with seed oils; check label."
+  },
+  {
+    "id": "bottled-salad-dressing",
+    "name": "Bottled salad dressing",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 60.0,
+    "omega3g": 0.1,
+    "omega6g": 6.0,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Walmart",
+      "Atlantic Superstore",
+      "No Frills",
+      "Giant Tiger"
+    ],
+    "score": 38.0,
+    "notes": "Often uses soybean/canola/sunflower oils."
+  },
+  {
+    "id": "sunflower-oil",
+    "name": "Sunflower oil",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 250.0,
+    "omega3g": 0.05,
+    "omega6g": 12.5,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Walmart",
+      "Atlantic Superstore",
+      "No Frills",
+      "Giant Tiger"
+    ],
+    "score": 37.5,
+    "notes": "Common high omega-6 oil."
+  },
+  {
+    "id": "corn-oil",
+    "name": "Corn oil",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 80.0,
+    "omega3g": 0.15,
+    "omega6g": 12.0,
+    "accessibility": 0.9,
+    "likelyGrocers": [
+      "Walmart",
+      "Atlantic Superstore",
+      "No Frills",
+      "Giant Tiger"
+    ],
+    "score": 37.5,
+    "notes": "High omega-6 cooking oil."
+  },
+  {
+    "id": "pumpkin-seeds",
+    "name": "Pumpkin seeds",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 120.0,
+    "omega3g": 0.05,
+    "omega6g": 6.0,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Bulk Barn",
+      "Costco",
+      "Walmart",
+      "Atlantic Superstore"
+    ],
+    "score": 37.5,
+    "notes": "Nutritious but omega-6-heavy."
+  },
+  {
+    "id": "cashews",
+    "name": "Cashews",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 130.0,
+    "omega3g": 0.05,
+    "omega6g": 6.5,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Bulk Barn",
+      "Walmart",
+      "Atlantic Superstore"
+    ],
+    "score": 37.5,
+    "notes": "Omega-6 leaning nut."
+  },
+  {
+    "id": "sunflower-seeds",
+    "name": "Sunflower seeds",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 200.0,
+    "omega3g": 0.04,
+    "omega6g": 8.0,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Bulk Barn",
+      "Walmart",
+      "Atlantic Superstore",
+      "No Frills"
+    ],
+    "score": 37.4,
+    "notes": "Common omega-6-heavy snack."
+  },
+  {
+    "id": "peanuts",
+    "name": "Peanuts",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 500.0,
+    "omega3g": 0.03,
+    "omega6g": 15.0,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Bulk Barn",
+      "Walmart",
+      "No Frills"
+    ],
+    "score": 37.3,
+    "notes": "Common, mostly omega-6 fats."
+  },
+  {
+    "id": "almonds",
+    "name": "Almonds",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 1000.0,
+    "omega3g": 0.01,
+    "omega6g": 10.0,
+    "accessibility": 0.95,
+    "likelyGrocers": [
+      "Costco",
+      "Bulk Barn",
+      "Walmart",
+      "Atlantic Superstore"
+    ],
+    "score": 37.1,
+    "notes": "Nutritious but mostly omega-6."
+  },
+  {
+    "id": "pasture-raised-beef",
+    "name": "Pasture-raised beef",
+    "category": "omega-3",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 3.0,
+    "omega3g": 0.1,
+    "omega6g": 0.3,
+    "accessibility": 0.45,
+    "likelyGrocers": [
+      "Local butcher",
+      "Sobeys",
+      "Atlantic Superstore"
+    ],
+    "score": 36.0,
+    "notes": "Not a primary omega-3 food; better ratio than conventional sometimes."
+  },
+  {
+    "id": "safflower-oil",
+    "name": "Safflower oil",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 150.0,
+    "omega3g": 0.08,
+    "omega6g": 12.0,
+    "accessibility": 0.85,
+    "likelyGrocers": [
+      "Walmart",
+      "Atlantic Superstore",
+      "Sobeys",
+      "No Frills"
+    ],
+    "score": 35.8,
+    "notes": "High omega-6 oil."
+  },
+  {
+    "id": "conventional-pesto",
+    "name": "Conventional pesto",
+    "category": "omega-6",
+    "accessBand": "easy",
+    "omega6Omega3Ratio": 25.0,
+    "omega3g": 0.2,
+    "omega6g": 5.0,
+    "accessibility": 0.75,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "Walmart"
+    ],
+    "score": 32.0,
+    "notes": "Can be omega-6-heavy depending on oil/nuts."
+  },
+  {
+    "id": "grapeseed-oil",
+    "name": "Grapeseed oil",
+    "category": "omega-6",
+    "accessBand": "hard",
+    "omega6Omega3Ratio": 700.0,
+    "omega3g": 0.02,
+    "omega6g": 14.0,
+    "accessibility": 0.6,
+    "likelyGrocers": [
+      "Atlantic Superstore",
+      "Sobeys",
+      "Specialty grocer"
+    ],
+    "score": 23.2,
+    "notes": "Very omega-6-heavy oil."
+  }
+]

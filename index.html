@@ -1,206 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Omega Meal Planner</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Omega Nudge</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
-  <div class="app-shell">
-    <aside>
-      <div class="brand">Omega Meal Planner<span>select, shop, learn</span></div>
-      <nav class="tab-nav" aria-label="Main sections">
-        <button class="tab-btn active" data-tab="ingredients">Ingredients</button>
-        <button class="tab-btn" data-tab="recipes">Recipe Library</button>
-        <button class="tab-btn" data-tab="recommendations">Recommendations</button>
-        <button class="tab-btn" data-tab="shopping">Shopping List</button>
-        <button class="tab-btn" data-tab="calendar">Weekly Calendar</button>
-        <button class="tab-btn" data-tab="nutrition">Nutrition Reference</button>
-        <button class="tab-btn" data-tab="ratio">Omega Ratio</button>
-        <button class="tab-btn" data-tab="log">Log & Trends</button>
-      </nav>
-    </aside>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Family of four · 4 servings · omega-6:omega-3</p>
+      <h1>Omega Nudge</h1>
+    </div>
+    <button id="locationBtn" class="small-btn">Use GPS</button>
+  </header>
 
-    <main>
-      <section class="hero">
-        <h1>omega‑3 Forward Meal Planner</h1>
-        <p>Select recommended recipes, generate a shopping list, track what was bought or unavailable, and use weekly patterns to improve next week’s plan.</p>
-      </section>
+  <main>
+    <section class="hero-card">
+      <div>
+        <h2>This week</h2>
+        <p>Find omega-3-forward foods, pick the top recipes, shop what is realistic, then learn from what your family actually cooked.</p>
+      </div>
+      <div class="hero-stats">
+        <div><strong id="currentRatio">—</strong><span>plan ratio</span></div>
+        <div><strong id="selectedCount">0</strong><span>recipes picked</span></div>
+        <div><strong id="resetStatus">Fri 9pm</strong><span>review reset</span></div>
+      </div>
+    </section>
 
-      <section id="ingredients" class="tab-section active">
-        <h2>Ingredients</h2>
-        <p class="muted">A practical access grid for omega‑3 and omega‑6 foods. “Harder to access” means usually seasonal, specialty, expensive, or less common in a standard grocery run.</p>
-
-        <div class="quadrant-grid">
-          <div class="quadrant q-omega3-easy">
-            <h3>Omega‑3 + easy to access</h3>
-            <span class="ingredient-chip">salmon</span><span class="ingredient-chip">canned sardines</span><span class="ingredient-chip">canned tuna</span><span class="ingredient-chip">mackerel</span><span class="ingredient-chip">chia seeds</span><span class="ingredient-chip">flaxseed</span><span class="ingredient-chip">walnuts</span><span class="ingredient-chip">omega‑3 eggs</span>
-          </div>
-          <div class="quadrant q-omega6-easy">
-            <h3>Omega‑6 + easy to access</h3>
-            <span class="ingredient-chip">sunflower oil</span><span class="ingredient-chip">soybean oil</span><span class="ingredient-chip">corn oil</span><span class="ingredient-chip">safflower oil</span><span class="ingredient-chip">sunflower seeds</span><span class="ingredient-chip">pumpkin seeds</span><span class="ingredient-chip">store‑bought hummus</span><span class="ingredient-chip">bottled dressings</span>
-          </div>
-          <div class="quadrant q-omega3-hard">
-            <h3>Omega‑3 + harder to access</h3>
-            <span class="ingredient-chip">purslane</span><span class="ingredient-chip">fresh oysters</span><span class="ingredient-chip">fresh mussels</span><span class="ingredient-chip">herring</span><span class="ingredient-chip">anchovies</span><span class="ingredient-chip">seaweed</span><span class="ingredient-chip">pasture‑raised meat</span>
-          </div>
-          <div class="quadrant q-omega6-hard">
-            <h3>Omega‑6 + harder to access</h3>
-            <span class="ingredient-chip">cottonseed oil</span><span class="ingredient-chip">grapeseed oil</span><span class="ingredient-chip">black cumin seed oil</span><span class="ingredient-chip">specialty seed blends</span><span class="ingredient-chip">some imported snack oils</span>
-          </div>
+    <section id="ingredients" class="view active">
+      <div class="section-head">
+        <div>
+          <h2>Discover</h2>
+          <p>Top 50 foods ranked by omega usefulness, omega-6:omega-3 estimate, and local accessibility.</p>
         </div>
-      </section>
+        <select id="ingredientFilter">
+          <option value="all">All</option>
+          <option value="omega-3">Omega-3</option>
+          <option value="omega-6">Omega-6</option>
+          <option value="easy">Easy access</option>
+          <option value="hard">Harder access</option>
+        </select>
+      </div>
+      <div class="notice">Estimates are ingredient-level approximations. Ratio alone can mislead, so the app also tracks estimated omega-3 amount.</div>
+      <div id="ingredientList" class="stack"></div>
+    </section>
 
-      <section id="recipes" class="tab-section">
-        <h2>Recipe Library</h2>
-        <p>The starter library contains 50 recipes stored in <code>data/recipes.json</code>. Click a card to flip it. Front = quick view. Back = ingredients and steps.</p>
-
-        <div class="btn-row">
-          <button id="add-recipe-btn">Add a Recipe</button>
-          <button id="reset-library-btn" class="ghost">Reset Local Library</button>
+    <section id="recipes" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Recipes</h2>
+          <p>Top 10 packed lunches + top 10 weeknight meals. Scoring is 70% omega/accessibility and 30% family behaviour.</p>
         </div>
+        <button id="refreshRecipes" class="small-btn">Refresh</button>
+      </div>
+      <div class="target-card">
+        <label for="targetRatio">Target ratio: <strong id="targetRatioLabel">4.0:1</strong></label>
+        <input id="targetRatio" type="range" min="1" max="6" step="0.5" value="4" />
+      </div>
+      <div class="split-title"><span>Packed lunches</span><span>Top 10</span></div>
+      <div id="lunchRecommendations" class="stack"></div>
+      <div class="split-title"><span>Weeknight meals</span><span>Top 10</span></div>
+      <div id="dinnerRecommendations" class="stack"></div>
+    </section>
 
-        <div id="add-recipe-form" class="notice" style="display:none;">
-          <h3>Add a New Recipe</h3>
-          <div class="form-grid">
-            <div><label for="recipe-name">Name</label><input type="text" id="recipe-name" placeholder="Recipe name" /></div>
-            <div><label for="meal-type">Meal Type</label><select id="meal-type"><option value="lunch">Packed lunch</option><option value="dinner">Weeknight meal</option></select></div>
-            <div><label for="recipe-servings">Servings</label><input type="number" id="recipe-servings" min="1" value="4" /></div>
-            <div><label for="recipe-ratio">omega‑6:omega‑3 Ratio</label><input type="number" id="recipe-ratio" min="0" step="0.1" value="0.5" /></div>
-            <div><label for="recipe-image">Image URL</label><input type="url" id="recipe-image" placeholder="Optional image URL" /></div>
-            <div><label for="recipe-tags">Tags</label><input type="text" id="recipe-tags" placeholder="omega3, batch-cooking, family" /></div>
-            <div class="full"><label for="recipe-ingredients">Ingredients, one per line</label><textarea id="recipe-ingredients" placeholder="salmon&#10;quinoa&#10;spinach"></textarea></div>
-            <div class="full"><label for="recipe-instructions">Steps, one per line</label><textarea id="recipe-instructions" placeholder="Bake salmon.&#10;Cook quinoa.&#10;Assemble bowls."></textarea></div>
-          </div>
-          <div class="btn-row"><button id="save-recipe-btn">Save Recipe</button></div>
+    <section id="plan" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Plan</h2>
+          <p>Sunday–Thursday dinners can become next-day packed lunch. Track completion and reasons.</p>
         </div>
+        <button id="buildPlan" class="small-btn">Build plan</button>
+      </div>
+      <div id="planList" class="stack"></div>
+    </section>
 
-        <div class="card-toolbar">
-          <input id="recipe-search" type="search" placeholder="Filter recipes by name, ingredient, tag..." />
-          <select id="recipe-type-filter">
-            <option value="all">All recipes</option>
-            <option value="lunch">Packed lunch</option>
-            <option value="dinner">Weeknight meal</option>
-          </select>
-          <select id="recipe-sort">
-            <option value="name">Sort by name</option>
-            <option value="ratio">Sort by omega ratio</option>
-            <option value="omegaScore">Sort by omega score</option>
-          </select>
+    <section id="shop" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Shop</h2>
+          <p>Generated from selected recipes. Track store + ingredient outcomes.</p>
         </div>
-
-        <div id="recipe-card-grid" class="card-grid"></div>
-      </section>
-
-      <section id="recommendations" class="tab-section">
-        <h2>Recommended Recipes</h2>
-        <p>Recommendations are scored by omega ratio, ingredient accessibility, family practicality, prep practicality, and your previous completed/declined patterns. Select recipes to generate a shopping list.</p>
-
-        <div class="btn-row">
-          <button id="refresh-recommendations-btn">Refresh Top 20</button>
-          <button id="select-top-btn" class="secondary">Select Top 7</button>
-          <button id="clear-selected-btn" class="ghost">Clear Selected</button>
-          <button id="build-shopping-btn">Build Shopping List</button>
+        <div class="segmented">
+          <button class="seg active" data-shop-view="store">Store</button>
+          <button class="seg" data-shop-view="recipe">Recipe</button>
         </div>
+      </div>
+      <div class="notice">One-tap: mark bought or not found. “Substituted” counts as partial success and is encouraged.</div>
+      <div id="shoppingList" class="stack"></div>
+    </section>
 
-        <div class="recommendation-summary">
-          <div><strong id="selected-count">0</strong><span> selected recipes</span></div>
-          <div><strong id="selected-ratio">—</strong><span> selected average ratio</span></div>
-          <div><strong id="next-reset-label">—</strong><span> next Friday reset</span></div>
+    <section id="log" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Learn</h2>
+          <p>Review trends, archive/edit weeks, and improve next week’s recommendations.</p>
         </div>
+        <button id="reviewReset" class="small-btn">Review & reset</button>
+      </div>
 
-        <h3>Ingredient → related recipes → import</h3>
-        <div class="btn-row">
-          <input id="ingredient-api-query" type="text" placeholder="Search ingredients, e.g., salmon, walnut, purslane" style="max-width:420px;" />
-          <button id="ingredient-api-btn">Search Ingredients</button>
-        </div>
-        <div id="ingredient-api-results"></div>
-        <div id="related-recipe-results" class="api-result-grid"></div>
+      <div class="dashboard-grid">
+        <div class="metric"><strong id="weekRatioMetric">—</strong><span>estimated ratio</span></div>
+        <div class="metric"><strong id="omega3Metric">—</strong><span>omega-3 estimate</span></div>
+        <div class="metric"><strong id="completionMetric">—</strong><span>completed meals</span></div>
+      </div>
 
-        <h3>Direct URL import with recipe‑scrapers</h3>
-        <p class="muted">This works only when the recipe site allows browser access. Many recipe sites block direct scraping via CORS; production should use a small backend.</p>
-        <div class="btn-row">
-          <input id="recipe-url" type="url" placeholder="https://example.com/recipe" style="max-width:520px;" />
-          <button id="import-btn">Import URL</button>
-        </div>
-        <div id="api-status"></div>
+      <div class="chart-card">
+        <h3>Weekly ratio trend</h3>
+        <canvas id="ratioChart" height="160"></canvas>
+      </div>
 
-        <div id="recommendation-grid" class="recommendation-grid"></div>
-      </section>
+      <div id="patterns" class="stack"></div>
+      <div id="weekHistory" class="stack"></div>
+    </section>
+  </main>
 
-      <section id="shopping" class="tab-section">
-        <h2>Shopping List</h2>
-        <p>Derived from selected recommended recipes. Each ingredient shows 2+ likely grocers. Track whether it was bought, unavailable, expensive, substituted, or skipped.</p>
-        <div class="btn-row">
-          <button id="rebuild-shopping-btn">Rebuild from Selected Recipes</button>
-          <button id="mark-all-needed-btn" class="ghost">Reset Item Statuses</button>
-        </div>
-        <div id="shopping-summary" class="recommendation-summary"></div>
-        <div id="shopping-list"></div>
-      </section>
-
-      <section id="calendar" class="tab-section">
-        <h2>Weekly Meal Calendar</h2>
-        <p>Use selected recipes to build the week, then track completed and undone recipes with reasons.</p>
-        <div class="btn-row">
-          <button id="use-selected-week-btn">Build Week from Selected</button>
-          <button id="lucky-btn">I'm Feeling Lucky</button>
-          <button id="use-leftovers-btn" class="secondary">Use Dinner Leftovers for Tomorrow</button>
-        </div>
-        <table class="calendar-table" id="calendar-table">
-          <thead><tr><th>Day</th><th>Packed Lunch</th><th>Weeknight Meal</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </section>
-
-      <section id="nutrition" class="tab-section">
-        <h2>Nutrition Reference</h2>
-        <p>Search an ingredient against USDA FoodData Central. This is for nutrient reference and is separate from recipe discovery.</p>
-        <div class="btn-row">
-          <input type="text" id="nutrition-query" placeholder="Enter an ingredient, e.g., salmon" style="max-width:420px;" />
-          <button id="nutrition-search-btn">Search USDA</button>
-        </div>
-        <div id="nutrition-results"></div>
-      </section>
-
-      <section id="ratio" class="tab-section">
-        <h2>Omega Ratio</h2>
-        <p>The slider rebuilds recommendations and the weekly plan. Lower ratio = more omega‑3 forward. The planner slightly prioritizes omega‑3 beyond the selected target.</p>
-        <div class="ratio-wrapper">
-          <label for="ratio-slider">Target Ratio</label>
-          <input type="range" id="ratio-slider" min="1" max="4" step="0.1" value="2" />
-          <span id="ratio-target-display">2:1</span>
-        </div>
-        <p>Your current plan's average ratio: <strong id="current-ratio-display">—</strong></p>
-        <p id="ratio-status" class="muted"></p>
-      </section>
-
-      <section id="log" class="tab-section">
-        <h2>Log & Trends</h2>
-        <p>Weekly snapshots are archived before the Friday 9pm reset. If the app is closed at reset time, it runs the next time the site opens.</p>
-        <div class="charts-container">
-          <div class="chart-box"><h3>Weekly Completion Rate</h3><canvas id="completionChart" width="400" height="220"></canvas></div>
-          <div class="chart-box"><h3>Weekly Omega Ratio</h3><canvas id="ratioChart" width="400" height="220"></canvas></div>
-        </div>
-
-        <div class="top-lists">
-          <div class="stat-box"><h3>Top Completed Recipes</h3><ul id="top-completed-list"></ul></div>
-          <div class="stat-box"><h3>Top Undone Recipes</h3><ul id="top-declined-list"></ul></div>
-          <div class="stat-box"><h3>Accessible Ingredients</h3><ul id="top-completed-ingredients"></ul></div>
-          <div class="stat-box"><h3>Unattainable Ingredients</h3><ul id="top-declined-ingredients"></ul></div>
-        </div>
-
-        <h3>Weekly History</h3>
-        <div id="weekly-history"></div>
-      </section>
-
-      <footer>
-        <p><strong>Files:</strong> <code>index.html</code>, <code>assets/css/styles.css</code>, <code>assets/js/app.js</code>, <code>data/recipes.json</code>, <code>data/grocers.json</code>, <code>data/reasons.json</code>. Keep API keys off public repos for production.</p>
-      </footer>
-    </main>
-  </div>
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <button class="nav-btn active" data-view="ingredients">Discover</button>
+    <button class="nav-btn" data-view="recipes">Recipes</button>
+    <button class="nav-btn" data-view="plan">Plan</button>
+    <button class="nav-btn" data-view="shop">Shop</button>
+    <button class="nav-btn" data-view="log">Learn</button>
+  </nav>
 
   <script type="module" src="assets/js/app.js"></script>
 </body>

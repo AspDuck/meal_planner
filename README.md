@@ -1,32 +1,28 @@
-# Omega Meal Planner v3
+# Omega Nudge Mobile
 
-Mobile-first meal planning prototype for omega-3-forward family meal planning.
+A net-new, mobile-first prototype for a family-of-four omega meal-planning workflow.
 
-## What changed in v3
+## Product defaults
 
-- Recommended recipes are selectable.
-- Selected recipes generate a shopping list.
-- Shopping list items show 2+ likely grocers per ingredient.
-- Shopping list tracks item status: needed, bought, not on shelf, too expensive, substituted, skipped.
-- Weekly calendar recipe cards are flippable.
-- Weekly calendar tracks completed and undone recipes with reasons.
-- Omega ratio slider rebuilds recommendations and the weekly plan.
-- Weekly history archives before the Friday 9pm reset.
-- If the app is closed at Friday 9pm, the reset runs the next time the site opens.
-- New maintainability files:
-  - `data/grocers.json`
-  - `data/reasons.json`
+- Household: family of four adults
+- Recipe servings: 4
+- Lunch logic: Sunday–Thursday dinners can become next-day packed lunch
+- Default target: 4:1 omega-6:omega-3
+- Ratio display: always omega-6:omega-3
+- Recommendations: top 10 packed lunches + top 10 weeknight dinners
+- Scoring: 70% omega/accessibility, 30% family behaviour/practicality
+- Shopping list: toggle by store or by recipe
+- Reset: Review & Reset after Friday 9pm
 
-## File structure
+## Files
 
 ```txt
 index.html
 assets/css/styles.css
 assets/js/app.js
 assets/img/recipe-placeholder.svg
+data/ingredients.json
 data/recipes.json
-data/grocers.json
-data/reasons.json
 ```
 
 ## Local testing
@@ -43,8 +39,15 @@ Then open:
 http://localhost:8000
 ```
 
-Do not open `index.html` directly from Finder because browsers may block loading `data/*.json` from `file://`.
+Do not open the file directly with `file://`, because browsers may block JSON loading.
 
-## Notes
+## API note
 
-This is still a static prototype. API keys in browser JavaScript are visible to users. For production, move USDA, Spoonacular, and recipe-scraping calls behind a serverless backend or proxy.
+This version is intentionally built without hard dependency on paid APIs. It uses local JSON datasets first. Future API layers can be added behind a serverless proxy for:
+
+- USDA FoodData Central nutrient lookup
+- Open Food Facts packaged-food lookup
+- Spoonacular or TheMealDB recipe search
+- Google Places / MapKit local grocer discovery
+
+Do not place production API keys in public GitHub Pages JavaScript.
