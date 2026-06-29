@@ -1,0 +1,2109 @@
+[
+  {
+    "id": "purslane-walnut-yogurt-salad",
+    "name": "Purslane Walnut Yogurt Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.25,
+    "omegaScore": 6,
+    "tags": [
+      "omega3",
+      "packed-lunch",
+      "no-cook"
+    ],
+    "ingredients": [
+      {
+        "name": "purslane",
+        "category": "omega3"
+      },
+      {
+        "name": "Greek yogurt",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      },
+      {
+        "name": "garlic",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Wash and dry purslane; trim tough stems.",
+      "Mix Greek yogurt with crushed garlic.",
+      "Toss purslane and walnuts with the yogurt.",
+      "Drizzle with olive oil and pack into four lunch containers."
+    ]
+  },
+  {
+    "id": "chia-berry-pudding",
+    "name": "Chia Berry Pudding",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.2,
+    "omegaScore": 7,
+    "tags": [
+      "omega3",
+      "packed-lunch",
+      "make-ahead"
+    ],
+    "ingredients": [
+      {
+        "name": "chia seeds",
+        "category": "omega3"
+      },
+      {
+        "name": "milk or almond milk",
+        "category": "neutral"
+      },
+      {
+        "name": "berries",
+        "category": "neutral"
+      },
+      {
+        "name": "honey",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Mix chia seeds, milk, and honey.",
+      "Refrigerate overnight.",
+      "Top with berries.",
+      "Pack in four jars for next-day lunches."
+    ]
+  },
+  {
+    "id": "tuna-avocado-salad",
+    "name": "Tuna Avocado Lunch Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.35,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "packed-lunch",
+      "no-cook"
+    ],
+    "ingredients": [
+      {
+        "name": "canned tuna",
+        "category": "omega3"
+      },
+      {
+        "name": "avocado",
+        "category": "neutral"
+      },
+      {
+        "name": "arugula",
+        "category": "neutral"
+      },
+      {
+        "name": "lemon juice",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Flake tuna into a bowl.",
+      "Dice avocado and toss with lemon juice.",
+      "Combine tuna, avocado, arugula, and olive oil.",
+      "Pack dressing separately if eating later."
+    ]
+  },
+  {
+    "id": "salmon-leftover-rice-bowl",
+    "name": "Leftover Salmon Rice Bowl",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.35,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "leftovers",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "leftover salmon",
+        "category": "omega3"
+      },
+      {
+        "name": "brown rice",
+        "category": "neutral"
+      },
+      {
+        "name": "cucumber",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      },
+      {
+        "name": "sesame",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Flake leftover salmon.",
+      "Add brown rice, cucumber, and spinach to containers.",
+      "Top with salmon and a small sprinkle of sesame.",
+      "Keep dressing separate until lunch."
+    ]
+  },
+  {
+    "id": "sardine-white-bean-toast-box",
+    "name": "Sardine White Bean Lunch Box",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.3,
+    "omegaScore": 5,
+    "tags": [
+      "omega3",
+      "packed-lunch",
+      "pantry"
+    ],
+    "ingredients": [
+      {
+        "name": "sardines",
+        "category": "omega3"
+      },
+      {
+        "name": "white beans",
+        "category": "neutral"
+      },
+      {
+        "name": "lemon",
+        "category": "neutral"
+      },
+      {
+        "name": "parsley",
+        "category": "neutral"
+      },
+      {
+        "name": "whole grain bread",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Mash white beans with lemon and parsley.",
+      "Add sardines on top or on the side.",
+      "Pack with whole grain bread.",
+      "Add greens or cucumber for crunch."
+    ]
+  },
+  {
+    "id": "mackerel-potato-salad",
+    "name": "Mackerel Potato Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.45,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "packed-lunch",
+      "batch"
+    ],
+    "ingredients": [
+      {
+        "name": "canned mackerel",
+        "category": "omega3"
+      },
+      {
+        "name": "potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "celery",
+        "category": "neutral"
+      },
+      {
+        "name": "Greek yogurt",
+        "category": "neutral"
+      },
+      {
+        "name": "dill",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Boil potatoes until tender.",
+      "Mix yogurt with dill.",
+      "Fold in potatoes, celery, and mackerel.",
+      "Chill before packing."
+    ]
+  },
+  {
+    "id": "walnut-apple-chicken-salad",
+    "name": "Walnut Apple Chicken Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.8,
+    "omegaScore": 2,
+    "tags": [
+      "packed-lunch",
+      "leftovers"
+    ],
+    "ingredients": [
+      {
+        "name": "cooked chicken",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "apple",
+        "category": "neutral"
+      },
+      {
+        "name": "celery",
+        "category": "neutral"
+      },
+      {
+        "name": "Greek yogurt",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Dice cooked chicken, apple, and celery.",
+      "Mix with Greek yogurt.",
+      "Fold in walnuts.",
+      "Pack with lettuce or whole grain bread."
+    ]
+  },
+  {
+    "id": "egg-flax-salad-wraps",
+    "name": "Omega Egg Salad Wraps",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.55,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "eggs",
+        "category": "neutral"
+      },
+      {
+        "name": "ground flaxseed",
+        "category": "omega3"
+      },
+      {
+        "name": "Greek yogurt",
+        "category": "neutral"
+      },
+      {
+        "name": "lettuce",
+        "category": "neutral"
+      },
+      {
+        "name": "whole wheat wraps",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Boil eggs and chop them.",
+      "Mix with yogurt and ground flaxseed.",
+      "Add lettuce to wraps.",
+      "Fill wraps and pack tightly."
+    ]
+  },
+  {
+    "id": "smoked-salmon-cucumber-box",
+    "name": "Smoked Salmon Cucumber Box",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.35,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "packed-lunch",
+      "no-cook"
+    ],
+    "ingredients": [
+      {
+        "name": "smoked salmon",
+        "category": "omega3"
+      },
+      {
+        "name": "cucumber",
+        "category": "neutral"
+      },
+      {
+        "name": "cream cheese",
+        "category": "neutral"
+      },
+      {
+        "name": "rye crackers",
+        "category": "neutral"
+      },
+      {
+        "name": "dill",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Slice cucumber.",
+      "Pack smoked salmon and rye crackers.",
+      "Add cream cheese and dill in a small container.",
+      "Assemble at lunch."
+    ]
+  },
+  {
+    "id": "lentil-walnut-salad",
+    "name": "Lentil Walnut Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.7,
+    "omegaScore": 2,
+    "tags": [
+      "packed-lunch",
+      "plant-forward"
+    ],
+    "ingredients": [
+      {
+        "name": "lentils",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "carrots",
+        "category": "neutral"
+      },
+      {
+        "name": "parsley",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook or rinse lentils.",
+      "Mix with grated carrots and parsley.",
+      "Add walnuts.",
+      "Dress with olive oil and lemon."
+    ]
+  },
+  {
+    "id": "quinoa-chia-fruit-bowl",
+    "name": "Quinoa Chia Fruit Bowl",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.4,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "quinoa",
+        "category": "neutral"
+      },
+      {
+        "name": "chia seeds",
+        "category": "omega3"
+      },
+      {
+        "name": "berries",
+        "category": "neutral"
+      },
+      {
+        "name": "pumpkin seeds",
+        "category": "neutral"
+      },
+      {
+        "name": "yogurt",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook quinoa and cool it.",
+      "Mix with yogurt and chia seeds.",
+      "Top with berries.",
+      "Add a small sprinkle of pumpkin seeds."
+    ]
+  },
+  {
+    "id": "herring-beet-lunch-salad",
+    "name": "Herring Beet Lunch Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.3,
+    "omegaScore": 5,
+    "tags": [
+      "omega3",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "herring",
+        "category": "omega3"
+      },
+      {
+        "name": "beets",
+        "category": "neutral"
+      },
+      {
+        "name": "potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "dill",
+        "category": "neutral"
+      },
+      {
+        "name": "yogurt",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook potatoes and beets.",
+      "Slice herring.",
+      "Mix yogurt with dill.",
+      "Layer ingredients in lunch containers."
+    ]
+  },
+  {
+    "id": "avocado-walnut-chickpea-salad",
+    "name": "Avocado Walnut Chickpea Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.65,
+    "omegaScore": 3,
+    "tags": [
+      "packed-lunch",
+      "plant-forward"
+    ],
+    "ingredients": [
+      {
+        "name": "chickpeas",
+        "category": "neutral"
+      },
+      {
+        "name": "avocado",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      },
+      {
+        "name": "lemon",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Rinse chickpeas.",
+      "Dice avocado and toss with lemon.",
+      "Mix chickpeas, spinach, avocado, and walnuts.",
+      "Pack in four containers."
+    ]
+  },
+  {
+    "id": "sardine-pasta-salad",
+    "name": "Sardine Pasta Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.5,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "sardines",
+        "category": "omega3"
+      },
+      {
+        "name": "whole wheat pasta",
+        "category": "neutral"
+      },
+      {
+        "name": "cherry tomatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      },
+      {
+        "name": "parsley",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook pasta and cool it.",
+      "Flake sardines.",
+      "Mix pasta, tomatoes, parsley, and sardines.",
+      "Dress lightly with olive oil."
+    ]
+  },
+  {
+    "id": "tofu-flax-slaw-box",
+    "name": "Tofu Flax Slaw Box",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.75,
+    "omegaScore": 2,
+    "tags": [
+      "packed-lunch",
+      "plant-forward"
+    ],
+    "ingredients": [
+      {
+        "name": "tofu",
+        "category": "neutral"
+      },
+      {
+        "name": "cabbage",
+        "category": "neutral"
+      },
+      {
+        "name": "ground flaxseed",
+        "category": "omega3"
+      },
+      {
+        "name": "carrots",
+        "category": "neutral"
+      },
+      {
+        "name": "rice vinegar",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Press tofu and cube it.",
+      "Shred cabbage and carrots.",
+      "Mix vinegar with ground flaxseed.",
+      "Pack tofu with slaw."
+    ]
+  },
+  {
+    "id": "salmon-nori-rice-cups",
+    "name": "Salmon Nori Rice Cups",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.35,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "salmon",
+        "category": "omega3"
+      },
+      {
+        "name": "rice",
+        "category": "neutral"
+      },
+      {
+        "name": "nori",
+        "category": "neutral"
+      },
+      {
+        "name": "cucumber",
+        "category": "neutral"
+      },
+      {
+        "name": "avocado",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook rice and cool it.",
+      "Flake salmon.",
+      "Layer rice, cucumber, avocado, and salmon.",
+      "Add nori just before eating."
+    ]
+  },
+  {
+    "id": "mussel-barley-salad",
+    "name": "Mussel Barley Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.45,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "mussels",
+        "category": "omega3"
+      },
+      {
+        "name": "barley",
+        "category": "neutral"
+      },
+      {
+        "name": "celery",
+        "category": "neutral"
+      },
+      {
+        "name": "parsley",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook barley and cool it.",
+      "Steam mussels and remove from shells.",
+      "Mix barley, celery, parsley, and mussels.",
+      "Pack chilled."
+    ]
+  },
+  {
+    "id": "walnut-hummus-veggie-box",
+    "name": "Walnut Hummus Veggie Box",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 1.2,
+    "omegaScore": 2,
+    "tags": [
+      "packed-lunch",
+      "easy"
+    ],
+    "ingredients": [
+      {
+        "name": "hummus",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "carrots",
+        "category": "neutral"
+      },
+      {
+        "name": "cucumber",
+        "category": "neutral"
+      },
+      {
+        "name": "whole grain pita",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Portion hummus into containers.",
+      "Add walnuts, carrots, cucumber, and pita.",
+      "Choose olive-oil hummus when possible.",
+      "Pack cold."
+    ]
+  },
+  {
+    "id": "anchovy-caesar-chickpea-box",
+    "name": "Anchovy Caesar Chickpea Box",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.75,
+    "omegaScore": 2,
+    "tags": [
+      "omega3",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "anchovies",
+        "category": "neutral"
+      },
+      {
+        "name": "chickpeas",
+        "category": "neutral"
+      },
+      {
+        "name": "romaine",
+        "category": "neutral"
+      },
+      {
+        "name": "parmesan",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Rinse chickpeas.",
+      "Chop romaine.",
+      "Mash anchovies into olive oil and lemon.",
+      "Pack salad components separately."
+    ]
+  },
+  {
+    "id": "trout-potato-lunch-plate",
+    "name": "Trout Potato Lunch Plate",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.4,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "leftovers"
+    ],
+    "ingredients": [
+      {
+        "name": "trout",
+        "category": "omega3"
+      },
+      {
+        "name": "potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "green beans",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      },
+      {
+        "name": "dill",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Bake trout and potatoes the night before.",
+      "Steam green beans.",
+      "Portion into containers.",
+      "Add dill and olive oil."
+    ]
+  },
+  {
+    "id": "flax-oat-yogurt-jars",
+    "name": "Flax Oat Yogurt Jars",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.55,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "make-ahead"
+    ],
+    "ingredients": [
+      {
+        "name": "oats",
+        "category": "neutral"
+      },
+      {
+        "name": "ground flaxseed",
+        "category": "omega3"
+      },
+      {
+        "name": "Greek yogurt",
+        "category": "neutral"
+      },
+      {
+        "name": "berries",
+        "category": "neutral"
+      },
+      {
+        "name": "milk",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Mix oats, flaxseed, yogurt, and milk.",
+      "Refrigerate overnight.",
+      "Top with berries.",
+      "Pack four jars."
+    ]
+  },
+  {
+    "id": "shrimp-walnut-noodle-salad",
+    "name": "Shrimp Walnut Noodle Salad",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.8,
+    "omegaScore": 2,
+    "tags": [
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "shrimp",
+        "category": "neutral"
+      },
+      {
+        "name": "rice noodles",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "cabbage",
+        "category": "neutral"
+      },
+      {
+        "name": "lime",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook rice noodles and rinse cold.",
+      "Cook shrimp.",
+      "Toss noodles with cabbage and lime.",
+      "Top with shrimp and walnuts."
+    ]
+  },
+  {
+    "id": "salmon-bean-mason-jars",
+    "name": "Salmon Bean Mason Jars",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.35,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "salmon",
+        "category": "omega3"
+      },
+      {
+        "name": "white beans",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      },
+      {
+        "name": "cucumber",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Add dressing to bottom of jars.",
+      "Layer beans, cucumber, spinach, and salmon.",
+      "Seal and refrigerate.",
+      "Shake before eating."
+    ]
+  },
+  {
+    "id": "chia-tuna-lettuce-cups",
+    "name": "Chia Tuna Lettuce Cups",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.3,
+    "omegaScore": 5,
+    "tags": [
+      "omega3",
+      "packed-lunch"
+    ],
+    "ingredients": [
+      {
+        "name": "tuna",
+        "category": "omega3"
+      },
+      {
+        "name": "chia seeds",
+        "category": "omega3"
+      },
+      {
+        "name": "lettuce",
+        "category": "neutral"
+      },
+      {
+        "name": "celery",
+        "category": "neutral"
+      },
+      {
+        "name": "Greek yogurt",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Mix tuna with yogurt and celery.",
+      "Stir in chia seeds.",
+      "Pack lettuce leaves separately.",
+      "Spoon filling into leaves at lunch."
+    ]
+  },
+  {
+    "id": "walnut-farro-roasted-veg",
+    "name": "Walnut Farro Roasted Veg Bowl",
+    "mealType": "lunch",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.85,
+    "omegaScore": 2,
+    "tags": [
+      "packed-lunch",
+      "batch"
+    ],
+    "ingredients": [
+      {
+        "name": "farro",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "roasted vegetables",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook farro.",
+      "Roast vegetables.",
+      "Mix with spinach and walnuts.",
+      "Pack with olive oil dressing."
+    ]
+  },
+  {
+    "id": "nova-scotia-seafood-chowder",
+    "name": "Nova Scotia Seafood Chowder",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.3,
+    "omegaScore": 5,
+    "tags": [
+      "omega3",
+      "batch-cooking",
+      "family"
+    ],
+    "ingredients": [
+      {
+        "name": "salmon",
+        "category": "omega3"
+      },
+      {
+        "name": "mussels",
+        "category": "omega3"
+      },
+      {
+        "name": "clams",
+        "category": "omega3"
+      },
+      {
+        "name": "potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "carrots",
+        "category": "neutral"
+      },
+      {
+        "name": "celery",
+        "category": "neutral"
+      },
+      {
+        "name": "cream",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Sauté onions, carrots, and celery.",
+      "Add potatoes, milk or cream, and herbs.",
+      "Cook seafood separately until just done.",
+      "Combine seafood with the chowder base and portion for batch meals."
+    ]
+  },
+  {
+    "id": "salmon-quinoa-bowls",
+    "name": "Salmon Quinoa Bowls",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.4,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "batch-cooking"
+    ],
+    "ingredients": [
+      {
+        "name": "salmon",
+        "category": "omega3"
+      },
+      {
+        "name": "quinoa",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      }
+    ],
+    "steps": [
+      "Bake salmon until flaky.",
+      "Cook quinoa.",
+      "Build bowls with spinach, quinoa, and salmon.",
+      "Sprinkle with walnuts and store leftovers."
+    ]
+  },
+  {
+    "id": "walnut-pesto-pasta",
+    "name": "Walnut Pesto Pasta",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.6,
+    "omegaScore": 3,
+    "tags": [
+      "family",
+      "batch-cooking"
+    ],
+    "ingredients": [
+      {
+        "name": "whole wheat pasta",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "basil",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      },
+      {
+        "name": "parmesan",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook pasta.",
+      "Blend basil, walnuts, olive oil, and parmesan.",
+      "Toss pasta with pesto.",
+      "Pack leftovers for quick meals."
+    ]
+  },
+  {
+    "id": "mackerel-tomato-pasta",
+    "name": "Mackerel Tomato Pasta",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.45,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "weeknight"
+    ],
+    "ingredients": [
+      {
+        "name": "mackerel",
+        "category": "omega3"
+      },
+      {
+        "name": "whole wheat pasta",
+        "category": "neutral"
+      },
+      {
+        "name": "tomatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "garlic",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook pasta.",
+      "Warm tomatoes with garlic.",
+      "Fold in mackerel.",
+      "Toss with pasta and portion leftovers."
+    ]
+  },
+  {
+    "id": "sardine-lemon-spaghetti",
+    "name": "Sardine Lemon Spaghetti",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.5,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "weeknight"
+    ],
+    "ingredients": [
+      {
+        "name": "sardines",
+        "category": "omega3"
+      },
+      {
+        "name": "spaghetti",
+        "category": "neutral"
+      },
+      {
+        "name": "lemon",
+        "category": "neutral"
+      },
+      {
+        "name": "parsley",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook spaghetti.",
+      "Warm sardines with lemon and olive oil.",
+      "Toss with pasta and parsley.",
+      "Serve with greens."
+    ]
+  },
+  {
+    "id": "trout-sheet-pan-dinner",
+    "name": "Trout Sheet Pan Dinner",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.35,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "sheet-pan"
+    ],
+    "ingredients": [
+      {
+        "name": "trout",
+        "category": "omega3"
+      },
+      {
+        "name": "potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "green beans",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      },
+      {
+        "name": "lemon",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Arrange potatoes on a sheet pan and roast.",
+      "Add trout and green beans.",
+      "Bake until fish flakes.",
+      "Portion leftovers for lunch."
+    ]
+  },
+  {
+    "id": "herring-potato-bake",
+    "name": "Herring Potato Bake",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.35,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "batch-cooking"
+    ],
+    "ingredients": [
+      {
+        "name": "herring",
+        "category": "omega3"
+      },
+      {
+        "name": "potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "onions",
+        "category": "neutral"
+      },
+      {
+        "name": "dill",
+        "category": "neutral"
+      },
+      {
+        "name": "Greek yogurt",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Slice potatoes and onions.",
+      "Layer with herring.",
+      "Bake until potatoes are tender.",
+      "Serve with yogurt dill sauce."
+    ]
+  },
+  {
+    "id": "mussel-garlic-tomato-stew",
+    "name": "Mussel Garlic Tomato Stew",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.45,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "weeknight"
+    ],
+    "ingredients": [
+      {
+        "name": "mussels",
+        "category": "omega3"
+      },
+      {
+        "name": "tomatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "garlic",
+        "category": "neutral"
+      },
+      {
+        "name": "white beans",
+        "category": "neutral"
+      },
+      {
+        "name": "parsley",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Sauté garlic.",
+      "Add tomatoes and beans.",
+      "Steam mussels in the sauce.",
+      "Serve with bread or rice."
+    ]
+  },
+  {
+    "id": "salmon-lentil-skillet",
+    "name": "Salmon Lentil Skillet",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.4,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "family"
+    ],
+    "ingredients": [
+      {
+        "name": "salmon",
+        "category": "omega3"
+      },
+      {
+        "name": "lentils",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      },
+      {
+        "name": "carrots",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook lentils with carrots.",
+      "Sear or bake salmon.",
+      "Wilt spinach into lentils.",
+      "Serve salmon over lentils."
+    ]
+  },
+  {
+    "id": "tuna-white-bean-casserole",
+    "name": "Tuna White Bean Casserole",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.65,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "batch-cooking"
+    ],
+    "ingredients": [
+      {
+        "name": "tuna",
+        "category": "omega3"
+      },
+      {
+        "name": "white beans",
+        "category": "neutral"
+      },
+      {
+        "name": "tomatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      },
+      {
+        "name": "breadcrumbs",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Mix beans, tuna, tomatoes, and spinach.",
+      "Top with breadcrumbs.",
+      "Bake until bubbling.",
+      "Portion leftovers."
+    ]
+  },
+  {
+    "id": "anchovy-broccoli-pasta",
+    "name": "Anchovy Broccoli Pasta",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.75,
+    "omegaScore": 2,
+    "tags": [
+      "omega3",
+      "weeknight"
+    ],
+    "ingredients": [
+      {
+        "name": "anchovies",
+        "category": "neutral"
+      },
+      {
+        "name": "broccoli",
+        "category": "neutral"
+      },
+      {
+        "name": "whole wheat pasta",
+        "category": "neutral"
+      },
+      {
+        "name": "garlic",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook pasta and broccoli.",
+      "Warm anchovies and garlic in olive oil.",
+      "Toss with pasta.",
+      "Serve with lemon."
+    ]
+  },
+  {
+    "id": "shrimp-barley-risotto",
+    "name": "Shrimp Barley Risotto",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.85,
+    "omegaScore": 2,
+    "tags": [
+      "family",
+      "batch-cooking"
+    ],
+    "ingredients": [
+      {
+        "name": "shrimp",
+        "category": "neutral"
+      },
+      {
+        "name": "barley",
+        "category": "neutral"
+      },
+      {
+        "name": "peas",
+        "category": "neutral"
+      },
+      {
+        "name": "parmesan",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook barley with broth.",
+      "Stir in peas.",
+      "Add shrimp near the end.",
+      "Finish with parmesan."
+    ]
+  },
+  {
+    "id": "tofu-walnut-stir-fry",
+    "name": "Tofu Walnut Stir-Fry",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.9,
+    "omegaScore": 2,
+    "tags": [
+      "plant-forward",
+      "weeknight"
+    ],
+    "ingredients": [
+      {
+        "name": "tofu",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "broccoli",
+        "category": "neutral"
+      },
+      {
+        "name": "brown rice",
+        "category": "neutral"
+      },
+      {
+        "name": "ginger",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook brown rice.",
+      "Stir-fry tofu and broccoli.",
+      "Add ginger and walnuts.",
+      "Serve over rice."
+    ]
+  },
+  {
+    "id": "chicken-flax-meatballs",
+    "name": "Chicken Flax Meatballs",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.95,
+    "omegaScore": 2,
+    "tags": [
+      "family",
+      "batch-cooking"
+    ],
+    "ingredients": [
+      {
+        "name": "ground chicken",
+        "category": "neutral"
+      },
+      {
+        "name": "ground flaxseed",
+        "category": "omega3"
+      },
+      {
+        "name": "tomato sauce",
+        "category": "neutral"
+      },
+      {
+        "name": "whole wheat pasta",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Mix chicken with flaxseed and seasonings.",
+      "Bake meatballs.",
+      "Simmer in tomato sauce.",
+      "Serve with pasta and spinach."
+    ]
+  },
+  {
+    "id": "walnut-lentil-tacos",
+    "name": "Walnut Lentil Tacos",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 1.0,
+    "omegaScore": 2,
+    "tags": [
+      "plant-forward",
+      "family"
+    ],
+    "ingredients": [
+      {
+        "name": "lentils",
+        "category": "neutral"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "taco seasoning",
+        "category": "neutral"
+      },
+      {
+        "name": "corn tortillas",
+        "category": "neutral"
+      },
+      {
+        "name": "lettuce",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook lentils.",
+      "Pulse walnuts and mix with lentils.",
+      "Season as taco filling.",
+      "Serve with tortillas and lettuce."
+    ]
+  },
+  {
+    "id": "salmon-sweet-potato-traybake",
+    "name": "Salmon Sweet Potato Traybake",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.35,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "sheet-pan"
+    ],
+    "ingredients": [
+      {
+        "name": "salmon",
+        "category": "omega3"
+      },
+      {
+        "name": "sweet potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "broccoli",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      },
+      {
+        "name": "lemon",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Roast sweet potatoes.",
+      "Add salmon and broccoli.",
+      "Bake until done.",
+      "Pack leftovers for lunch."
+    ]
+  },
+  {
+    "id": "clam-corn-potato-soup",
+    "name": "Clam Corn Potato Soup",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.65,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "batch-cooking"
+    ],
+    "ingredients": [
+      {
+        "name": "clams",
+        "category": "omega3"
+      },
+      {
+        "name": "corn",
+        "category": "neutral"
+      },
+      {
+        "name": "potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "celery",
+        "category": "neutral"
+      },
+      {
+        "name": "milk",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Sauté celery.",
+      "Add potatoes and corn.",
+      "Simmer with milk.",
+      "Add clams at the end."
+    ]
+  },
+  {
+    "id": "sardine-mediterranean-rice",
+    "name": "Sardine Mediterranean Rice",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.5,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "weeknight"
+    ],
+    "ingredients": [
+      {
+        "name": "sardines",
+        "category": "omega3"
+      },
+      {
+        "name": "brown rice",
+        "category": "neutral"
+      },
+      {
+        "name": "tomatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "olives",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook rice.",
+      "Warm tomatoes and spinach.",
+      "Fold in sardines and olives.",
+      "Serve as rice bowls."
+    ]
+  },
+  {
+    "id": "mackerel-coconut-curry",
+    "name": "Mackerel Coconut Curry",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.55,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "weeknight"
+    ],
+    "ingredients": [
+      {
+        "name": "mackerel",
+        "category": "omega3"
+      },
+      {
+        "name": "coconut milk",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      },
+      {
+        "name": "rice",
+        "category": "neutral"
+      },
+      {
+        "name": "curry paste",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook rice.",
+      "Simmer curry paste with coconut milk.",
+      "Add spinach and mackerel.",
+      "Serve over rice."
+    ]
+  },
+  {
+    "id": "oyster-mushroom-rice-bake",
+    "name": "Oyster Mushroom Rice Bake",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.55,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "special"
+    ],
+    "ingredients": [
+      {
+        "name": "oysters",
+        "category": "omega3"
+      },
+      {
+        "name": "mushrooms",
+        "category": "neutral"
+      },
+      {
+        "name": "rice",
+        "category": "neutral"
+      },
+      {
+        "name": "parsley",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook rice halfway.",
+      "Mix with mushrooms and parsley.",
+      "Top with oysters.",
+      "Bake until hot."
+    ]
+  },
+  {
+    "id": "trout-chickpea-tomato-pan",
+    "name": "Trout Chickpea Tomato Pan",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.45,
+    "omegaScore": 4,
+    "tags": [
+      "omega3",
+      "family"
+    ],
+    "ingredients": [
+      {
+        "name": "trout",
+        "category": "omega3"
+      },
+      {
+        "name": "chickpeas",
+        "category": "neutral"
+      },
+      {
+        "name": "tomatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "spinach",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Simmer chickpeas and tomatoes.",
+      "Add spinach.",
+      "Bake trout separately or on top.",
+      "Serve together."
+    ]
+  },
+  {
+    "id": "salmon-broccoli-noodle-bake",
+    "name": "Salmon Broccoli Noodle Bake",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.5,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "batch-cooking"
+    ],
+    "ingredients": [
+      {
+        "name": "salmon",
+        "category": "omega3"
+      },
+      {
+        "name": "broccoli",
+        "category": "neutral"
+      },
+      {
+        "name": "whole wheat noodles",
+        "category": "neutral"
+      },
+      {
+        "name": "Greek yogurt",
+        "category": "neutral"
+      },
+      {
+        "name": "cheddar",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook noodles and broccoli.",
+      "Mix yogurt sauce.",
+      "Fold in salmon.",
+      "Bake until golden."
+    ]
+  },
+  {
+    "id": "mussel-farro-paella",
+    "name": "Mussel Farro Paella",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.55,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "weeknight"
+    ],
+    "ingredients": [
+      {
+        "name": "mussels",
+        "category": "omega3"
+      },
+      {
+        "name": "farro",
+        "category": "neutral"
+      },
+      {
+        "name": "peas",
+        "category": "neutral"
+      },
+      {
+        "name": "tomatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "paprika",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Cook farro with tomatoes and paprika.",
+      "Add peas.",
+      "Steam mussels on top.",
+      "Serve family-style."
+    ]
+  },
+  {
+    "id": "chia-crusted-chicken",
+    "name": "Chia Crusted Chicken",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.9,
+    "omegaScore": 2,
+    "tags": [
+      "family",
+      "batch-cooking"
+    ],
+    "ingredients": [
+      {
+        "name": "chicken",
+        "category": "neutral"
+      },
+      {
+        "name": "chia seeds",
+        "category": "omega3"
+      },
+      {
+        "name": "sweet potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "green beans",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Coat chicken with crushed chia seeds.",
+      "Roast with sweet potatoes.",
+      "Steam green beans.",
+      "Save leftovers for lunch."
+    ]
+  },
+  {
+    "id": "walnut-herb-baked-cod",
+    "name": "Walnut Herb Baked Cod",
+    "mealType": "dinner",
+    "servings": 4,
+    "source": "Starter recipe",
+    "image": "assets/img/recipe-placeholder.svg",
+    "ratio": 0.65,
+    "omegaScore": 3,
+    "tags": [
+      "omega3",
+      "weeknight"
+    ],
+    "ingredients": [
+      {
+        "name": "cod",
+        "category": "omega3"
+      },
+      {
+        "name": "walnuts",
+        "category": "omega3"
+      },
+      {
+        "name": "parsley",
+        "category": "neutral"
+      },
+      {
+        "name": "potatoes",
+        "category": "neutral"
+      },
+      {
+        "name": "olive oil",
+        "category": "neutral"
+      }
+    ],
+    "steps": [
+      "Top cod with chopped walnuts and herbs.",
+      "Roast potatoes.",
+      "Bake cod until flaky.",
+      "Serve with greens."
+    ]
+  }
+]

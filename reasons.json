@@ -1,0 +1,21 @@
+{
+  "recipeUndoneReasons": [
+    "Ingredients not available",
+    "Too expensive this week",
+    "Not enough time",
+    "Family declined",
+    "Too much prep",
+    "Forgot / plan changed",
+    "Substituted another meal",
+    "Other"
+  ],
+  "ingredientReasons": [
+    "Bought",
+    "Not on shelf",
+    "Too expensive",
+    "Poor quality",
+    "Could not find size/format",
+    "Substituted",
+    "Skipped this week"
+  ]
+}

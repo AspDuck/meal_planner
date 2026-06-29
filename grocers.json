@@ -1,0 +1,129 @@
+{
+  "defaultGrocers": [
+    "Atlantic Superstore",
+    "Walmart",
+    "Sobeys"
+  ],
+  "rules": [
+    {
+      "match": [
+        "salmon",
+        "sardine",
+        "tuna",
+        "mackerel",
+        "trout",
+        "cod",
+        "herring",
+        "anchovy",
+        "mussel",
+        "oyster",
+        "clam",
+        "shrimp",
+        "lobster",
+        "fish",
+        "seafood"
+      ],
+      "grocers": [
+        "Costco",
+        "Atlantic Superstore",
+        "Sobeys",
+        "Local fishmonger"
+      ]
+    },
+    {
+      "match": [
+        "chia",
+        "flax",
+        "walnut",
+        "almond",
+        "pumpkin seed",
+        "sunflower seed",
+        "oats",
+        "farro",
+        "barley",
+        "quinoa",
+        "lentils",
+        "beans"
+      ],
+      "grocers": [
+        "Bulk Barn",
+        "Atlantic Superstore",
+        "Walmart",
+        "Costco"
+      ]
+    },
+    {
+      "match": [
+        "beef",
+        "pork",
+        "chicken",
+        "turkey",
+        "lamb",
+        "meat"
+      ],
+      "grocers": [
+        "Costco",
+        "Atlantic Superstore",
+        "Sobeys",
+        "Local butcher"
+      ]
+    },
+    {
+      "match": [
+        "purslane",
+        "spinach",
+        "arugula",
+        "cucumber",
+        "broccoli",
+        "carrot",
+        "celery",
+        "parsley",
+        "dill",
+        "basil",
+        "beets",
+        "potatoes",
+        "sweet potatoes",
+        "green beans",
+        "cabbage",
+        "lettuce",
+        "tomatoes",
+        "berries",
+        "apple",
+        "avocado"
+      ],
+      "grocers": [
+        "Atlantic Superstore",
+        "Sobeys",
+        "No Frills",
+        "Local produce vendor"
+      ]
+    },
+    {
+      "match": [
+        "oil",
+        "olive oil",
+        "pasta",
+        "rice",
+        "bread",
+        "wraps",
+        "pita",
+        "crackers",
+        "honey",
+        "milk",
+        "yogurt",
+        "cream",
+        "cheese",
+        "parmesan",
+        "spices",
+        "curry",
+        "tomato sauce"
+      ],
+      "grocers": [
+        "Walmart",
+        "Atlantic Superstore",
+        "No Frills",
+        "Giant Tiger"
+      ]
+    }
+  ]
+}

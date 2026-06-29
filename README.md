@@ -1,27 +1,37 @@
-# omega Meal Planner
+# Omega Meal Planner v3
 
-A maintainable GitHub Pages-ready meal planner for omega-3-forward family meals.
+Mobile-first meal planning prototype for omega-3-forward family meal planning.
 
-## What is included
+## What changed in v3
 
-- `index.html` — page structure and tab layout
-- `assets/css/styles.css` — visual styling, mobile layout, flip cards
-- `assets/js/app.js` — meal planning logic, API calls, tracking, ratio planner
-- `data/recipes.json` — 50 starter recipes with ingredients, steps, serving count, prep time, and estimated omega-6:omega-3 ratio
-- `assets/img/recipe-placeholder.svg` — local fallback image
+- Recommended recipes are selectable.
+- Selected recipes generate a shopping list.
+- Shopping list items show 2+ likely grocers per ingredient.
+- Shopping list tracks item status: needed, bought, not on shelf, too expensive, substituted, skipped.
+- Weekly calendar recipe cards are flippable.
+- Weekly calendar tracks completed and undone recipes with reasons.
+- Omega ratio slider rebuilds recommendations and the weekly plan.
+- Weekly history archives before the Friday 9pm reset.
+- If the app is closed at Friday 9pm, the reset runs the next time the site opens.
+- New maintainability files:
+  - `data/grocers.json`
+  - `data/reasons.json`
 
-## Key updates
+## File structure
 
-- Recipe Library uses flip cards: front has image/title/ratio; back has ingredients, steps, prep time, and serving count.
-- Weekly Calendar now uses compact flippable cards for each recommended meal.
-- Day column is narrowed so recipe cards get most of the calendar space.
-- The ratio slider rebuilds the weekly meal plan around the target ratio and slightly favours omega-3.
-- Imported Spoonacular recipes now estimate omega-6:omega-3 ratio from nutrition data when available, then fall back to a weighted ingredient heuristic.
-- UI naming is kept consistent around “omega” and “omega ratio.”
+```txt
+index.html
+assets/css/styles.css
+assets/js/app.js
+assets/img/recipe-placeholder.svg
+data/recipes.json
+data/grocers.json
+data/reasons.json
+```
 
 ## Local testing
 
-Because the app loads `data/recipes.json`, do not open `index.html` directly as a `file://` URL. Run a simple local server:
+Run from this folder:
 
 ```bash
 python3 -m http.server 8000
@@ -29,16 +39,12 @@ python3 -m http.server 8000
 
 Then open:
 
-```text
+```txt
 http://localhost:8000
 ```
 
-## API notes
+Do not open `index.html` directly from Finder because browsers may block loading `data/*.json` from `file://`.
 
-This static version includes browser-side API keys for testing. For public production use, move API calls behind a small serverless function or backend proxy.
+## Notes
 
-Used APIs:
-
-- USDA FoodData Central for nutrient lookup
-- Spoonacular for ingredient search and related recipe import
-- recipe-scrapers-js for experimental URL import, subject to browser/CORS limitations
+This is still a static prototype. API keys in browser JavaScript are visible to users. For production, move USDA, Spoonacular, and recipe-scraping calls behind a serverless backend or proxy.
